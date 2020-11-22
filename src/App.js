@@ -51,15 +51,6 @@ const getTransitionStyles = {
 };
 
 function App(props) {
-  const location = useLocation();
-  console.log(location);
-  React.useEffect(() => {
-    window.addEventListener('load', (event) => {
-      var image = document.querySelector('img');
-      var isLoaded = image.complete && image.naturalHeight !== 0;
-      alert(isLoaded);
-    });
-  }, []);
   return (
     <ChakraProvider theme={theme}>
       <CSSReset />
