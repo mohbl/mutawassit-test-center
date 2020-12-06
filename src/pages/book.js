@@ -14,205 +14,288 @@ import {
   TabPanel,
   List,
   ListItem,
+  Flex,
+  Skeleton,
 } from '@chakra-ui/core';
 import Carousel from 'react-elastic-carousel';
+import { useParams, Link } from 'react-router-dom';
+import moment from 'moment';
+import { connect } from 'react-redux';
+import { getBook } from '../redux/actions/booksActions';
 
-export default function book() {
+import GlobalShare from '../util/GlobalShare';
+
+function Book({ getBook }) {
+  let { id } = useParams();
+  console.log(id);
+  const [data, setData] = React.useState(null);
+  const [loaded, setLoaded] = React.useState(false);
+  const imageLoaded = () => {
+    setLoaded(true);
+  };
+  React.useEffect(() => {
+    async function getData() {
+      const res = await getBook(id);
+      console.log(res);
+      if (res) {
+        setData(res.data);
+      }
+    }
+    getData();
+  }, [id]);
   return (
     <Box mt="100px">
-      <Grid pr="10%" pl="10%" templateColumns={['1fr', '1fr', '1fr 2fr', '1fr 2fr']} gap="10px">
-        <Box m="4">
-          <Image
-            w="400px"
-            src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/02/P-1573783900-Secrets-and-Siblings-320x501.jpg"
-          ></Image>
-          <Button rounded="20px" mt="4" w="400px" variantColor="red">
-            اشتري من المتجر
-          </Button>
-        </Box>
-        <Box m="4">
-          <Heading>أسرار وأخوات</Heading>
-          <Text fontSize="xl">ماري مانينين</Text>
-          <Divider></Divider>
-          <Text fontSize="xl">
-            دراسة علمية بارزة عن بُعد مهمل لنهج إسرائيل في العلاقات خارج الشرق الأوسط. تسلط هذه
-            الدراسة الضوء بشكل رسمي على السياق المتطور والطابع المعقد لانخراط إسرائيل مع إفريقيا.
-            محتوياته موثقة جيدًا ، ومتوازنة سياسيًا ، ومكتوبة بوضوح ، ومحللة بوضوح. ريتشارد فولك ،
-            المقرر الخاص السابق للأمم المتحدة المعني بحالة حقوق الإنسان في الأراضي الفلسطينية
-            المحتلة منذ عام 1967
-          </Text>
-          <Divider></Divider>
-          <Tabs>
-            <TabList>
-              <Tab fontSize="18px"> عن الكتاب</Tab>
-              <Tab fontSize="18px">عن المؤلف</Tab>
-              <Tab fontSize="18px"> فهرس الكتاب</Tab>
-              <Tab fontSize="18px"> في الصحافة</Tab>
-              <Tab fontSize="18px">معلومات الكتاب</Tab>
-            </TabList>
+      <Box mt="100px">
+        <Grid
+          pr={['2%', '2%', '7%', '7%']}
+          pl={['2%', '2%', '7%', '7%']}
+          templateColumns={['1fr', '1fr', '0.5fr 2fr', '0.5fr 2fr']}
+          gap="10px"
+        >
+          {data && (
+            <>
+              <Box m="4">
+                <Skeleton
+                  w={['300px', '300px', '400px', '400px']}
+                  isLoaded={loaded}
+                >
+                  <Image
+                    onLoad={imageLoaded}
+                    shadow="lg"
+                    w={['300px', '300px', '400px', '400px']}
+                    src={`${process.env.REACT_APP_STORAGE}/${data.cover}`}
+                  ></Image>
+                </Skeleton>
+                <Link>
+                  <Button
+                    rounded="20px"
+                    mt="4"
+                    w={['300px', '300px', '400px', '400px']}
+                    colorScheme="red"
+                  >
+                    لشراء الكتاب المس هنا
+                  </Button>
+                </Link>
+                <Box mt="4" w={['300px', '300px', '400px', '400px']}>
+                  <GlobalShare></GlobalShare>
+                </Box>
+                <Box w={['300px', '300px', '400px', '400px']}>
+                  {data.podcast && (
+                    <iframe
+                      title={data.title}
+                      width="100%"
+                      height="100"
+                      scrolling="no"
+                      frameborder="no"
+                      allow="autoplay"
+                      src={data.podcast}
+                    ></iframe>
+                  )}
+                </Box>
+              </Box>
+              <Box m="4">
+                <Heading m="4">{data.title}</Heading>
+                <Divider></Divider>
+                <Text fontSize="xl">{data.sub_title}</Text>
+                <Divider></Divider>
+                <Flex>
+                  {data.author.map(author => (
+                    <Link key={author.id} to={`/author/${author.id}`}>
+                      <Text
+                        _hover={{
+                          bg: 'yellow.300',
+                          color: 'black',
+                          textDecoration: 'underline',
+                        }}
+                        m="2"
+                        fontSize="2xl"
+                        color="gray.500"
+                      >
+                        {author.name}
+                      </Text>
+                    </Link>
+                  ))}
+                </Flex>
+                <Divider></Divider>
+                <Text m="4" fontSize="xl">
+                  {data.overview}
+                </Text>
+                <Divider></Divider>
+                <Tabs>
+                  <TabList>
+                    <Tab fontSize="18px"> عن الكتاب</Tab>
+                    <Tab fontSize="18px">عن المؤلف</Tab>
+                    <Tab fontSize="18px"> فهرس الكتاب</Tab>
+                    <Tab fontSize="18px"> من الكتاب</Tab>
+                    <Tab fontSize="18px"> في الصحافة</Tab>
+                    <Tab fontSize="18px">معلومات الكتاب</Tab>
+                  </TabList>
 
-            <TabPanels>
-              <TabPanel>
-                <Text fontSize="xl" mt="4">
-                  في خضم الاضطرابات في الشرق الأوسط ، لاحظ القليل إلى أي مدى كانت إسرائيل تبني ببطء
-                  ولكن بثبات تحالفات في القارة الأفريقية. في مواجهة رد الفعل الدولي المتزايد ، كان
-                  على إسرائيل أن تنظر إلى ما وراء حلفائها الغربيين التقليديين للحصول على الدعم ،
-                  وكانت العديد من الحكومات الأفريقية بدورها سعيدة بتلقي الدعم السياسي الإسرائيلي ،
-                  والمساعدة الأمنية ، والاستثمارات والتكنولوجيا. ولكن ماذا تعني هذه العلاقات بالنسبة
-                  لأفريقيا وللجغرافيا السياسية الأوسع؟ من خلال فحص سياسات التنمية الاستبدادية في
-                  إفريقيا ، وظهور المسيحية المولودة مرة أخرى وصناعات إسرائيل عالية التقنية والأسلحة
-                  ، من الصراع الإسرائيلي الفلسطيني إلى هجرة الأفارقة إلى إسرائيل والعودة مرة أخرى ،
-                  يقدم غيدرون تحليلًا شاملاً القوى والجهات الفاعلة المختلفة التي تشكل علاقات إسرائيل
-                  المثيرة للجدل مع دول القارة. على وجه الخصوص ، يوضح الكتاب أن اهتمام إسرائيل
-                  بأفريقيا يشكل جزءًا من جهد دبلوماسي أوسع يهدف إلى منع سعي فلسطين للحصول على اعتراف
-                  دولي. على الرغم من أن حجم الارتباطات الإسرائيلية الأفريقية لم يتم تقديره كثيرًا
-                  حتى الآن ، إلا أن الكتاب يكشف كيف تتفاعل السياسات والمجتمعات الأفريقية والشرق
-                  أوسطية المعاصرة وتؤثر على بعضها البعض بطرق عميقة.
-                </Text>
-              </TabPanel>
-              <TabPanel>
-                <Text fontSize="xl" mt="4">
-                  يوتام جيدرون باحث تركز كتاباته على الهجرة والعلاقات بين الدولة والمجتمع والثقافة
-                  الشعبية في إفريقيا وإسرائيل / فلسطين. عمل مع منظمات حقوق الإنسان في إسرائيل وشرق
-                  إفريقيا ، ويسعى حاليًا للحصول على درجة الدكتوراه في التاريخ الأفريقي في جامعة
-                  دورهام.
-                </Text>
-              </TabPanel>
-              <TabPanel>
-                <List mt="4">
-                  <ListItem>المقدمة</ListItem>
-                </List>
-                <List as="ol" styleType="decimal">
-                  <ListItem> مغامرة أفريقية</ListItem>
-                  <ListItem> إمبراطورية أمنية</ListItem>
-                  <ListItem>معارك قديمة وحروب جديدة</ListItem>
-                  <ListItem> إسرائيل في أفريقيا</ListItem>
-                  <ListItem>إدارة الحدود</ListItem>
-                </List>
-                <List>
-                  <ListItem>خاتمة</ListItem>
-                </List>
-              </TabPanel>
-              <TabPanel>
-                <Text fontSize="xl" mt="4">
-                  "إسرائيل في إفريقيا مثيرة للاهتمام وغنية بالمعلومات ومكتوبة جيدًا وتستند إلى
-                  مجموعة واسعة بشكل مثير للإعجاب من المصادر ، تقدم إسرائيل في إفريقيا تحليلًا أصليًا
-                  ومحفزًا للفكر وإبداعًا لعلاقات إسرائيل المتطورة مع الدول الأفريقية. سوف يترك
-                  العديد من قرائه غاضبين أو متفاجئين ، ولكن بالتأكيد ، مع رؤى أصلية وحث قوي على
-                  استكشاف هذا الموضوع بشكل أكبر. غاليا صبار ، مركز روبين الأكاديمي
-                </Text>
-                <Text fontSize="xl">
-                  إن إسرائيل تعود إلى إفريقيا بطريقة مهمة ، وسياسة إسرائيلية نشطة تجاه إفريقيا آخذة
-                  في الظهور ، وتبحث عن حلفاء جدد ، وفرص تجارية جديدة وتعاونات أمنية جديدة. يقدم كتاب
-                  يوتام جيدرون وصفًا دقيقًا لهذه التطورات ، ووضعها في سياقها في كل من التاريخ
-                  والسياسة الإسرائيلية المعاصرة. مساهمة كبيرة في موضوع تم التغاضي عنه. إيان تايلور ،
-                  جامعة سانت أندروز
-                </Text>
-                <Text fontSize="xl">
-                  دراسة علمية بارزة عن بُعد مهمل لنهج إسرائيل في العلاقات خارج الشرق الأوسط. تسلط
-                  هذه الدراسة الضوء بشكل رسمي على السياق المتطور والطابع المعقد لانخراط إسرائيل مع
-                  إفريقيا. محتوياته موثقة جيدًا ، ومتوازنة سياسيًا ، ومكتوبة بوضوح ، ومحللة بوضوح.
-                  ريتشارد فولك ، المقرر الخاص السابق للأمم المتحدة المعني بحالة حقوق الإنسان في
-                  الأراضي الفلسطينية المحتلة منذ عام 1967
-                </Text>
-                <Text fontSize="xl">
-                  يروي هذا الكتاب الجذاب قصة مهمة ، ولكن لا يزال يساء فهمها ، عن تورط إسرائيل في
-                  إفريقيا على مدى العقود الماضية. من الدفاع والصناعات الاستخراجية إلى الهجرة ،
-                  بالإضافة إلى الطريقة التي يلعب بها الصراع الدبلوماسي على فلسطين والتنافس في كل
-                  مكان مع إيران في القارة ، إسرائيل في رؤى إفريقيا تستحق قراءًا واسعًا. ريكاردو
-                  سواريس دي أوليفيرا ، جامعة أكسفورد
-                </Text>
-                <Text fontSize="xl">
-                  قصة تحالفات إسرائيل الجديدة في القارة الأفريقية غير مروية إلى حد كبير. يقدم لنا
-                  جيدرون خدمة بجعلهم موضوع كتابه. تأخذ إسرائيل في إفريقيا مكانها في موجة جديدة من
-                  المنح الدراسية التي لا غنى عنها لتقييم مكانة الدول الأفريقية سريعة التغير في
-                  العلاقات الدولية. جوني شتاينبرغ ، جامعة أكسفورد
-                </Text>
-              </TabPanel>
-              <TabPanel>
-                <List mt="4">
-                  <ListItem>تاريخ النشر: 15 أبريل 2020 192 صفحة</ListItem>
-                  <ListItem>أرقام ISBN للمنتج:</ListItem>
-                  <ListItem>غلاف عادي: 9781786995025</ListItem>
-                  <ListItem>غلاف مقوى: 9781786995032</ListItem>
-                  <ListItem>الكتاب الإلكتروني ePub: 9781786995056</ListItem>
-                  <ListItem>أوقد الكتاب الإلكتروني: 9781786995063</ListItem>
-                </List>
-              </TabPanel>
-            </TabPanels>
-          </Tabs>
-        </Box>
-      </Grid>
-      <Box mt="100px" bg="black" color="white">
-        <Heading p="4" size="lg">
-          المحتوى ذو الصلة
-        </Heading>
+                  <TabPanels>
+                    <TabPanel>
+                      {/* <Text fontSize="xl" mt="4">
+                        {data.description}
+                      </Text> */}
+                      <Box
+                        fontSize="2xl"
+                        className="content"
+                        dangerouslySetInnerHTML={{ __html: data.description }}
+                      ></Box>
+                    </TabPanel>
+                    <TabPanel>
+                      {data.author.map(author => (
+                        <Box>
+                          <Heading size="lg">{author.name}</Heading>
+                          <Text m="2" fontSize="2xl">
+                            {author.author_bio}
+                          </Text>
+                        </Box>
+                      ))}
+                    </TabPanel>
+                    <TabPanel fontSize="xl">
+                      <Box
+                        fontSize="xl"
+                        className="content"
+                        dangerouslySetInnerHTML={{ __html: data.index }}
+                      ></Box>
+                    </TabPanel>
+                    <TabPanel fontSize="xl">
+                      <Box
+                        fontSize="xl"
+                        className="content"
+                        dangerouslySetInnerHTML={{ __html: data.from_book }}
+                      ></Box>
+                    </TabPanel>
+
+                    <TabPanel>
+                      <Box
+                        fontSize="xl"
+                        className="content"
+                        dangerouslySetInnerHTML={{
+                          __html: data.press_external_link,
+                        }}
+                      ></Box>
+                    </TabPanel>
+                    <TabPanel fontSize="xl">
+                      <List mt="4">
+                        <ListItem>الناشر : {data.publisher} </ListItem>
+                        <ListItem>
+                          تاريخ النشر :{' '}
+                          {moment(data.publish_date).format('DD/MM/yyyy')}{' '}
+                        </ListItem>
+                        <ListItem>عدد الصفحات : {data.page_number} </ListItem>
+                        <ListItem dir="ltr"> {data.isbn} : ISBN </ListItem>
+                        <ListItem>السعر : {data.price}$</ListItem>
+                        <ListItem>
+                          هاشتاغ :{' '}
+                          <Box
+                            d="inline"
+                            className="content"
+                            dangerouslySetInnerHTML={{ __html: data.hashtag }}
+                          ></Box>
+                        </ListItem>
+                      </List>
+                    </TabPanel>
+                  </TabPanels>
+                </Tabs>
+              </Box>
+            </>
+          )}
+        </Grid>
+        {data && data.books[0] && (
+          <Box bg="black" borderBottom="1px solid white">
+            <Box mt="100px" mb="4" color="white">
+              <Heading p="4" size="lg">
+                كتب ذات صلة
+              </Heading>
+            </Box>
+            <Carousel
+              isRTL={true}
+              style={{
+                //   marginTop: 100,
+
+                paddingBottom: 10,
+              }}
+              itemsToScroll={3}
+              itemsToShow={3}
+            >
+              {data.books.map(book => (
+                <Link key={book.id} to={`/book/${book.id}`}>
+                  <Box color="white" mb="4" cursor="pointer">
+                    <Image
+                      w="225px"
+                      h="350px"
+                      m="0 auto"
+                      shadow="lg"
+                      src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
+                    ></Image>
+                    <Box mt="4" textAlign="center">
+                      <Text fontWeight="500" fontSize="xl">
+                        {book.title}
+                      </Text>
+                      <Text fontSize="md">{book.sub_title}</Text>
+                      <Text fontSize="sm">{book.author}</Text>
+                      <Text fontWeight="bold">${book.price}</Text>
+                    </Box>
+                  </Box>
+                </Link>
+              ))}
+            </Carousel>
+          </Box>
+        )}
+        {data && data.articles[0] && (
+          <Box bg="black" borderBottom="1px solid white">
+            <Box mb="4" color="white">
+              <Heading p="4" size="lg">
+                مقالات ذات صلة
+              </Heading>
+            </Box>
+            <Carousel
+              isRTL={true}
+              style={{
+                //   marginTop: 100,
+
+                paddingBottom: 10,
+              }}
+              itemsToScroll={3}
+              itemsToShow={3}
+            >
+              {data.articles.map(article => (
+                <Link to={`/singlePost?id=${article.id}`}>
+                  <Box color="white" shadow="lg" p="2" cursor="pointer">
+                    <Box
+                      style={{
+                        background: `
+    url('${process.env.REACT_APP_STORAGE}/${article.image}')`,
+                      }}
+                      className="detail-image"
+                      h="200px"
+                    ></Box>
+                    <Heading color="white" m="2" size="lg">
+                      {article.title}
+                    </Heading>
+                    <Heading> {article.author} </Heading>
+
+                    <Box
+                      fontSize="lg"
+                      className="event-body"
+                      dangerouslySetInnerHTML={{
+                        __html: article.body,
+                      }}
+                    ></Box>
+                  </Box>
+                </Link>
+              ))}
+            </Carousel>
+          </Box>
+        )}
       </Box>
-      <Carousel
-        style={{
-          //   marginTop: 100,
-          backgroundColor: 'black',
-          borderBottom: '1px solid white',
-          paddingBottom: 10,
-        }}
-        itemsToScroll={3}
-        itemsToShow={3}
-      >
-        <Box p="8" color="white">
-          <Text>25.03.20</Text>
-          <Heading>أفضل 7 كتب للينسي ماكجوي عن الجهل</Heading>
-          <Text m="2">
-            عالق بالداخل؟ فيما يلي سبع قراءات جيدة عن الجهل والغياب وعدم المعرفة - من مؤلف The
-            Unknowers.
-          </Text>
-          <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/03/zed_blog_linseytop7_featured-640x444.jpg"></Image>
-        </Box>
-        <Box p="8" color="white">
-          <Text>متجر | كتاب الاسبوع</Text>
-          <Heading>الحرب على المعوقين: ملخص سهل القراءة</Heading>
-          <Text m="2">
-            التاريخ المثير للشغب لجبهة تحرير المثليين وإرثها لثقافة LGBT + اليوم ، من مبتكر "A mince
-            عبر الزمن" Queer Tour of London.
-          </Text>
-          <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/12/F-1592359950-United-Queerdom-219x350.jpg"></Image>
-        </Box>
-        <Box p="8" color="white">
-          <Text>25.03.20</Text>
-          <Heading>أفضل 7 كتب للينسي ماكجوي عن الجهل</Heading>
-          <Text m="2">
-            عالق بالداخل؟ فيما يلي سبع قراءات جيدة عن الجهل والغياب وعدم المعرفة - من مؤلف The
-            Unknowers.
-          </Text>
-          <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/03/zed_blog_linseytop7_featured-640x444.jpg"></Image>
-        </Box>
-        <Box p="8" color="white">
-          <Text>متجر | كتاب الاسبوع</Text>
-          <Heading>الحرب على المعوقين: ملخص سهل القراءة</Heading>
-          <Text m="2">
-            التاريخ المثير للشغب لجبهة تحرير المثليين وإرثها لثقافة LGBT + اليوم ، من مبتكر "A mince
-            عبر الزمن" Queer Tour of London.
-          </Text>
-          <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/12/F-1592359950-United-Queerdom-219x350.jpg"></Image>
-        </Box>
-        <Box p="8" color="white">
-          <Text>25.03.20</Text>
-          <Heading>أفضل 7 كتب للينسي ماكجوي عن الجهل</Heading>
-          <Text m="2">
-            عالق بالداخل؟ فيما يلي سبع قراءات جيدة عن الجهل والغياب وعدم المعرفة - من مؤلف The
-            Unknowers.
-          </Text>
-          <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/03/zed_blog_linseytop7_featured-640x444.jpg"></Image>
-        </Box>
-        <Box p="8" color="white">
-          <Text>متجر | كتاب الاسبوع</Text>
-          <Heading>الحرب على المعوقين: ملخص سهل القراءة</Heading>
-          <Text m="2">
-            التاريخ المثير للشغب لجبهة تحرير المثليين وإرثها لثقافة LGBT + اليوم ، من مبتكر "A mince
-            عبر الزمن" Queer Tour of London.
-          </Text>
-          <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/12/F-1592359950-United-Queerdom-219x350.jpg"></Image>
-        </Box>
-      </Carousel>
     </Box>
   );
 }
+
+const mapDispatchToProps = dispatch => {
+  return { getBook: id => dispatch(getBook(id)) };
+};
+
+export default connect(null, mapDispatchToProps)(Book);

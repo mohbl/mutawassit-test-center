@@ -40,7 +40,11 @@ export default class Up extends Component {
           cursor: 'pointer',
         }}
       >
-        <FaChevronUp onClick={this.scrollToTop} fontSize="24px" color="black"></FaChevronUp>
+        <FaChevronUp
+          onClick={this.scrollToTop}
+          fontSize="24px"
+          color="black"
+        ></FaChevronUp>
       </div>
     );
   }

@@ -21,7 +21,14 @@ import {
 } from '@chakra-ui/core';
 // import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
-import { FaGoogle, FaFacebookF, FaHamburger, FaShoppingCart, FaMoon, FaSun } from 'react-icons/fa';
+import {
+  FaGoogle,
+  FaFacebookF,
+  FaHamburger,
+  FaShoppingCart,
+  FaMoon,
+  FaSun,
+} from 'react-icons/fa';
 
 import logo from '../../images/center-main-logo.png';
 
@@ -40,7 +47,8 @@ function ShopBadge(props) {
 
 export default function Navbar(props) {
   const { colorMode, toggleColorMode } = useColorMode();
-  const toast = useToast();
+  const bg = { light: '#000000', dark: '#1a202c' };
+  const color = { light: 'white', dark: 'white' };
 
   const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
@@ -53,9 +61,9 @@ export default function Navbar(props) {
       justify="space-between"
       wrap="wrap"
       padding="0.5rem"
-      bg="black"
-      color="white"
-      {...props}
+      borderTop="1px solid white"
+      color={color[colorMode]}
+      bg={bg[colorMode]}
     >
       <Flex align="center" mr={5}>
         <Link to="/">
@@ -85,49 +93,87 @@ export default function Navbar(props) {
         justifyContent="flex-end"
         flexGrow={1}
       >
-        <Text mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+        <Text
+          fontWeight="bold"
+          mt={{ base: 4, md: 0 }}
+          ml={8}
+          display="block"
+          fontSize="18px"
+        >
           <Link onClick={handleToggle} to="/about">
             عن المركز
           </Link>
         </Text>
-        <Text mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+        <Text
+          fontWeight="bold"
+          mt={{ base: 4, md: 0 }}
+          ml={8}
+          display="block"
+          fontSize="18px"
+        >
           <Link onClick={handleToggle} to="/enthropology">
             المختار الإنثربولوجي
           </Link>
         </Text>
-        <Text mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+        <Text
+          fontWeight="bold"
+          mt={{ base: 4, md: 0 }}
+          ml={8}
+          display="block"
+          fontSize="18px"
+        >
           <Link onClick={handleToggle} to="/cultureStudies">
             دراسات ثقافية
           </Link>
         </Text>
-        <Text mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+        <Text
+          fontWeight="bold"
+          mt={{ base: 4, md: 0 }}
+          ml={8}
+          display="block"
+          fontSize="18px"
+        >
           <Link onClick={handleToggle} to="/books">
             كتب المركز
           </Link>
         </Text>
-        <Text mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+        <Text
+          fontWeight="bold"
+          mt={{ base: 4, md: 0 }}
+          ml={8}
+          display="block"
+          fontSize="18px"
+        >
           <Link onClick={handleToggle} to="/events">
             نشاطات
           </Link>
         </Text>
-        <Text mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+        <Text
+          fontWeight="bold"
+          mt={{ base: 4, md: 0 }}
+          ml={8}
+          display="block"
+          fontSize="18px"
+        >
           <Link onClick={handleToggle} to="/standards">
             معايير
           </Link>
         </Text>
-        {/* <Text mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+        {/* <Text             fontWeight="bold"
+ mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
           <Link onClick={handleToggle} to="#">
             تسجيل
           </Link>
         </Text>
-        <Text mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+        <Text             fontWeight="bold"
+ mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
           <Link onClick={handleToggle} to="#">
             <Button bg="white" color="blue.500" rounded="20px">
               تسجيل الدخول
             </Button>
           </Link>
         </Text> */}
-        {/* <Box
+        <Box
           cursor="pointer"
           mr={['0', '0', '6', '6']}
           ml={['0', '0', '6', '6']}
@@ -137,7 +183,7 @@ export default function Navbar(props) {
         >
           {' '}
           {colorMode === 'light' ? <FaMoon></FaMoon> : <FaSun></FaSun>}
-        </Box> */}
+        </Box>
       </Box>
     </Flex>
   );

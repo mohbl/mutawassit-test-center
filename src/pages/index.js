@@ -1,62 +1,462 @@
-import { Button, ButtonGroup, Heading, Box, Text, Image, Center } from '@chakra-ui/core';
+import React from 'react';
+import {
+  Heading,
+  Box,
+  Divider,
+  useColorMode,
+  Text,
+  Image,
+  SimpleGrid,
+} from '@chakra-ui/core';
+import { BsArrowUpLeft } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
+// import fx from 'money';
+import { connect } from 'react-redux';
+import { getBooks } from '../redux/actions/booksActions';
 
-export default function Home() {
+import CatBooks from '../components/books/catBooks';
+
+function Home(props) {
+  const { colorMode, toggleColorMode } = useColorMode();
+
+  const color = { light: 'black', dark: 'white' };
   return (
-    <Box mt="100px">
-      <Heading>zedbook</Heading>
-      <Text>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur reprehenderit ab nisi
-        ratione expedita assumenda odit asperiores quod dolore, sapiente eius temporibus molestias
-        dolorum beatae molestiae doloribus rem natus maxime! Repellendus, similique a? Autem quae
-        non laudantium dignissimos harum amet error, earum eveniet ipsa incidunt et facere sint.
-        Fugit, pariatur voluptatum. Provident minima praesentium tempora necessitatibus accusamus
-        assumenda atque nobis. Cumque id, dolorem ex exercitationem dignissimos in commodi labore
-        recusandae voluptatem eos non deleniti nobis laudantium alias ea praesentium, assumenda unde
-        porro. Aperiam consequuntur error excepturi id hic quibusdam quaerat! Culpa explicabo
-        voluptates alias nam repellendus tenetur debitis aliquid. Ipsa labore aspernatur ipsum
-        officiis, eos accusantium praesentium debitis, totam tenetur facere sint eveniet minus qui
-        non consequatur similique, ducimus veniam! Blanditiis nulla accusantium quod veritatis eius
-        dolorem quis magni, iure ipsa tempora maiores, similique reiciendis nisi a unde officia nemo
-        corporis cumque aliquid incidunt deleniti nam. In vitae voluptatem tenetur. Harum illo quo
-        earum consequatur id sunt quaerat amet repellendus quos in sit, ut veniam omnis unde optio.
-        Recusandae ratione beatae soluta impedit nobis quae suscipit error explicabo? Debitis, sit!
-        Error autem earum quidem ipsum tempore debitis necessitatibus natus! Pariatur reprehenderit
-        possimus illum consectetur sed fuga totam hic nam nostrum tenetur laborum eos odio officia
-        obcaecati, est minus quo ab! Ipsum ad earum quo maiores in quas consectetur velit omnis,
-        commodi delectus sed magnam non ratione placeat laboriosam perspiciatis tempore, reiciendis
-        similique tempora cum explicabo itaque? Dolore sunt ratione illo. Adipisci expedita est
-        modi, aliquid rerum cupiditate dicta totam facilis culpa, nihil, architecto repudiandae
-        sapiente voluptates eveniet impedit dolorem porro? Repudiandae quaerat fugiat excepturi
-        necessitatibus quibusdam rerum dolores aperiam voluptatem. Perferendis perspiciatis odio
-        numquam iste accusamus voluptas vel, vitae nemo soluta blanditiis nihil, tempora iure nam
-        recusandae sit! Nostrum consequatur unde atque doloribus itaque, molestiae quam minima
-        laudantium illo excepturi! Eius non debitis recusandae architecto expedita nisi vero modi
-        commodi quis deserunt iste, ad alias cupiditate hic! Obcaecati saepe fugit cumque, ut a quas
-        dolores earum repellendus! Ex, perspiciatis rem. Necessitatibus fuga reprehenderit quam ut.
-        Voluptas quasi maxime unde, iste fugiat nulla, aspernatur velit ratione reprehenderit non,
-        numquam voluptatum expedita accusantium? Deleniti exercitationem tenetur accusantium
-        incidunt earum voluptatum atque fugiat? Fugit reprehenderit non aliquam aliquid. Molestias
-        blanditiis optio asperiores sit laboriosam atque, doloremque quam ratione temporibus facere
-        natus esse illum minima assumenda totam ea sequi! Aliquid quas perferendis consectetur nam.
-        Optio eos modi dolor atque aspernatur? Harum alias minima, corporis voluptas eos, earum
-        officia beatae dolorum vero nisi mollitia. Saepe nihil assumenda dolores ipsum adipisci,
-        repellendus nam nemo nisi fugiat. Sint sunt quo amet rerum nesciunt eos voluptatem voluptas?
-        In ut, culpa soluta sunt aliquid, dolore, voluptas voluptatibus corporis nihil
-        exercitationem iusto alias hic incidunt totam. Dolor odit aspernatur nemo? Cumque ducimus
-        accusantium, dolore ea molestias ex nobis, sit exercitationem nihil fuga provident officiis
-        delectus velit facere optio, quidem explicabo necessitatibus. Soluta quod illum vitae rem a
-        eaque, ipsam itaque. Dolorum, blanditiis, minus quos minima nesciunt esse sint reiciendis
-        iste, harum velit itaque ipsa corporis. Est nostrum tenetur illo. Itaque rerum tenetur omnis
-        quia assumenda. Quod error ut amet! Minus. Molestiae laboriosam accusantium enim, vel itaque
-        eligendi harum porro architecto. Temporibus ea molestiae quis provident ipsa mollitia,
-        officiis repudiandae? Veniam commodi recusandae accusamus minus labore delectus in
-        molestiae! Veniam, excepturi! Obcaecati totam repellendus sequi quibusdam delectus
-        perferendis laudantium dolore dignissimos quae maiores iusto ab explicabo atque expedita
-        corrupti fugit et illum in, deleniti quia error tenetur labore ipsam voluptatum? Dicta. Odit
-        deserunt voluptatibus ea aliquam quibusdam tenetur consequuntur architecto corrupti dolor
-        impedit harum quam nulla adipisci eum omnis numquam et, minus quis aut? Tempora cupiditate
-        impedit quibusdam magni at? Rem?{' '}
-      </Text>
+    <Box mt="100px" mb="100px">
+      <Box m="8">
+        <Box mr="80px">
+          <Link to="/enthropology">
+            <Heading cursor="pointer" m="2">
+              المختار الإنثربولوجي
+            </Heading>
+          </Link>
+          <Divider
+            w="20%"
+            // border="4px solid black"
+            opacity="1"
+            borderColor={color[colorMode]}
+          ></Divider>
+          <SimpleGrid mb="6" columns={[1, 1, 2, 2]} spacing="8">
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/06/markus-spiske-b4muesfg63u-unsplash-640x427.jpg"></Image>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  ملخص سهل القراءة مع صور لكتاب إيلين كليفورد الجديد ، الحرب على
+                  المعاقين.
+                </Text>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/06/dan_blog_hero_16-9-640x360.jpg"></Image>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+              </Box>
+            </Link>
+          </SimpleGrid>
+          <SimpleGrid columns={[1, 1, 3, 3]} spacing="8">
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/zedblog_ponte_feature-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/04/zed-books_blog_kim-jong-un-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_10-zedblog_erikbahre_featured-640x445.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_08-zedblog_roslynfuller_hero-640x444.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/10/zed-blog_pease_1200x800-640x426.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/08/zed-books_blog_the-unknowers-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/zedblog_ponte_feature-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/04/zed-books_blog_kim-jong-un-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_10-zedblog_erikbahre_featured-640x445.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_08-zedblog_roslynfuller_hero-640x444.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/10/zed-blog_pease_1200x800-640x426.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/08/zed-books_blog_the-unknowers-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/zedblog_ponte_feature-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/04/zed-books_blog_kim-jong-un-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_10-zedblog_erikbahre_featured-640x445.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_08-zedblog_roslynfuller_hero-640x444.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/10/zed-blog_pease_1200x800-640x426.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/08/zed-books_blog_the-unknowers-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/zedblog_ponte_feature-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/04/zed-books_blog_kim-jong-un-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_10-zedblog_erikbahre_featured-640x445.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_08-zedblog_roslynfuller_hero-640x444.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/10/zed-blog_pease_1200x800-640x426.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/08/zed-books_blog_the-unknowers-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/zedblog_ponte_feature-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2018/04/zed-books_blog_kim-jong-un-640x427.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_10-zedblog_erikbahre_featured-640x445.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2020/04/2020_04_08-zedblog_roslynfuller_hero-640x444.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/10/zed-blog_pease_1200x800-640x426.jpg"></Image>
+              </Box>
+            </Link>
+            <Link to="/singlePost">
+              <Box shadow="lg" p="2" cursor="pointer">
+                <Text fontSize="xl" m="2">
+                  20.05.12
+                </Text>
+                <Heading m="2">الحرب على المعوقين: ملخص سهل القراءة</Heading>
+                <Text fontSize="xl" m="2">
+                  يكتب دان جلاس عن إنشاء "Coronavirus Cabaret" وكيف أن دعم مجتمع
+                  LGBTQI + في الوباء أصبح أكثر إلحاحًا من أي وقت مضى.
+                </Text>
+                <Image src="https://48428-125698-raikfcquaxqncofqfm.stackpathdns.com/wp-content/uploads/2019/08/zed-books_blog_the-unknowers-640x427.jpg"></Image>
+              </Box>
+            </Link>
+          </SimpleGrid>
+        </Box>
+      </Box>
+      <Divider></Divider>
     </Box>
   );
 }
+const mapDispatchToProps = dispatch => {
+  return { getBooks: () => dispatch(getBooks()) };
+};
+
+export default connect(null, mapDispatchToProps)(Home);

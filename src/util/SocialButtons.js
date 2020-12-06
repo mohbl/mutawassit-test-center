@@ -1,17 +1,16 @@
 import React from 'react';
 import { Box, Flex, useColorMode } from '@chakra-ui/core';
-import { FaFacebook, FaTwitter, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import {
+  FaFacebook,
+  FaTwitter,
+  FaLinkedin,
+  FaPinterest,
+  FaSoundcloud,
+  FaYoutube,
+} from 'react-icons/fa';
 import { IoLogoWhatsapp } from 'react-icons/io';
 
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  TwitterIcon,
-  WhatsappIcon,
-  TwitterShareButton,
-  WhatsappShareButton,
-  LinkedinShareButton,
-} from 'react-share';
+import { Link } from 'react-router-dom';
 
 export default function SocialButtons() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -20,69 +19,107 @@ export default function SocialButtons() {
   const bgIcon = { light: '#000', dark: '#fff' };
   const color = { light: 'white', dark: 'black' };
   return (
-    <Box style={{ position: 'fixed', zIndex: '99', top: '30%', right: 0 }}>
+    <Box style={{ position: 'fixed', zIndex: '99', top: '25%', right: 0 }}>
       <Flex direction="column">
-        <FacebookShareButton
+        <Link
           //   className="social-href "
           style={{ backgroundColor: bgIcon[colorMode] }}
-          url="https://www.tutorialrepublic.com/faq/how-to-get-the-current-url-with-javascript.php"
         >
           <Box
             className="facebook"
             bg={bgIcon[colorMode]}
             color={color[colorMode]}
             p="20px"
-            fontSize="24px"
+            fontSize="18px"
           >
             <FaFacebook></FaFacebook>
           </Box>
-        </FacebookShareButton>
-        <TwitterShareButton
+        </Link>
+        <Link
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
-          url="https://www.tutorialrepublic.com/faq/how-to-get-the-current-url-with-javascript.php"
         >
           <Box
             className="twitter"
             bg={bgIcon[colorMode]}
             color={color[colorMode]}
             p="20px"
-            fontSize="28px"
+            fontSize="18px"
           >
             <FaTwitter></FaTwitter>
           </Box>
-        </TwitterShareButton>
-        <LinkedinShareButton
+        </Link>
+        <Link
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
-          url="https://www.tutorialrepublic.com/faq/how-to-get-the-current-url-with-javascript.php"
         >
           <Box
             className="linkedin"
             bg={bgIcon[colorMode]}
             color={color[colorMode]}
             p="20px"
-            fontSize="28px"
+            fontSize="18px"
           >
             <FaLinkedin></FaLinkedin>
           </Box>
-        </LinkedinShareButton>
+        </Link>
 
-        <WhatsappShareButton
+        <Link
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
-          url="https://www.tutorialrepublic.com/faq/how-to-get-the-current-url-with-javascript.php"
         >
           <Box
             className="whatsapp"
             bg={bgIcon[colorMode]}
             color={color[colorMode]}
             p="20px"
-            fontSize="28px"
+            fontSize="18px"
           >
             <IoLogoWhatsapp></IoLogoWhatsapp>
           </Box>
-        </WhatsappShareButton>
+        </Link>
+        <Link
+          //   className="social-href"
+          style={{ backgroundColor: bgIcon[colorMode] }}
+        >
+          <Box
+            className="whatsapp"
+            bg={bgIcon[colorMode]}
+            color={color[colorMode]}
+            p="20px"
+            fontSize="18px"
+          >
+            <FaPinterest></FaPinterest>
+          </Box>
+        </Link>
+        <Link
+          //   className="social-href"
+          style={{ backgroundColor: bgIcon[colorMode] }}
+        >
+          <Box
+            className="whatsapp"
+            bg={bgIcon[colorMode]}
+            color={color[colorMode]}
+            p="20px"
+            fontSize="18px"
+          >
+            <FaYoutube></FaYoutube>
+          </Box>
+        </Link>
+        <Link
+          //   className="social-href"
+          style={{ backgroundColor: bgIcon[colorMode] }}
+        >
+          <Box
+            className="whatsapp"
+            bg={bgIcon[colorMode]}
+            color={color[colorMode]}
+            p="20px"
+            fontSize="18px"
+          >
+            <FaSoundcloud></FaSoundcloud>
+          </Box>
+        </Link>
       </Flex>
     </Box>
   );

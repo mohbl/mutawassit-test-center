@@ -10,7 +10,9 @@ import {
 
 //?pages
 import Index from './pages/index';
+import Four from './pages/404';
 import Books from './pages/books';
+import BooksByCategory from './pages/booksByCategory';
 import Book from './pages/book';
 import Standards from './pages/standards';
 import Enthropology from './pages/enthropology';
@@ -21,9 +23,10 @@ import About from './pages/about';
 // import Book from './pages/book';
 import Events from './pages/events';
 import SinglePost from './pages/singlePost';
+import Author from './pages/ourWriters/Author';
 
 import Navbar from './components/layout/Navbar';
-// import TopNavbar from './components/layout/TopNavbar';
+import TopNavbar from './components/layout/TopNavbar';
 import Footer from './components/layout/Footer';
 //?util
 import Up from './util/Up';
@@ -31,24 +34,6 @@ import SocialButtons from './util/SocialButtons';
 import ScrollToTop from './util/ScrollToTop';
 
 import './styles/globals.css';
-const TIMEOUT = 300;
-const getTransitionStyles = {
-  entering: {
-    position: `absolute`,
-    opacity: 0,
-    transform: `scale(0.7) translate(100px) `,
-  },
-  entered: {
-    transition: `opacity ${TIMEOUT}ms ease-in-out, transform ${TIMEOUT}ms ease-in-out`,
-    opacity: 1,
-    transform: `scale(1) translate(0px)`,
-  },
-  exiting: {
-    transition: `opacity ${600}ms ease-in-out, transform ${600}ms ease-in-out`,
-    opacity: 0,
-    transform: `scale(0.7) translate(-100px)`,
-  },
-};
 
 function App(props) {
   return (
@@ -56,6 +41,7 @@ function App(props) {
       <CSSReset />
       <SocialButtons></SocialButtons>
       <ScrollToTop></ScrollToTop>
+      <TopNavbar></TopNavbar>
       <Navbar></Navbar>
       <Switch>
         <Route title="index" exact path="/">
@@ -84,14 +70,23 @@ function App(props) {
           <SinglePost />
         </Route> */}
 
-        <Route title="book" exact path="/book">
+        <Route title="book" exact path="/book/:id">
           <Book />
+        </Route>
+        <Route title="books" exact path="/books/:category">
+          <BooksByCategory />
+        </Route>
+        <Route title="author" exact path="/author/:id">
+          <Author />
         </Route>
         <Route title="books" exact path="/books">
           <Books />
         </Route>
         <Route title="events" exact path="/events">
           <Events />
+        </Route>
+        <Route title="404">
+          <Four />
         </Route>
       </Switch>
       <Up></Up>

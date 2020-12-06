@@ -70,9 +70,22 @@ h6 {
 }
 
 ::selection {
-  background: rgb(239, 252, 2);
-  color: #000000;
+  background: rgb(0, 0, 0);
+  color: #fff;
   text-shadow: none;
+}
+
+.event-body {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.book-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .rec-dot_active {
