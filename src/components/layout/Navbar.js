@@ -38,7 +38,7 @@ function ShopBadge(props) {
   return (
     <Link to="/cart">
       <Box cursor="pointer" mt={{ base: '15px', md: '0' }} display="flex">
-        <Badge rounded="20px" fontSize="18px" ml="1" colorScheme="green">
+        <Badge rounded="20px" fontSize="xl" ml="1" colorScheme="green">
           5
         </Badge>
         <FaShoppingCart fontSize="28px"></FaShoppingCart>
@@ -100,7 +100,8 @@ export default function Navbar(props) {
           mt={{ base: 4, md: 0 }}
           ml={8}
           display="block"
-          fontSize="18px"
+          fontSize="xl"
+          fontFamily="diodrum-bold !important"
         >
           <Link onClick={handleToggle} to="/about">
             عن المركز
@@ -111,7 +112,8 @@ export default function Navbar(props) {
           mt={{ base: 4, md: 0 }}
           ml={8}
           display="block"
-          fontSize="18px"
+          fontSize="xl"
+          fontFamily="diodrum-bold !important"
         >
           <Link onClick={handleToggle} to="/enthropology">
             المختار الإنثربولوجي
@@ -122,7 +124,8 @@ export default function Navbar(props) {
           mt={{ base: 4, md: 0 }}
           ml={8}
           display="block"
-          fontSize="18px"
+          fontSize="xl"
+          fontFamily="diodrum-bold !important"
         >
           <Link onClick={handleToggle} to="/cultureStudies">
             دراسات ثقافية
@@ -133,7 +136,8 @@ export default function Navbar(props) {
           mt={{ base: 4, md: 0 }}
           ml={8}
           display="block"
-          fontSize="18px"
+          fontSize="xl"
+          fontFamily="diodrum-bold !important"
         >
           <Link onClick={handleToggle} to="/books?category=دراسات المركز">
             كتب المركز
@@ -144,7 +148,8 @@ export default function Navbar(props) {
           mt={{ base: 4, md: 0 }}
           ml={8}
           display="block"
-          fontSize="18px"
+          fontSize="xl"
+          fontFamily="diodrum-bold !important"
         >
           <Link onClick={handleToggle} to="/events">
             نشاطات
@@ -155,20 +160,21 @@ export default function Navbar(props) {
           mt={{ base: 4, md: 0 }}
           ml={8}
           display="block"
-          fontSize="18px"
+          fontSize="xl"
+          fontFamily="diodrum-bold !important"
         >
           <Link onClick={handleToggle} to="/standards">
             معايير
           </Link>
         </Text>
         {/* <Text             fontWeight="bold"
- mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+ mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="xl">
           <Link onClick={handleToggle} to="#">
             تسجيل
           </Link>
         </Text>
         <Text             fontWeight="bold"
- mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="18px">
+ mt={{ base: 4, md: 0 }} ml={8} display="block" fontSize="xl">
           <Link onClick={handleToggle} to="#">
             <Button bg="white" color="blue.500" rounded="20px">
               تسجيل الدخول

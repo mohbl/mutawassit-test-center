@@ -267,7 +267,7 @@ function Navbar({ getSearch }) {
           <FaShoppingCart></FaShoppingCart>
         </Box> */}
         {/* <Newsletter></Newsletter> */}
-        <Box
+        {/* <Box
           rounded="5px"
           bg={bgIcon[colorMode]}
           color={color[colorMode]}
@@ -276,7 +276,7 @@ function Navbar({ getSearch }) {
           fontSize="28px"
         >
           <FaDollarSign></FaDollarSign>
-        </Box>
+        </Box> */}
       </Box>
     </Flex>
   );
