@@ -1,7 +1,7 @@
 import React from 'react';
 import { ChakraProvider, CSSReset, Box, Grid } from '@chakra-ui/core';
 import { Switch, Route, Link, Redirect, useLocation } from 'react-router-dom';
-import theme from '@chakra-ui/theme';
+// import theme from '@chakra-ui/theme';
 import {
   CSSTransition,
   TransitionGroup,
@@ -32,6 +32,7 @@ import Footer from './components/layout/Footer';
 import Up from './util/Up';
 import SocialButtons from './util/SocialButtons';
 import ScrollToTop from './util/ScrollToTop';
+import theme from './util/theme';
 
 import './styles/globals.css';
 
@@ -73,15 +74,15 @@ function App(props) {
         <Route title="book" exact path="/book/:id">
           <Book />
         </Route>
-        <Route title="books" exact path="/books/:category">
+        <Route title="books" exact path="/books">
           <BooksByCategory />
         </Route>
         <Route title="author" exact path="/author/:id">
           <Author />
         </Route>
-        <Route title="books" exact path="/books">
+        {/* <Route title="books" exact path="/books">
           <Books />
-        </Route>
+        </Route> */}
         <Route title="events" exact path="/events">
           <Events />
         </Route>
@@ -89,7 +90,7 @@ function App(props) {
           <Four />
         </Route>
       </Switch>
-      <Up></Up>
+      {/* <Up></Up> */}
       <Footer></Footer>
     </ChakraProvider>
   );

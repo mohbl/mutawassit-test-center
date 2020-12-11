@@ -5,11 +5,11 @@ import { connect } from 'react-redux';
 
 import { getBooks } from '../../redux/actions/booksActions';
 
-function CatBooks({ category, getBooks }) {
+function CatBooks({ country, category, getBooks }) {
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
     async function getData() {
-      const res = await getBooks(category);
+      const res = await getBooks(category, country);
       console.log(category);
       console.log(res);
       if (res) {
@@ -17,7 +17,7 @@ function CatBooks({ category, getBooks }) {
       }
     }
     getData();
-  }, [category]);
+  }, [category, country]);
 
   return (
     <SimpleGrid columns={[1, 2, 3, 5]}>
@@ -54,7 +54,9 @@ function CatBooks({ category, getBooks }) {
 }
 
 const mapDispatchToProps = dispatch => {
-  return { getBooks: category => dispatch(getBooks(category)) };
+  return {
+    getBooks: (category, country) => dispatch(getBooks(category, country)),
+  };
 };
 
 export default connect(null, mapDispatchToProps)(CatBooks);

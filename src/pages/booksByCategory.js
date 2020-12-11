@@ -1,17 +1,31 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { Box, Heading } from '@chakra-ui/core';
 import SingleCatBooks from '../components/books/SingleCatBooks';
+import BooksFilter from '../components/books/BooksFilter';
+
+function useQuery() {
+  return new URLSearchParams(useLocation().search);
+}
 
 export default function Books() {
-  let { category } = useParams();
+  let query = useQuery();
+  let category = query.get('category');
+  let countryCode = query.get('countryCode');
   console.log(category);
   return (
-    <Box mt="50px" mb="100px" p="8">
-      <Box textAlign="center" m="8">
-        <Heading>{category}</Heading>
+    <Box>
+      <BooksFilter></BooksFilter>
+
+      <Box mr={['0', '80px']} mt="160px" mb="100px">
+        <Box m="8">
+          <Heading>{category}</Heading>
+        </Box>
+        <SingleCatBooks
+          country={countryCode}
+          category={category}
+        ></SingleCatBooks>
       </Box>
-      <SingleCatBooks category={category}></SingleCatBooks>
     </Box>
   );
 }

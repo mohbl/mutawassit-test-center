@@ -30,6 +30,8 @@ import {
   FaSun,
 } from 'react-icons/fa';
 
+import Up from '../../util/Up';
+
 import logo from '../../images/center-main-logo.png';
 
 function ShopBadge(props) {
@@ -133,7 +135,7 @@ export default function Navbar(props) {
           display="block"
           fontSize="18px"
         >
-          <Link onClick={handleToggle} to="/books">
+          <Link onClick={handleToggle} to="/books?category=دراسات المركز">
             كتب المركز
           </Link>
         </Text>
@@ -184,6 +186,7 @@ export default function Navbar(props) {
           {' '}
           {colorMode === 'light' ? <FaMoon></FaMoon> : <FaSun></FaSun>}
         </Box>
+        <Up></Up>
       </Box>
     </Flex>
   );

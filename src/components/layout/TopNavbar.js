@@ -72,7 +72,7 @@ function Navbar({ getSearch }) {
 
   const { colorMode, toggleColorMode } = useColorMode();
 
-  const bg = { light: '#fff', dark: '#1a202c' };
+  const bg = { light: '#f5f2ef', dark: '#1a202c' };
   const bgIcon = { light: '#000', dark: '#fff' };
   const color = { light: 'white', dark: 'black' };
 
@@ -256,7 +256,7 @@ function Navbar({ getSearch }) {
             </DrawerOverlay>
           </Drawer>
         </Box>
-        <Box
+        {/* <Box
           rounded="5px"
           bg={bgIcon[colorMode]}
           color={color[colorMode]}
@@ -265,7 +265,7 @@ function Navbar({ getSearch }) {
           fontSize="28px"
         >
           <FaShoppingCart></FaShoppingCart>
-        </Box>
+        </Box> */}
         {/* <Newsletter></Newsletter> */}
         <Box
           rounded="5px"
