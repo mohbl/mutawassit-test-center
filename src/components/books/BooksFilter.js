@@ -14,7 +14,7 @@ import {
   SimpleGrid,
 } from '@chakra-ui/core';
 // import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 import { FaChevronDown } from 'react-icons/fa';
 
@@ -42,7 +42,7 @@ export default function Navbar() {
 
   const { colorMode, toggleColorMode } = useColorMode();
 
-  const bg = { light: '#fff', dark: '#1a202c' };
+  const bg = { light: '#f5f2ef', dark: '#1a202c' };
   const filter = { light: '#000000', dark: '#1a202c' };
   const [data, setData] = React.useState(null);
   const [loaded, setLoaded] = React.useState(false);
@@ -69,7 +69,7 @@ export default function Navbar() {
       align="center"
       //   justify="space-between"
 
-      padding="0.5rem"
+      //   padding="0.5rem"
       //   shadow="lg"
       //   color={color[colorMode]}
       bg={bg[colorMode]}
@@ -77,6 +77,30 @@ export default function Navbar() {
       wrap={['nowrap', 'nowrap', 'wrap', 'wrap']}
       direction={['row', 'row', 'row', 'row']}
     >
+      <NavLink
+        activeStyle={{
+          fontWeight: 'bold',
+          color: 'white',
+          backgroundColor: 'black',
+          height: '100%',
+          marginLeft: 5,
+        }}
+        to="/books?category=دراسات المركز"
+      >
+        <Flex h="100%" direction="column" justifyContent="center">
+          <Text
+            whiteSpace="nowrap"
+            fontWeight="bold"
+            ml="4"
+            mr="4"
+            fontSize={['lg', '2xl']}
+            fontFamily="diodrum-med !important"
+          >
+            جميعها
+          </Text>
+        </Flex>
+      </NavLink>
+
       <Menu>
         <MenuButton
           display="block"

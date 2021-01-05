@@ -29,23 +29,11 @@ import {
   FaMoon,
   FaSun,
 } from 'react-icons/fa';
+import { GiHamburgerMenu } from 'react-icons/gi';
 
 import Up from '../../util/Up';
 
 import logo from '../../images/center-main-logo.png';
-
-function ShopBadge(props) {
-  return (
-    <Link to="/cart">
-      <Box cursor="pointer" mt={{ base: '15px', md: '0' }} display="flex">
-        <Badge rounded="20px" fontSize="xl" ml="1" colorScheme="green">
-          5
-        </Badge>
-        <FaShoppingCart fontSize="28px"></FaShoppingCart>
-      </Box>
-    </Link>
-  );
-}
 
 export default function Navbar(props) {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -85,7 +73,9 @@ export default function Navbar(props) {
       </Flex>
 
       <Box display={{ base: 'block', md: 'none' }} onClick={handleToggle}>
-        <FaHamburger fontSize="24px"></FaHamburger>
+        <GiHamburgerMenu
+          style={{ marginLeft: 10, fontSize: 28 }}
+        ></GiHamburgerMenu>
       </Box>
 
       <Box

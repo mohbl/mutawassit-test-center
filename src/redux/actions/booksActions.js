@@ -6,13 +6,16 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
-export const getBooks = (category, country) => async (dispatch, getState) => {
-  console.log(category, country);
+export const getBooks = (category, country, translate) => async (
+  dispatch,
+  getState
+) => {
+  console.log(category, country, translate);
   let data;
   if (country) {
     data = await axios
       .get(
-        `${process.env.REACT_APP_API}/books?website=مركز دراسات ثقافات المتوسط&category=${category}&country=${country}`,
+        `${process.env.REACT_APP_API}/books?website=مركز دراسات ثقافات المتوسط&category=${category}&country=${country}&translate=${translate}`,
         //   { website: 'المتوسط' },
         { headers }
       )
@@ -26,7 +29,7 @@ export const getBooks = (category, country) => async (dispatch, getState) => {
   } else {
     data = await axios
       .get(
-        `${process.env.REACT_APP_API}/books?website=مركز دراسات ثقافات المتوسط&category=${category}`,
+        `${process.env.REACT_APP_API}/books?website=مركز دراسات ثقافات المتوسط&category=${category}&translate=${translate}`,
         //   { website: 'المتوسط' },
         { headers }
       )

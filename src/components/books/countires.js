@@ -107,7 +107,6 @@ const countryListAlpha2 = {
   IQ: 'Iraq',
   IE: 'Ireland',
   IM: 'Isle of Man',
-  IL: 'Israel',
   IT: 'Italy',
   JM: 'Jamaica',
   JP: 'Japan',

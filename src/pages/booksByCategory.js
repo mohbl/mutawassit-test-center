@@ -12,6 +12,7 @@ export default function Books() {
   let query = useQuery();
   let category = query.get('category');
   let countryCode = query.get('countryCode');
+  let translate = query.get('translate');
   console.log(category);
   return (
     <Box>
@@ -24,6 +25,7 @@ export default function Books() {
         <SingleCatBooks
           country={countryCode}
           category={category}
+          translate={translate}
         ></SingleCatBooks>
       </Box>
     </Box>
