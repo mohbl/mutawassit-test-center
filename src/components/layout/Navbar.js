@@ -1,37 +1,9 @@
 import React from 'react';
-import {
-  Box,
-  Heading,
-  Flex,
-  Badge,
-  Text,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuGroup,
-  MenuDivider,
-  MenuOptionGroup,
-  MenuItemOption,
-  Icon,
-  useToast,
-  useColorMode,
-  Button,
-  Image,
-} from '@chakra-ui/core';
+import { Box, Heading, Flex, Text, useColorMode, Image } from '@chakra-ui/core';
 // import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
-import {
-  FaGoogle,
-  FaFacebookF,
-  FaHamburger,
-  FaShoppingCart,
-  FaMoon,
-  FaSun,
-} from 'react-icons/fa';
+import { FaMoon, FaSun } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-
-import Up from '../../util/Up';
 
 import logo from '../../images/center-main-logo.png';
 
@@ -182,7 +154,6 @@ export default function Navbar(props) {
           {' '}
           {colorMode === 'light' ? <FaMoon></FaMoon> : <FaSun></FaSun>}
         </Box>
-        <Up></Up>
       </Box>
     </Flex>
   );

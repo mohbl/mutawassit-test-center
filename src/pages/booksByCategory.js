@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Box, Heading } from '@chakra-ui/core';
 import SingleCatBooks from '../components/books/SingleCatBooks';
 import BooksFilter from '../components/books/BooksFilter';
@@ -13,7 +13,6 @@ export default function Books() {
   let category = query.get('category');
   let countryCode = query.get('countryCode');
   let translate = query.get('translate');
-  console.log(category);
   return (
     <Box>
       <BooksFilter></BooksFilter>

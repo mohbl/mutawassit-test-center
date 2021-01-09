@@ -1,17 +1,6 @@
 import React from 'react';
-import {
-  Box,
-  Flex,
-  Heading,
-  InputGroup,
-  InputRightElement,
-  Input,
-  Icon,
-  Image,
-  SimpleGrid,
-  Text,
-} from '@chakra-ui/core';
-import { Link } from 'react-router-dom';
+import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/core';
+// import { Link } from 'react-router-dom';
 
 export default function Footer() {
   return (

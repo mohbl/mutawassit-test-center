@@ -18,6 +18,7 @@ import {
   ListItem,
   Flex,
   Skeleton,
+  useColorMode,
 } from '@chakra-ui/core';
 import Carousel from 'react-elastic-carousel';
 import { useParams, Link } from 'react-router-dom';
@@ -28,8 +29,12 @@ import { getBook } from '../redux/actions/booksActions';
 import GlobalShare from '../util/GlobalShare';
 
 function Book({ getBook }) {
+  const { colorMode } = useColorMode();
+
+  const bg = { light: '#f5f2ef', dark: '#1a202c' };
+  const color = { light: 'black', dark: 'white' };
+
   let { id } = useParams();
-  console.log(id);
   const [data, setData] = React.useState(null);
   const [loaded, setLoaded] = React.useState(false);
   const imageLoaded = () => {
@@ -38,7 +43,6 @@ function Book({ getBook }) {
   React.useEffect(() => {
     async function getData() {
       const res = await getBook(id);
-      console.log(res);
       if (res) {
         setData(res.data);
       }
@@ -72,48 +76,55 @@ function Book({ getBook }) {
               <Helmet>
                 <title>{data.title}</title>
               </Helmet>
-              <Flex justifyContent="center">
-                <Box m="4">
-                  <Skeleton
-                    w={['300px', '300px', '400px', '400px']}
-                    isLoaded={loaded}
-                  >
-                    <Image
-                      onLoad={imageLoaded}
-                      shadow="lg"
-                      w={['300px', '300px', '400px', '400px']}
-                      src={`${process.env.REACT_APP_STORAGE}/${data.cover}`}
-                    ></Image>
-                  </Skeleton>
-                  <Link>
-                    <Button
-                      rounded="20px"
-                      mt="4"
-                      w={['300px', '300px', '400px', '400px']}
-                      colorScheme="red"
-                      fontFamily="diodrum-med !important"
-                    >
-                      لشراء الكتاب المس هنا
-                    </Button>
-                  </Link>
-                  <Box mt="4" w={['300px', '300px', '400px', '400px']}>
-                    <GlobalShare></GlobalShare>
-                  </Box>
-                  <Box w={['300px', '300px', '400px', '400px']}>
-                    {data.podcast && (
-                      <iframe
-                        title={data.title}
-                        width="100%"
-                        height="100"
-                        scrolling="no"
-                        frameborder="no"
-                        allow="autoplay"
-                        src={data.podcast}
-                      ></iframe>
-                    )}
-                  </Box>
+              <Box>
+                <Box top="0" position="sticky">
+                  <Flex justifyContent="center">
+                    <Box m="4">
+                      <Skeleton
+                        w={['300px', '300px', '400px', '400px']}
+                        isLoaded={loaded}
+                      >
+                        <Image
+                          onLoad={imageLoaded}
+                          shadow="lg"
+                          w={['300px', '300px', '400px', '400px']}
+                          src={`${process.env.REACT_APP_STORAGE}/${data.cover}`}
+                        ></Image>
+                      </Skeleton>
+                      <a
+                        target="_blank"
+                        href={`${process.env.REACT_APP_BOOK}/${data.id}`}
+                      >
+                        <Button
+                          rounded="20px"
+                          mt="4"
+                          w={['300px', '300px', '400px', '400px']}
+                          colorScheme="red"
+                          fontFamily="diodrum-med !important"
+                        >
+                          لشراء الكتاب المس هنا
+                        </Button>
+                      </a>
+                      <Box mt="4" w={['300px', '300px', '400px', '400px']}>
+                        <GlobalShare></GlobalShare>
+                      </Box>
+                      <Box w={['300px', '300px', '400px', '400px']}>
+                        {data.podcast && (
+                          <iframe
+                            title={data.title}
+                            width="100%"
+                            height="100"
+                            scrolling="no"
+                            frameborder="no"
+                            allow="autoplay"
+                            src={data.podcast}
+                          ></iframe>
+                        )}
+                      </Box>
+                    </Box>
+                  </Flex>
                 </Box>
-              </Flex>
+              </Box>
               <Box m="4" w={['370px', '400px', 'auto', 'auto']}>
                 <Heading fontFamily="diodrum-med !important" m="4">
                   {data.title}
@@ -126,8 +137,8 @@ function Book({ getBook }) {
                     <Link key={author.id} to={`/author/${author.id}`}>
                       <Text
                         _hover={{
-                          bg: 'yellow.300',
-                          color: 'black',
+                          bg: 'black',
+                          color: 'white',
                           textDecoration: 'underline',
                         }}
                         m="2"
@@ -140,13 +151,15 @@ function Book({ getBook }) {
                   ))}
                 </Flex>
                 <Divider></Divider>
-                <Text m="2" fontSize="xl">
-                  {data.translate_from}
-                </Text>
+                {data.translate_from && (
+                  <Text m="2" fontSize="2xl">
+                    ترجم عن : {data.translate_from}
+                  </Text>
+                )}
 
                 <Box
                   m="4"
-                  fontSize="xl"
+                  fontSize="2xl"
                   className="content"
                   dangerouslySetInnerHTML={{ __html: data.overview }}
                 ></Box>
@@ -249,8 +262,19 @@ function Book({ getBook }) {
           )}
         </Grid>
         {data && data.books[0] && (
-          <Box pr="7%" pl="3%" bg="black" borderBottom="1px solid white">
-            <Box mt="100px" mb="4" color="white">
+          <Box
+            pr="7%"
+            pl="3%"
+            // bg={bg[colorMode]}
+            bg="black"
+            borderBottom="1px solid white"
+          >
+            <Box
+              mt="100px"
+              mb="4"
+              // color={color[colorMode]}
+              color="white"
+            >
               <Heading
                 fontFamily="diodrum-med !important"
                 mr="7%"
@@ -281,8 +305,9 @@ function Book({ getBook }) {
                       shadow="lg"
                       src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
                     ></Image>
-                    <Box color="white" mt="4" textAlign="center">
+                    <Box mt="4" textAlign="center">
                       <Text
+                        color="white"
                         fontFamily="diodrum-med !important"
                         fontWeight="500"
                         fontSize="xl"
@@ -303,11 +328,11 @@ function Book({ getBook }) {
           <Box
             pr="5%"
             pl="3%"
-            bg="black"
+            bg={bg[colorMode]}
             color="black"
             borderBottom="1px solid white"
           >
-            <Box mb="4" color="white">
+            <Box mb="4" color={color[colorMode]}>
               <Heading
                 fontFamily="diodrum-med !important"
                 mr="7%"

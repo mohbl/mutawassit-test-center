@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Carousel from 'react-elastic-carousel';
 import { Helmet } from 'react-helmet';
 
@@ -12,7 +12,7 @@ import {
   Flex,
   Skeleton,
 } from '@chakra-ui/core';
-import { useParams, useLocation, Link } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { getArticle } from '../redux/actions/articleActions';
@@ -34,7 +34,6 @@ function SingleBlog({ getArticle }) {
   React.useEffect(() => {
     async function getData() {
       const res = await getArticle(id);
-      console.log(res);
       if (res) {
         setData(res.data);
       }

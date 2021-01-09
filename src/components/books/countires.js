@@ -1,7 +1,7 @@
 const countryListAlpha2 = {
-  AF: 'افغنستان',
-  AL: 'البانيا',
-  DZ: 'الجزائر',
+  AF: 'Afghanistan',
+  AL: 'Albania',
+  DZ: 'Algeria',
   AS: 'American Samoa',
   AD: 'Andorra',
   AO: 'Angola',

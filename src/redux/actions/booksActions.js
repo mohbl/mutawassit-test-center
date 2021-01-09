@@ -10,9 +10,8 @@ export const getBooks = (category, country, translate) => async (
   dispatch,
   getState
 ) => {
-  console.log(category, country, translate);
   let data;
-  if (country) {
+  if (country && translate) {
     data = await axios
       .get(
         `${process.env.REACT_APP_API}/books?website=مركز دراسات ثقافات المتوسط&category=${category}&country=${country}&translate=${translate}`,
@@ -20,13 +19,10 @@ export const getBooks = (category, country, translate) => async (
         { headers }
       )
       .then(res => {
-        console.log(res);
         return res;
       })
-      .catch(err => {
-        console.log(err);
-      });
-  } else {
+      .catch(err => {});
+  } else if (translate) {
     data = await axios
       .get(
         `${process.env.REACT_APP_API}/books?website=مركز دراسات ثقافات المتوسط&category=${category}&translate=${translate}`,
@@ -34,12 +30,31 @@ export const getBooks = (category, country, translate) => async (
         { headers }
       )
       .then(res => {
-        console.log(res);
         return res;
       })
-      .catch(err => {
-        console.log(err);
-      });
+      .catch(err => {});
+  } else if (country) {
+    data = await axios
+      .get(
+        `${process.env.REACT_APP_API}/books?website=مركز دراسات ثقافات المتوسط&category=${category}&country=${country}`,
+        //   { website: 'المتوسط' },
+        { headers }
+      )
+      .then(res => {
+        return res;
+      })
+      .catch(err => {});
+  } else {
+    data = await axios
+      .get(
+        `${process.env.REACT_APP_API}/books?website=مركز دراسات ثقافات المتوسط&category=${category}`,
+        //   { website: 'المتوسط' },
+        { headers }
+      )
+      .then(res => {
+        return res;
+      })
+      .catch(err => {});
   }
 
   return data;
@@ -53,11 +68,8 @@ export const getBook = id => async (dispatch, getState) => {
       { headers }
     )
     .then(res => {
-      //   console.log(res);
       return res;
     })
-    .catch(err => {
-      console.log(err);
-    });
+    .catch(err => {});
   return data;
 };

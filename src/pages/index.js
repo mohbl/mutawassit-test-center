@@ -2,26 +2,13 @@ import React from 'react';
 import Masonry from 'react-masonry-css';
 import { Helmet } from 'react-helmet';
 
-import {
-  Heading,
-  Box,
-  Divider,
-  useColorMode,
-  Image,
-  SimpleGrid,
-  Text,
-  Skeleton,
-} from '@chakra-ui/core';
-import { BsArrowUpLeft } from 'react-icons/bs';
+import { Heading, Box, Image, Skeleton } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 // import fx from 'money';
 import { connect } from 'react-redux';
 import { getHome } from '../redux/actions/homeActions';
 
-import CatBooks from '../components/books/catBooks';
-
 function Home({ getHome }) {
-  const { colorMode, toggleColorMode } = useColorMode();
   const [data, setData] = React.useState(null);
   const [loaded, setLoaded] = React.useState(false);
   const imageLoaded = () => {
@@ -30,7 +17,6 @@ function Home({ getHome }) {
   React.useEffect(() => {
     async function getData() {
       const res = await getHome();
-      console.log(res);
       if (res) {
         setData(res.data);
       }

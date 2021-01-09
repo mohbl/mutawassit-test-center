@@ -1,6 +1,6 @@
 import React from 'react';
-import { Box, Text, Heading, Image, Divider } from '@chakra-ui/core';
-import { Link } from 'react-router-dom';
+import { Box, Text, Heading, Divider } from '@chakra-ui/core';
+// import { Link } from 'react-router-dom';
 
 // import aboutpic from '../images/about-min.jpg';
 export default function blog() {

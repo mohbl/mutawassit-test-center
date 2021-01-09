@@ -53,7 +53,7 @@ function CatBooks({ translate, country, category, getBooks }) {
           data.books.length !== 0 &&
           data.books.map(book => (
             <Link key={book.id} to={`/book/${book.id}`}>
-              <Box mb="4" cursor="pointer">
+              <Box fontFamily="diodrum-med !important" mb="4" cursor="pointer">
                 <Image
                   w="225px"
                   h="350px"
@@ -65,12 +65,12 @@ function CatBooks({ translate, country, category, getBooks }) {
                   <Text fontWeight="500" fontSize="xl">
                     {book.title}
                   </Text>
-                  <Text fontSize="md" color="gray.600">
-                    {book.description}
-                  </Text>
-                  <Text fontSize="sm" color="gray.500">
-                    {book.author}
-                  </Text>
+                  <Box
+                    fontSize="2xl"
+                    className="content"
+                    dangerouslySetInnerHTML={{ __html: book.description }}
+                  ></Box>
+
                   <Text fontWeight="bold">${book.price}</Text>
                 </Box>
               </Box>
