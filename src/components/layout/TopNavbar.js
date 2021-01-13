@@ -30,8 +30,8 @@ import {
   connectStateResults,
 } from 'react-instantsearch-dom';
 
-import { FaSearch } from 'react-icons/fa';
-// import Newsletter from './NewsLetter';
+import { FaSearch, FaDollarSign } from 'react-icons/fa';
+import Newsletter from './NewsLetter';
 
 const searchClient = algoliasearch(
   process.env.REACT_APP_algoliaAppKey,
@@ -51,7 +51,7 @@ function Navbar({ getSearch }) {
     <Box>
       {hits[0] !== undefined && <Heading m="8">كتب</Heading>}
 
-      <SimpleGrid spacing={8} columns={[1, 2, 3, 8]}>
+      <SimpleGrid spacing={8} columns={[2, 2, 3, 8]}>
         {hits &&
           hits.map(hit => (
             <Link onClick={onClose} key={hit.objectID} to={`/book/${hit.id}`}>
@@ -70,7 +70,7 @@ function Navbar({ getSearch }) {
     <Box>
       {hits[0] !== undefined && <Heading m="8">كتاب</Heading>}
 
-      <SimpleGrid spacing={8} columns={[1, 2, 3, 8]}>
+      <SimpleGrid spacing={8} columns={[2, 2, 3, 8]}>
         {hits &&
           hits.map(hit => (
             <Link onClick={onClose} key={hit.objectID} to={`/author/${hit.id}`}>
@@ -89,7 +89,7 @@ function Navbar({ getSearch }) {
     <Box>
       {hits[0] !== undefined && <Heading m="8">مقالات</Heading>}
 
-      <SimpleGrid spacing={8} columns={[1, 2, 3, 8]}>
+      <SimpleGrid spacing={8} columns={[2, 2, 3, 8]}>
         {hits &&
           hits.map(hit => (
             <Link
@@ -223,17 +223,23 @@ function Navbar({ getSearch }) {
         >
           <FaShoppingCart></FaShoppingCart>
         </Box> */}
-        {/* <Newsletter></Newsletter> */}
-        {/* <Box
-          rounded="5px"
-          bg={bgIcon[colorMode]}
-          color={color[colorMode]}
-          m="3px"
-          p="10px"
-          fontSize="28px"
+        <Newsletter></Newsletter>
+        <a
+          rel="noreferrer"
+          target="_blank"
+          href={`${process.env.REACT_APP_SHOP}`}
         >
-          <FaDollarSign></FaDollarSign>
-        </Box> */}
+          <Box
+            rounded="5px"
+            bg={bgIcon[colorMode]}
+            color={color[colorMode]}
+            m="3px"
+            p="10px"
+            fontSize="28px"
+          >
+            <FaDollarSign></FaDollarSign>
+          </Box>
+        </a>
       </Box>
     </Flex>
   );

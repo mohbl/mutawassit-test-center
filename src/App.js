@@ -1,17 +1,22 @@
 import React from 'react';
-import { ChakraProvider, CSSReset, Box, Grid } from '@chakra-ui/core';
-import { Switch, Route, Link, Redirect, useLocation } from 'react-router-dom';
+import { ChakraProvider, CSSReset } from '@chakra-ui/core';
+import { Switch, Route } from 'react-router-dom';
 // import theme from '@chakra-ui/theme';
-import {
-  CSSTransition,
-  TransitionGroup,
-  Transition as ReactTransition,
-} from 'react-transition-group';
 
 //?pages
 import Index from './pages/index';
+import Questions from './pages/footer/questions';
+import BuyRights from './pages/footer/buyrights';
+import BuyBooks from './pages/footer/buybooks';
+import Dist from './pages/footer/dist';
+import Policy from './pages/footer/policy';
+import TransAprovals from './pages/footer/transaprovals';
+import Workwithus from './pages/footer/workwithus';
+import Contact from './pages/footer/contact';
+import ContactAuth from './pages/footer/contactauth';
+import Terms from './pages/footer/terms';
 import Four from './pages/404';
-import Books from './pages/books';
+// import Books from './pages/books';
 import BooksByCategory from './pages/booksByCategory';
 import Book from './pages/book';
 import Standards from './pages/standards';
@@ -47,6 +52,36 @@ function App(props) {
       <Switch>
         <Route title="index" exact path="/">
           <Index />
+        </Route>
+        <Route title="policy" exact path="/policy">
+          <Policy />
+        </Route>
+        <Route title="buyrights" exact path="/buyrights">
+          <BuyRights />
+        </Route>
+        <Route title="buybooks" exact path="/buybooks">
+          <BuyBooks />
+        </Route>
+        <Route title="dist" exact path="/dist">
+          <Dist />
+        </Route>
+        <Route title="transaprovals" exact path="/transaprovals">
+          <TransAprovals />
+        </Route>
+        <Route title="Terms" exact path="/terms">
+          <Terms />
+        </Route>
+        <Route title="questions" exact path="/questions">
+          <Questions />
+        </Route>
+        <Route title="contact" exact path="/contact">
+          <Contact />
+        </Route>
+        <Route title="contact" exact path="/contactauth">
+          <ContactAuth />
+        </Route>
+        <Route title="workwithus" exact path="/workwithus">
+          <Workwithus />
         </Route>
 
         <Route title="about" exact path="/about">
@@ -90,7 +125,7 @@ function App(props) {
           <Four />
         </Route>
       </Switch>
-      {/* <Up></Up> */}
+      <Up></Up>
       <Footer></Footer>
     </ChakraProvider>
   );
