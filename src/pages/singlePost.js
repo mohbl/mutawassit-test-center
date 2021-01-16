@@ -115,10 +115,6 @@ function SingleBlog({ getArticle }) {
                 >
                   <Link to={`/author/${data.author_id}`}>
                     <Box mb="8">
-                      {/* <Text mb="2" fontSize="xl">
-                بمساهمة صلاح برياني
-              </Text> */}
-                      {/* <Image mt="2" src={``}></Image> */}
                       <Box
                         mt="2"
                         mb="4"
@@ -133,6 +129,11 @@ function SingleBlog({ getArticle }) {
                       <Heading fontFamily="diodrum-med !important" size="md">
                         {data.author}
                       </Heading>
+                      {data.translator && (
+                        <Heading fontFamily="diodrum-med !important" size="sm">
+                          {data.translator}
+                        </Heading>
+                      )}
                     </Box>
                   </Link>
                 </Box>
