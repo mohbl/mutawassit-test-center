@@ -102,14 +102,14 @@ export default function Navbar() {
           <Flex
             pl={['5%', '5%', '20%', '20%']}
             pr={['5%', '5%', '20%', '20%']}
-            h="500px"
+            // h="500px"
             flexWrap="wrap"
             // columns={5}
-            overflow="scroll"
+            // overflow="scroll"
           >
             {countires.map(([code, country]) => (
               <Link
-                style={{ margin: '50px !important' }}
+                // style={{ margin: '50px !important' }}
                 onClick={handleToggle}
                 to={`/books?category=دراسات المركز&countryCode=${code}`}
               >
@@ -119,13 +119,13 @@ export default function Navbar() {
                     _hover={{ bg: 'white', color: 'black' }}
                     fontSize="xl"
                   >
-                    <Box display="flex">
-                      <Heading
+                    <Box>
+                      <Text
                         fontFamily="diodrum-med !important"
                         fontSize={['md', 'md', 'lg', 'lg']}
                       >
                         {country}
-                      </Heading>
+                      </Text>
                     </Box>
                   </MenuItem>
                 </Box>

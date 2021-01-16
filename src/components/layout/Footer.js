@@ -2,6 +2,8 @@ import React from 'react';
 import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 
+import News from './FooterNewsLetter';
+
 export default function Footer() {
   return (
     <Box pb="60px" pl="10%" pr="10%" color="white" bg="black">
@@ -17,7 +19,7 @@ export default function Footer() {
               fontFamily="diodrum-med !important"
               fontSize="md"
             >
-              عن المركز
+              عن المتوسط
             </Text>
           </Link>
           <Link to="/contact">
@@ -76,7 +78,7 @@ export default function Footer() {
             fontFamily="diodrum-med !important"
             fontSize="md"
           >
-            النشرة الإخبارية
+            <News></News>
           </Text>
 
           <Text
@@ -100,14 +102,17 @@ export default function Footer() {
           <Heading fontFamily="diodrum-bold !important" size="md">
             قوائم الكتب والكاتالوغات
           </Heading>
-          <Text
-            color="gray.200"
-            _hover={{ textDecoration: 'underline' }}
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            تحميل قائمة إكسل
-          </Text>
+          <a href="../../images/list.xls" download>
+            <Text
+              cursor="pointer"
+              color="gray.200"
+              _hover={{ textDecoration: 'underline' }}
+              fontFamily="diodrum-med !important"
+              fontSize="md"
+            >
+              تحميل قائمة إكسل
+            </Text>
+          </a>
 
           <Heading mt="12" fontFamily="diodrum-bold !important" size="md">
             التوزيع والحقوق
@@ -157,14 +162,16 @@ export default function Footer() {
           <Heading fontFamily="diodrum-bold !important" size="md">
             للمؤلفين
           </Heading>
-          <Text
-            color="gray.200"
-            _hover={{ textDecoration: 'underline' }}
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            النشر مع المتوسط
-          </Text>
+          <Link to="/ourWriters/publishConditions">
+            <Text
+              color="gray.200"
+              _hover={{ textDecoration: 'underline' }}
+              fontFamily="diodrum-med !important"
+              fontSize="md"
+            >
+              النشر مع المتوسط
+            </Text>
+          </Link>
           <Link to="/contactauth">
             <Text
               color="gray.200"

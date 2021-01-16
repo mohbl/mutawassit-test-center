@@ -40,6 +40,8 @@ function SingleBlog({ getArticle }) {
     }
     getData();
   }, []);
+
+  console.log(data);
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2, itemsToScroll: 2, pagination: false },

@@ -68,7 +68,7 @@ function CatBooks({ translate, country, category, getBooks }) {
                   <Box
                     fontSize="2xl"
                     className="content"
-                    dangerouslySetInnerHTML={{ __html: book.description }}
+                    dangerouslySetInnerHTML={{ __html: book.sub_title }}
                   ></Box>
 
                   <Text fontWeight="bold">${book.price}</Text>
