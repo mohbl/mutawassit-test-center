@@ -7,10 +7,9 @@ import {
   FaPinterest,
   FaSoundcloud,
   FaYoutube,
+  FaInstagram,
 } from 'react-icons/fa';
 import { IoLogoWhatsapp } from 'react-icons/io';
-
-import { Link } from 'react-router-dom';
 
 export default function SocialButtons() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -19,9 +18,13 @@ export default function SocialButtons() {
   const bgIcon = { light: '#000', dark: '#fff' };
   const color = { light: 'white', dark: 'black' };
   return (
-    <Box style={{ position: 'fixed', zIndex: '99', top: '25%', right: 0 }}>
+    <Box
+      display={{ base: 'none', md: 'block' }}
+      style={{ position: 'fixed', zIndex: '99', top: '25%', right: 0 }}
+    >
       <Flex direction="column">
-        <Link
+        <a
+          href="https://www.facebook.com/almutawassit"
           //   className="social-href "
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
@@ -34,9 +37,11 @@ export default function SocialButtons() {
           >
             <FaFacebook></FaFacebook>
           </Box>
-        </Link>
-        <Link
+        </a>
+        <a
+          href="https://twitter.com/Almutawassitit"
           //   className="social-href"
+
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
           <Box
@@ -48,13 +53,30 @@ export default function SocialButtons() {
           >
             <FaTwitter></FaTwitter>
           </Box>
-        </Link>
-        <Link
+        </a>
+        <a
+          href="https://www.instagram.com/Almutawassit_books/"
+          //   className="social-href"
+
+          style={{ backgroundColor: bgIcon[colorMode] }}
+        >
+          <Box
+            className="twitter"
+            bg={bgIcon[colorMode]}
+            color={color[colorMode]}
+            p="15px"
+            fontSize="18px"
+          >
+            <FaInstagram></FaInstagram>
+          </Box>
+        </a>
+        {/* <a
+          to="#"
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
           <Box
-            className="linkedin"
+            className="aedin"
             bg={bgIcon[colorMode]}
             color={color[colorMode]}
             p="15px"
@@ -62,9 +84,10 @@ export default function SocialButtons() {
           >
             <FaLinkedin></FaLinkedin>
           </Box>
-        </Link>
+        </a> */}
 
-        <Link
+        {/* <a
+          to="#"
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
@@ -77,8 +100,9 @@ export default function SocialButtons() {
           >
             <IoLogoWhatsapp></IoLogoWhatsapp>
           </Box>
-        </Link>
-        <Link
+        </a> */}
+        <a
+          to="#"
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
@@ -91,8 +115,9 @@ export default function SocialButtons() {
           >
             <FaPinterest></FaPinterest>
           </Box>
-        </Link>
-        <Link
+        </a>
+        <a
+          href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w"
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
@@ -105,8 +130,9 @@ export default function SocialButtons() {
           >
             <FaYoutube></FaYoutube>
           </Box>
-        </Link>
-        <Link
+        </a>
+        <a
+          to="#"
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
@@ -119,7 +145,7 @@ export default function SocialButtons() {
           >
             <FaSoundcloud></FaSoundcloud>
           </Box>
-        </Link>
+        </a>
       </Flex>
     </Box>
   );

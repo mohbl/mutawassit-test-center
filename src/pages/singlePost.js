@@ -71,22 +71,21 @@ function SingleBlog({ getArticle }) {
               {' '}
               {data.article_title}{' '}
             </Heading>
-            <Link key={data.author_id} to={`/author/${data.author_id}`}>
-              <Text
-                fontFamily="diodrum-med !important"
-                d="inline"
-                _hover={{
-                  bg: 'yellow.300',
-                  color: 'black',
-                  textDecoration: 'underline',
-                }}
-                m="2"
-                fontSize="2xl"
-                color="gray.500"
-              >
-                {data.author}
-              </Text>
-            </Link>
+
+            <Text
+              fontFamily="diodrum-med !important"
+              d="inline"
+              _hover={{
+                bg: 'yellow.300',
+                color: 'black',
+                textDecoration: 'underline',
+              }}
+              m="2"
+              fontSize="2xl"
+              color="gray.500"
+            >
+              {data.author}
+            </Text>
           </Box>
           <Flex justifyContent="center">
             <Box mb="8" w="85%">
@@ -106,76 +105,49 @@ function SingleBlog({ getArticle }) {
             templateColumns={['1fr', '1fr', '0.5fr 2fr', '0.5fr 2fr']}
             gap="10px"
           >
-            {data.author !== '' && data.author_image !== '' ? (
-              <Box position="relative">
-                <Box
-                  position="sticky"
-                  top="0"
-                  display={['none', 'none', 'block', 'block']}
-                >
-                  <Link to={`/author/${data.author_id}`}>
-                    <Box mb="8">
-                      <Box
-                        mt="2"
-                        mb="4"
-                        style={{
-                          background: `
-    url('${process.env.REACT_APP_STORAGE}/${data.author_image}')`,
-                        }}
-                        className="detail-image"
-                        w="80%"
-                        h="270px"
-                      ></Box>
-                      <Heading fontFamily="diodrum-med !important" size="md">
-                        {data.author}
-                      </Heading>
-                      {data.translator && (
-                        <Heading fontFamily="diodrum-med !important" size="sm">
-                          {data.translator}
-                        </Heading>
-                      )}
-                    </Box>
-                  </Link>
-                </Box>
-              </Box>
-            ) : (
-              <Box display={['none', 'none', 'block', 'block']}>
-                {data.books.map(book => (
-                  <Box mb="8">
-                    {/* <Text mb="2" fontSize="xl">
+            <Box position="relative">
+              <Box
+                position="sticky"
+                top="0"
+                display={['none', 'none', 'block', 'block']}
+              >
+                <Box mb="8">
+                  {/* <Text mb="2" fontSize="xl">
                 بمساهمة صلاح برياني
               </Text> */}
-                    <Divider w="80%"></Divider>
-                    {/* <Image mt="2" src={``}></Image> */}
+                  {/* <Image mt="2" src={``}></Image> */}
+                  {data.author_image && (
                     <Box
                       mt="2"
                       mb="4"
                       style={{
                         background: `
-    url('${process.env.REACT_APP_STORAGE}/${book.cover}')`,
+    url('${process.env.REACT_APP_STORAGE}/${data.author_image}')`,
                       }}
                       className="detail-image"
                       w="80%"
                       h="270px"
                     ></Box>
-                    <Heading fontFamily="diodrum-med !important" size="md">
-                      {book.title}
+                  )}
+                  <Heading fontFamily="diodrum-med !important" size="md">
+                    {data.author}
+                  </Heading>
+                  {data.translator && (
+                    <Heading fontFamily="diodrum-med !important" size="sm">
+                      ترجمة: {data.translator}
                     </Heading>
-                    <Text> {book.sub_title} </Text>
-
+                  )}
+                  {data.reference && (
                     <Box
-                      fontSize="lg"
-                      mt="2"
-                      pl="6"
-                      className="book-description"
+                      fontSize="md"
                       dangerouslySetInnerHTML={{
-                        __html: book.description,
+                        __html: data.reference,
                       }}
                     ></Box>
-                  </Box>
-                ))}
+                  )}
+                </Box>
               </Box>
-            )}
+            </Box>
             <Box
               fontSize="2xl"
               mb="8"

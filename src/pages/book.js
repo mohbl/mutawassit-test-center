@@ -134,20 +134,18 @@ function Book({ getBook }) {
                 <Divider></Divider>
                 <Flex>
                   {data.author.map(author => (
-                    <Link key={author.id} to={`/author/${author.id}`}>
-                      <Text
-                        _hover={{
-                          bg: 'black',
-                          color: 'white',
-                          textDecoration: 'underline',
-                        }}
-                        m="2"
-                        fontSize="2xl"
-                        color="gray.500"
-                      >
-                        {author.name}
-                      </Text>
-                    </Link>
+                    <Text
+                      _hover={{
+                        bg: 'black',
+                        color: 'white',
+                        textDecoration: 'underline',
+                      }}
+                      m="2"
+                      fontSize="2xl"
+                      color="gray.500"
+                    >
+                      {author.name}
+                    </Text>
                   ))}
                 </Flex>
                 <Divider></Divider>

@@ -10,7 +10,7 @@ export default function Footer() {
       <SimpleGrid mb="100px" p="30px" columns={[1, 1, 3, 3]} spacing="8">
         <Flex direction="column">
           <Heading fontFamily="diodrum-bold !important" size="md">
-            المتوسط
+            المركز
           </Heading>
           <Link to="/about">
             <Text
@@ -19,7 +19,7 @@ export default function Footer() {
               fontFamily="diodrum-med !important"
               fontSize="md"
             >
-              عن المتوسط
+              عن المركز
             </Text>
           </Link>
           <Link to="/contact">
@@ -102,7 +102,7 @@ export default function Footer() {
           <Heading fontFamily="diodrum-bold !important" size="md">
             قوائم الكتب والكاتالوغات
           </Heading>
-          <a href="../../images/list.xls" download>
+          <Link to="/files/list.xls" target="_blank" download>
             <Text
               cursor="pointer"
               color="gray.200"
@@ -112,7 +112,7 @@ export default function Footer() {
             >
               تحميل قائمة إكسل
             </Text>
-          </a>
+          </Link>
 
           <Heading mt="12" fontFamily="diodrum-bold !important" size="md">
             التوزيع والحقوق
@@ -185,30 +185,37 @@ export default function Footer() {
           <Heading mt="12" fontFamily="diodrum-bold !important" size="md">
             وسائل التواصل الاجتماعي
           </Heading>
-          <Text
-            color="gray.200"
-            _hover={{ textDecoration: 'underline' }}
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            تويتر
-          </Text>
-          <Text
-            color="gray.200"
-            _hover={{ textDecoration: 'underline' }}
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            فيسبوك
-          </Text>
-          <Text
-            color="gray.200"
-            _hover={{ textDecoration: 'underline' }}
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            انستغرام
-          </Text>
+          <a href="https://twitter.com/Almutawassitit">
+            <Text
+              color="gray.200"
+              _hover={{ textDecoration: 'underline' }}
+              fontFamily="diodrum-med !important"
+              fontSize="md"
+            >
+              تويتر
+            </Text>
+          </a>
+          <a href="https://www.facebook.com/almutawassit">
+            <Text
+              color="gray.200"
+              _hover={{ textDecoration: 'underline' }}
+              fontFamily="diodrum-med !important"
+              fontSize="md"
+            >
+              فيسبوك
+            </Text>
+          </a>
+          <a href="https://www.instagram.com/Almutawassit_books/">
+            <Text
+              color="gray.200"
+              _hover={{ textDecoration: 'underline' }}
+              fontFamily="diodrum-med !important"
+              fontSize="md"
+            >
+              انستغرام
+            </Text>
+          </a>
+          <a href=""></a>
           <Text
             color="gray.200"
             _hover={{ textDecoration: 'underline' }}
@@ -216,6 +223,34 @@ export default function Footer() {
             fontSize="md"
           >
             لينكدن
+          </Text>
+          <a href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w">
+            <Text
+              color="gray.200"
+              _hover={{ textDecoration: 'underline' }}
+              fontFamily="diodrum-med !important"
+              fontSize="md"
+            >
+              يوتيوب
+            </Text>
+          </a>
+          <a href=""></a>
+          <Text
+            color="gray.200"
+            _hover={{ textDecoration: 'underline' }}
+            fontFamily="diodrum-med !important"
+            fontSize="md"
+          >
+            ساوند كلاود
+          </Text>
+          <a href=""></a>
+          <Text
+            color="gray.200"
+            _hover={{ textDecoration: 'underline' }}
+            fontFamily="diodrum-med !important"
+            fontSize="md"
+          >
+            بينتريست
           </Text>
         </Flex>
       </SimpleGrid>
