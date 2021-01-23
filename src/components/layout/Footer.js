@@ -3,6 +3,7 @@ import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 
 import News from './FooterNewsLetter';
+import { countires } from '../books/countires';
 
 export default function Footer() {
   return (
@@ -10,7 +11,7 @@ export default function Footer() {
       <SimpleGrid mb="100px" p="30px" columns={[1, 1, 3, 3]} spacing="8">
         <Flex direction="column">
           <Heading fontFamily="diodrum-bold !important" size="md">
-            المركز
+            ميسك – MISC
           </Heading>
           <Link to="/about">
             <Text
@@ -19,7 +20,7 @@ export default function Footer() {
               fontFamily="diodrum-med !important"
               fontSize="md"
             >
-              عن المركز
+              عن ميسك – MISC
             </Text>
           </Link>
           <Link to="/contact">
@@ -32,16 +33,7 @@ export default function Footer() {
               اتصل بنا
             </Text>
           </Link>
-          <Link to="/workwithus">
-            <Text
-              color="gray.200"
-              _hover={{ textDecoration: 'underline' }}
-              fontFamily="diodrum-med !important"
-              fontSize="md"
-            >
-              اعمل مع المتوسط
-            </Text>
-          </Link>
+
           <Link to="/terms">
             <Text
               color="gray.200"
@@ -80,40 +72,6 @@ export default function Footer() {
           >
             <News></News>
           </Text>
-
-          <Text
-            mt="12"
-            color="gray.200"
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            P.Iva 10078540969
-          </Text>
-          <Text
-            color="gray.200"
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            Numero REA MI-2503229
-          </Text>
-        </Flex>
-
-        <Flex direction="column">
-          <Heading fontFamily="diodrum-bold !important" size="md">
-            قوائم الكتب والكاتالوغات
-          </Heading>
-          <Link to="/files/list.xls" target="_blank" download>
-            <Text
-              cursor="pointer"
-              color="gray.200"
-              _hover={{ textDecoration: 'underline' }}
-              fontFamily="diodrum-med !important"
-              fontSize="md"
-            >
-              تحميل قائمة إكسل
-            </Text>
-          </Link>
-
           <Heading mt="12" fontFamily="diodrum-bold !important" size="md">
             التوزيع والحقوق
           </Heading>
@@ -158,34 +116,41 @@ export default function Footer() {
             </Text>
           </Link>
         </Flex>
+
         <Flex direction="column">
           <Heading fontFamily="diodrum-bold !important" size="md">
-            للمؤلفين
+            البلدان
           </Heading>
-          <Link to="/ourWriters/publishConditions">
-            <Text
-              color="gray.200"
-              _hover={{ textDecoration: 'underline' }}
-              fontFamily="diodrum-med !important"
-              fontSize="md"
+          {countires.map(([code, country]) => (
+            <Link
+              // style={{ margin: '50px !important' }}
+              //   onClick={handleToggle}
+              to={`/books?category=دراسات المركز&countryCode=${code}`}
             >
-              النشر مع المتوسط
-            </Text>
-          </Link>
-          <Link to="/contactauth">
-            <Text
-              color="gray.200"
-              _hover={{ textDecoration: 'underline' }}
-              fontFamily="diodrum-med !important"
-              fontSize="md"
-            >
-              للتواصل مع كتّاب المتوسط{' '}
-            </Text>
-          </Link>
-          <Heading mt="12" fontFamily="diodrum-bold !important" size="md">
+              <Box>
+                <Box>
+                  <Text
+                    color="gray.200"
+                    _hover={{ textDecoration: 'underline' }}
+                    fontFamily="diodrum-med !important"
+                    fontSize="md"
+                  >
+                    {country}
+                  </Text>
+                </Box>
+              </Box>
+            </Link>
+          ))}
+        </Flex>
+        <Flex direction="column">
+          <Heading fontFamily="diodrum-bold !important" size="md">
             وسائل التواصل الاجتماعي
           </Heading>
-          <a href="https://twitter.com/Almutawassitit">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://twitter.com/Almutawassitit"
+          >
             <Text
               color="gray.200"
               _hover={{ textDecoration: 'underline' }}
@@ -195,7 +160,11 @@ export default function Footer() {
               تويتر
             </Text>
           </a>
-          <a href="https://www.facebook.com/almutawassit">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.facebook.com/almutawassit"
+          >
             <Text
               color="gray.200"
               _hover={{ textDecoration: 'underline' }}
@@ -205,7 +174,11 @@ export default function Footer() {
               فيسبوك
             </Text>
           </a>
-          <a href="https://www.instagram.com/Almutawassit_books/">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.instagram.com/Almutawassit_books/"
+          >
             <Text
               color="gray.200"
               _hover={{ textDecoration: 'underline' }}
@@ -215,7 +188,7 @@ export default function Footer() {
               انستغرام
             </Text>
           </a>
-          <a href=""></a>
+          <a target="_blank" rel="noreferrer" href=""></a>
           <Text
             color="gray.200"
             _hover={{ textDecoration: 'underline' }}
@@ -224,7 +197,11 @@ export default function Footer() {
           >
             لينكدن
           </Text>
-          <a href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w"
+          >
             <Text
               color="gray.200"
               _hover={{ textDecoration: 'underline' }}
@@ -234,7 +211,7 @@ export default function Footer() {
               يوتيوب
             </Text>
           </a>
-          <a href=""></a>
+          <a target="_blank" rel="noreferrer" href=""></a>
           <Text
             color="gray.200"
             _hover={{ textDecoration: 'underline' }}
@@ -243,7 +220,7 @@ export default function Footer() {
           >
             ساوند كلاود
           </Text>
-          <a href=""></a>
+          <a target="_blank" rel="noreferrer" href=""></a>
           <Text
             color="gray.200"
             _hover={{ textDecoration: 'underline' }}
@@ -252,6 +229,20 @@ export default function Footer() {
           >
             بينتريست
           </Text>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.goodreads.com/user/show/50160397"
+          >
+            <Text
+              color="gray.200"
+              _hover={{ textDecoration: 'underline' }}
+              fontFamily="diodrum-med !important"
+              fontSize="md"
+            >
+              غودريدز
+            </Text>
+          </a>
         </Flex>
       </SimpleGrid>
     </Box>

@@ -21,7 +21,7 @@ function CatBooks({ translate, country, category, getBooks }) {
 
   return (
     <Box>
-      <Box d="flex" m="4">
+      {/* <Box d="flex" m="4">
         <Link
           to={`/books?category=دراسات المركز&countryCode=${country}&translate=0`}
         >
@@ -46,7 +46,7 @@ function CatBooks({ translate, country, category, getBooks }) {
             مترجم
           </Heading>
         </Link>
-      </Box>
+      </Box> */}
       <SimpleGrid columns={[1, 2, 3, 5]}>
         {data &&
           data.books &&

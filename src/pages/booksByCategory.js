@@ -18,9 +18,9 @@ export default function Books() {
       <BooksFilter></BooksFilter>
 
       <Box mr={['0', '80px']} mt="160px" mb="100px">
-        <Box m="8">
+        {/* <Box m="8">
           <Heading>{category}</Heading>
-        </Box>
+        </Box> */}
         <SingleCatBooks
           country={countryCode}
           category={category}

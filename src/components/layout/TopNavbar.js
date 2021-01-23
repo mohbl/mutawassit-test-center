@@ -31,6 +31,8 @@ import {
 } from 'react-instantsearch-dom';
 
 import { FaSearch, FaDollarSign } from 'react-icons/fa';
+import { AiOutlineShop } from 'react-icons/ai';
+
 import Newsletter from './NewsLetter';
 
 const searchClient = algoliasearch(
@@ -237,7 +239,7 @@ function Navbar({ getSearch }) {
             p="10px"
             fontSize="28px"
           >
-            <FaDollarSign></FaDollarSign>
+            <AiOutlineShop></AiOutlineShop>
           </Box>
         </a>
       </Box>

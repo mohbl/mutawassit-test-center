@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-import logo from '../../images/center-main-logo.png';
+import logo from '../../images/center-logo.jpeg';
 
 export default function Navbar(props) {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -126,7 +126,7 @@ export default function Navbar(props) {
           fontFamily="diodrum-bold !important"
         >
           <Link onClick={handleToggle} to="/standards">
-            معايير
+            المنهجية
           </Link>
         </Text>
         {/* <Text             fontWeight="bold"

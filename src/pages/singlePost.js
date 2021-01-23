@@ -71,7 +71,7 @@ function SingleBlog({ getArticle }) {
               {' '}
               {data.article_title}{' '}
             </Heading>
-
+            {/*
             <Text
               fontFamily="diodrum-med !important"
               d="inline"
@@ -85,7 +85,7 @@ function SingleBlog({ getArticle }) {
               color="gray.500"
             >
               {data.author}
-            </Text>
+            </Text> */}
           </Box>
           <Flex justifyContent="center">
             <Box mb="8" w="85%">
