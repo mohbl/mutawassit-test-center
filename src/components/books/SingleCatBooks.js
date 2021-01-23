@@ -2,6 +2,7 @@ import React from 'react';
 import { SimpleGrid, Box, Image, Text, Heading } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Masonry from 'react-masonry-css';
 
 import { getBooks } from '../../redux/actions/booksActions';
 
@@ -18,6 +19,14 @@ function CatBooks({ translate, country, category, getBooks }) {
     }
     getData();
   }, [category, country, translate]);
+
+  const breakpointColumns = {
+    default: 4,
+    1300: 4,
+    1100: 3,
+    1000: 2,
+    700: 2,
+  };
 
   return (
     <Box>
@@ -47,36 +56,58 @@ function CatBooks({ translate, country, category, getBooks }) {
           </Heading>
         </Link>
       </Box> */}
-      <SimpleGrid columns={[1, 2, 3, 5]}>
+      {/* <SimpleGrid columns={[1, 2, 3, 5]}> */}
+      <Masonry
+        breakpointCols={breakpointColumns}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
         {data &&
           data.books &&
           data.books.length !== 0 &&
           data.books.map(book => (
-            <Link key={book.id} to={`/book/${book.id}`}>
-              <Box fontFamily="diodrum-med !important" mb="4" cursor="pointer">
+            // <Link key={book.id} to={`/book/${book.id}`}>
+            //   <Box fontFamily="diodrum-med !important" mb="4" cursor="pointer">
+            //     <Image
+            //       w="225px"
+            //       h="350px"
+            //       m="0 auto"
+            //       shadow="lg"
+            //       src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
+            //     ></Image>
+            //     <Box mt="4" textAlign="center">
+            //       <Text fontWeight="500" fontSize="xl">
+            //         {book.title}
+            //       </Text>
+            //       <Box
+            //         fontSize="2xl"
+            //         className="content"
+            //         dangerouslySetInnerHTML={{ __html: book.sub_title }}
+            //       ></Box>
+
+            //       <Text fontWeight="bold">${book.price}</Text>
+            //     </Box>
+            //   </Box>
+            // </Link>
+            <Link to={`/book/${book.id}`}>
+              <Box mt="8" pb="4" shadow="lg" bg="white">
                 <Image
-                  w="225px"
-                  h="350px"
-                  m="0 auto"
-                  shadow="lg"
+                  mt="2"
+                  w="100%"
                   src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
                 ></Image>
-                <Box mt="4" textAlign="center">
-                  <Text fontWeight="500" fontSize="xl">
-                    {book.title}
-                  </Text>
-                  <Box
-                    fontSize="2xl"
-                    className="content"
-                    dangerouslySetInnerHTML={{ __html: book.sub_title }}
-                  ></Box>
-
-                  <Text fontWeight="bold">${book.price}</Text>
-                </Box>
+                <Heading m="4"> {book.title} </Heading>
+                <Box
+                  m="4"
+                  fontSize="xl"
+                  className="content"
+                  dangerouslySetInnerHTML={{ __html: book.overview }}
+                ></Box>
               </Box>
             </Link>
           ))}
-      </SimpleGrid>
+      </Masonry>
+      {/* </SimpleGrid> */}
     </Box>
   );
 }

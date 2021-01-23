@@ -19,7 +19,7 @@ export default function standards() {
         fontFamily="diodrum-bold !important"
       >
         معايير
-        <Divider
+        {/* <Divider
           opacity="1"
           border="3px solid black"
           pl="20%"
@@ -27,7 +27,7 @@ export default function standards() {
           mt="4"
           borderColor="black"
           w="20%"
-        ></Divider>
+        ></Divider> */}
       </Heading>
       <Box
         textAlign="right"
