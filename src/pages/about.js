@@ -22,7 +22,7 @@ export default function blog() {
       >
         مركز دراسات الثقافات المتوسطية MISC{' '}
         <Text>Mediterranean Intercultural Studies Center</Text>
-        <Divider
+        {/* <Divider
           opacity="1"
           border="3px solid black"
           pl="20%"
@@ -30,7 +30,7 @@ export default function blog() {
           mt="4"
           borderColor="black"
           w="20%"
-        ></Divider>
+        ></Divider> */}
       </Heading>
       <Box
         textAlign="right"
