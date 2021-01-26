@@ -53,33 +53,11 @@ export default function standards() {
         <Divider></Divider>
         <Heading size="lg" m="4">
           {' '}
-          هيئة التحرير والنشر
+          البريد الإلكتروني
         </Heading>
-        <Text fontSize="2xl" m="4">
-          مدير النشر: خالد بن صالح
-        </Text>
-        <Text fontSize="2xl" m="4">
-          editor@almutawassit.org
-        </Text>
-        <Divider></Divider>
 
-        <Heading size="lg" m="4">
-          {' '}
-          مشاريع النشر والتبادل الثقافي:{' '}
-        </Heading>
         <Text fontSize="2xl" m="4">
-          المدير العام: خالد سليمان الناصري{' '}
-        </Text>
-        <Text fontSize="2xl" m="4">
-          Khaled@almutawassit.org
-        </Text>
-        <Divider></Divider>
-        <Heading size="lg" m="4">
-          {' '}
-          التواصل العام
-        </Heading>
-        <Text fontSize="2xl" m="4">
-          info@almutawassit.org{' '}
+          misc@almutawassit.org
         </Text>
       </Box>
     </Box>
