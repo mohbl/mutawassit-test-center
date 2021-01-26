@@ -11,6 +11,7 @@ import {
   Grid,
   Flex,
   Skeleton,
+  Spinner,
 } from '@chakra-ui/core';
 import { useLocation, Link } from 'react-router-dom';
 
@@ -56,6 +57,11 @@ function SingleBlog({ getArticle }) {
   ];
   return (
     <Box mt="100px">
+      {!data && (
+        <Box textAlign="center">
+          <Spinner size="xl" />
+        </Box>
+      )}
       {data && (
         <Box>
           <Helmet>

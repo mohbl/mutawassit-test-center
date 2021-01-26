@@ -1,5 +1,12 @@
 import React from 'react';
-import { SimpleGrid, Box, Image, Text, Heading } from '@chakra-ui/core';
+import {
+  SimpleGrid,
+  Box,
+  Image,
+  Text,
+  Heading,
+  Spinner,
+} from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-css';
@@ -30,6 +37,11 @@ function CatBooks({ translate, country, category, getBooks }) {
 
   return (
     <Box>
+      {!data && (
+        <Box textAlign="center">
+          <Spinner size="xl" />
+        </Box>
+      )}
       {/* <Box d="flex" m="4">
         <Link
           to={`/books?category=دراسات المركز&countryCode=${country}&translate=0`}
