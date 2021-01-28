@@ -2,13 +2,24 @@ import React from 'react';
 import Masonry from 'react-masonry-css';
 import { Helmet } from 'react-helmet';
 
-import { Heading, Box, Image, Skeleton, Spinner } from '@chakra-ui/core';
+import {
+  Heading,
+  Box,
+  Image,
+  Skeleton,
+  Spinner,
+  Text,
+  useColorMode,
+} from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 // import fx from 'money';
 import { connect } from 'react-redux';
 import { getHome } from '../redux/actions/homeActions';
 
 function Home({ getHome }) {
+  const { colorMode } = useColorMode();
+
+  const bg = { light: 'white', dark: '#151a23' };
   const [data, setData] = React.useState(null);
   const [loaded, setLoaded] = React.useState(false);
   const imageLoaded = () => {
@@ -49,8 +60,9 @@ function Home({ getHome }) {
           <Spinner size="xl" />
         </Box>
       )}
+      <Text mb="2">{data && data.image.name}</Text>
       <Image
-        src={`${process.env.REACT_APP_STORAGE}/${data && data.image}`}
+        src={`${process.env.REACT_APP_STORAGE}/${data && data.image.image}`}
       ></Image>
 
       <Masonry
@@ -63,7 +75,7 @@ function Home({ getHome }) {
           data.articles.map(article => (
             <Link to={`/singlePost?id=${article.id}`}>
               <Box
-                bg="white"
+                bg={bg[colorMode]}
                 w="100%"
                 shadow="lg"
                 // p="2"
@@ -100,7 +112,7 @@ function Home({ getHome }) {
           data.books &&
           data.books.map(book => (
             <Link to={`/book/${book.id}`}>
-              <Box mt="8" pb="4" shadow="lg" bg="white">
+              <Box mt="8" pb="4" shadow="lg" bg={bg[colorMode]}>
                 <Image
                   mt="2"
                   w="100%"

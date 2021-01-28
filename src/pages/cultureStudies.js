@@ -70,14 +70,6 @@ function Blog({ getArticles }) {
               >
                 <Box>
                   <Skeleton w="100%" isLoaded={loaded}>
-                    {/* <Box
-                    style={{
-                      background: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('${process.env.REACT_APP_STORAGE}/${article.image}')`,
-                    }}
-                    className="detail-image"
-                    h="200px"
-                  ></Box> */}
                     <Image
                       w="100%"
                       onLoad={imageLoaded}
