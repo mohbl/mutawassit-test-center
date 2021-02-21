@@ -159,6 +159,26 @@ function Navbar({ getSearch }) {
         justifyContent="flex-end"
         flexGrow={1}
       >
+        <a href={process.env.REACT_APP_HOME} target="_blank" rel="noreferrer">
+          <Box
+            d="flex"
+            rounded="5px"
+            bg={bgIcon[colorMode]}
+            color={color[colorMode]}
+            m="3px"
+            p="10px"
+            w="50px"
+            h="50px"
+            fontSize="30px"
+            position="relative"
+            fontWeight="bold"
+            justifyContent="center"
+          >
+            <Box position="absolute" bottom="2px">
+              4
+            </Box>
+          </Box>
+        </a>
         <Box fontSize="18px">
           {/* <FaSearch onClick={onOpen}></FaSearch> */}
           <Box
@@ -168,6 +188,8 @@ function Navbar({ getSearch }) {
             color={color[colorMode]}
             m="3px"
             p="10px"
+            w="50px"
+            h="50px"
             fontSize="28px"
           >
             <FaSearch></FaSearch>
@@ -179,10 +201,10 @@ function Navbar({ getSearch }) {
             size="full"
           >
             <DrawerOverlay>
-              <DrawerContent bg="black" color="white">
+              <DrawerContent pt="50px" bg="black" color="white">
                 <DrawerCloseButton
                   position="absolute"
-                  top="10px"
+                  top="50px"
                   left="10px"
                   right="none"
                 />
@@ -237,6 +259,8 @@ function Navbar({ getSearch }) {
             color={color[colorMode]}
             m="3px"
             p="10px"
+            w="50px"
+            h="50px"
             fontSize="28px"
           >
             <AiOutlineShop></AiOutlineShop>
