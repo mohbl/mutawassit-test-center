@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 
-import logo from '../../images/center-logo.jpeg';
+import logo from '../../images/center-logo.png';
 
 export default function Navbar(props) {
   const { colorMode, toggleColorMode } = useColorMode();
