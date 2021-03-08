@@ -1,14 +1,6 @@
 import React from 'react';
-import {
-  Box,
-  Text,
-  Heading,
-  Divider,
-  UnorderedList,
-  ListItem,
-  OrderedList,
-} from '@chakra-ui/core';
-// import { Link } from 'react-router-dom';
+import { Box, Text, Heading, Button, Flex } from '@chakra-ui/core';
+import { Link } from 'react-router-dom';
 
 // import aboutpic from '../images/about-min.jpg';
 export default function blog() {
@@ -48,6 +40,11 @@ export default function blog() {
           وتقارب هذه الشعوب ثقافياً واجتماعياً واقتصادياً.
         </Text>
       </Box>
+      <Flex justifyContent="center">
+        <Link to="/contact">
+          <Button fontSize="2xl">اتصل بنا</Button>
+        </Link>
+      </Flex>
     </Box>
   );
 }

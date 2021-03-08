@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Heading,
-  Text,
-  Divider,
-  ListItem,
-  OrderedList,
-} from '@chakra-ui/core';
+import { Box, Heading, Text, Divider } from '@chakra-ui/core';
 
 export default function standards() {
   return (
@@ -18,15 +11,6 @@ export default function standards() {
         size="xl"
       >
         اتصل بنا
-        <Divider
-          opacity="1"
-          border="3px solid black"
-          pl="20%"
-          pr="20%"
-          //   m="4"
-          borderColor="black"
-          w="20%"
-        ></Divider>
       </Heading>
       <Box
         textAlign="right"

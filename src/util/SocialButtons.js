@@ -101,7 +101,7 @@ export default function SocialButtons() {
             <IoLogoWhatsapp></IoLogoWhatsapp>
           </Box>
         </a> */}
-        <a
+        {/* <a
           to="#"
           //   className="social-href"
           style={{ backgroundColor: bgIcon[colorMode] }}
@@ -115,7 +115,7 @@ export default function SocialButtons() {
           >
             <FaPinterest></FaPinterest>
           </Box>
-        </a>
+        </a> */}
         <a
           href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w"
           //   className="social-href"

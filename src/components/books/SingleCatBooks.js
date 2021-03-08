@@ -6,6 +6,7 @@ import {
   Text,
   Heading,
   Spinner,
+  useColorMode,
 } from '@chakra-ui/core';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -14,6 +15,9 @@ import Masonry from 'react-masonry-css';
 import { getBooks } from '../../redux/actions/booksActions';
 
 function CatBooks({ translate, country, category, getBooks }) {
+  const { colorMode } = useColorMode();
+
+  const bg = { light: 'white', dark: '#151a23' };
   const [data, setData] = React.useState(null);
   React.useEffect(() => {
     async function getData() {
@@ -102,7 +106,7 @@ function CatBooks({ translate, country, category, getBooks }) {
             //   </Box>
             // </Link>
             <Link to={`/book/${book.id}`}>
-              <Box mt="8" pb="4" shadow="lg" bg="white">
+              <Box mt="8" pb="4" shadow="lg" bg={bg[colorMode]}>
                 <Image
                   mt="2"
                   w="100%"

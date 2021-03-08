@@ -134,10 +134,6 @@ function SingleBlog({ getArticle }) {
                 display={['none', 'none', 'block', 'block']}
               >
                 <Box mb="8">
-                  {/* <Text mb="2" fontSize="xl">
-                بمساهمة صلاح برياني
-              </Text> */}
-                  {/* <Image mt="2" src={``}></Image> */}
                   {data.author_image && (
                     <Box
                       mt="2"
@@ -151,7 +147,7 @@ function SingleBlog({ getArticle }) {
                       h="270px"
                     ></Box>
                   )}
-                  <Heading fontFamily="diodrum-med !important" size="md">
+                  <Heading mb="4" fontFamily="diodrum-med !important" size="md">
                     {data.author}
                   </Heading>
                   {data.translator && (
@@ -167,7 +163,7 @@ function SingleBlog({ getArticle }) {
                       }}
                     ></Box>
                   )}
-                  {data.pdf && (
+                  {/* {data.pdf && (
                     <Box
                       mt="4"
                       fontFamily="diodrum-med !important"
@@ -190,7 +186,7 @@ function SingleBlog({ getArticle }) {
                         </Button>
                       </a>
                     </Box>
-                  )}
+                  )} */}
                 </Box>
               </Box>
             </Box>

@@ -51,7 +51,7 @@ export default function Footer() {
               fontFamily="diodrum-med !important"
               fontSize="md"
             >
-              سياسة خاصة
+              سياسة الخصوصية
             </Text>
           </Link>
           <Link to="/questions">
@@ -188,15 +188,7 @@ export default function Footer() {
               انستغرام
             </Text>
           </a>
-          <a target="_blank" rel="noreferrer" href=""></a>
-          <Text
-            color="gray.200"
-            _hover={{ textDecoration: 'underline' }}
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            لينكدن
-          </Text>
+
           <a
             target="_blank"
             rel="noreferrer"
@@ -211,24 +203,7 @@ export default function Footer() {
               يوتيوب
             </Text>
           </a>
-          <a target="_blank" rel="noreferrer" href=""></a>
-          <Text
-            color="gray.200"
-            _hover={{ textDecoration: 'underline' }}
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            ساوند كلاود
-          </Text>
-          <a target="_blank" rel="noreferrer" href=""></a>
-          <Text
-            color="gray.200"
-            _hover={{ textDecoration: 'underline' }}
-            fontFamily="diodrum-med !important"
-            fontSize="md"
-          >
-            بينتريست
-          </Text>
+
           <a
             target="_blank"
             rel="noreferrer"
