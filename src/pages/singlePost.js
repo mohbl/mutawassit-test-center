@@ -163,7 +163,7 @@ function SingleBlog({ getArticle }) {
                       }}
                     ></Box>
                   )}
-                  {/* {data.pdf && (
+                  {data.pdf && (
                     <Box
                       mt="4"
                       fontFamily="diodrum-med !important"
@@ -186,7 +186,7 @@ function SingleBlog({ getArticle }) {
                         </Button>
                       </a>
                     </Box>
-                  )} */}
+                  )}
                 </Box>
               </Box>
             </Box>
