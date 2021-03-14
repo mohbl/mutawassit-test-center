@@ -113,6 +113,8 @@ function CatBooks({ translate, country, category, getBooks }) {
                   src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
                 ></Image>
                 <Heading m="4"> {book.title} </Heading>
+                <Text m="2"> {book?.author[0]?.name} </Text>
+
                 <Box
                   m="4"
                   fontSize="xl"
