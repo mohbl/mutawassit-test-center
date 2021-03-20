@@ -108,6 +108,7 @@ function CatBooks({ translate, country, category, getBooks }) {
             <Link to={`/book/${book.id}`}>
               <Box mt="8" pb="4" shadow="lg" bg={bg[colorMode]}>
                 <Image
+                  loading="lazy"
                   mt="2"
                   w="100%"
                   src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}

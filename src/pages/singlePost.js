@@ -115,6 +115,7 @@ function SingleBlog({ getArticle }) {
             <Box mb="8" w="85%">
               <Skeleton w="100%" isLoaded={loaded}>
                 <Image
+                  loading="lazy"
                   w="100%"
                   onLoad={imageLoaded}
                   src={`${process.env.REACT_APP_STORAGE}/${data.image}`}

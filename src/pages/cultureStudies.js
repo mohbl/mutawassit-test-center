@@ -72,6 +72,7 @@ function Blog({ getArticles }) {
                 <Box>
                   <Skeleton w="100%" isLoaded={loaded}>
                     <Image
+                      loading="lazy"
                       w="100%"
                       onLoad={imageLoaded}
                       src={`${process.env.REACT_APP_STORAGE}/${article.image}`}

@@ -91,6 +91,7 @@ function Book({ getBook }) {
                         isLoaded={loaded}
                       >
                         <Image
+                          loading="lazy"
                           onLoad={imageLoaded}
                           shadow="lg"
                           w={['300px', '300px', '400px', '400px']}

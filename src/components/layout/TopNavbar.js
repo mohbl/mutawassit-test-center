@@ -212,13 +212,6 @@ function Navbar({ getSearch }) {
 
                 <DrawerHeader fontSize="36px">بحث</DrawerHeader>
                 <DrawerBody>
-                  {/* <Input
-                    color="black"
-                    placeholder=" ابحث عن الكتب,المقالات,الكتاب ..."
-                  ></Input>
-                  <Box h="400px">
-                    <Text>هنا ستكون نتيجة البحث</Text>
-                  </Box> */}
                   <InstantSearch indexName="books" searchClient={searchClient}>
                     <SearchBox />
                     <Index indexName="books">
