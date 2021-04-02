@@ -320,31 +320,6 @@ function SingleBlog({ getArticle }) {
                 // itemsToShow={3}
               >
                 {data.maitres.map(article => (
-                  //               <Link to={`/singlePost?id=${article.id}`}>
-                  //                 <Box bg="#f5f2ef" shadow="lg" p="2" cursor="pointer">
-                  //                   <Box
-                  //                     style={{
-                  //                       background: `
-                  // url('${process.env.REACT_APP_STORAGE}/${article.image}')`,
-                  //                     }}
-                  //                     className="detail-image"
-                  //                     h="200px"
-                  //                     w="280px"
-                  //                   ></Box>
-                  //                   <Heading m="2" size="lg">
-                  //                     {article.title}
-                  //                   </Heading>
-                  //                   <Heading> {article.author} </Heading>
-
-                  //                   <Box
-                  //                     fontSize="lg"
-                  //                     className="event-body"
-                  //                     dangerouslySetInnerHTML={{
-                  //                       __html: article.body,
-                  //                     }}
-                  //                   ></Box>
-                  //                 </Box>
-                  //               </Link>
                   <Link to={`/singlePost?id=${article.id}`}>
                     <Box
                       bg="white"
@@ -357,18 +332,10 @@ function SingleBlog({ getArticle }) {
                     >
                       <Box>
                         <Skeleton w="100%" isLoaded={loaded}>
-                          {/* <Box
-                    style={{
-                      background: ` linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url('${process.env.REACT_APP_STORAGE}/${article.image}')`,
-                    }}
-                    className="detail-image"
-                    h="200px"
-                  ></Box> */}
                           <Image
                             loading="lazy"
                             w="100%"
-                            h="200px"
+                            // h="200px"
                             onLoad={imageLoaded}
                             src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
                           ></Image>
@@ -381,14 +348,11 @@ function SingleBlog({ getArticle }) {
                           {article.title}
                         </Heading>
                         <Heading> {article.author} </Heading>
-                        <Box
-                          m="2"
-                          fontSize="lg"
-                          className="event-body"
-                          dangerouslySetInnerHTML={{
-                            __html: article.body,
-                          }}
-                        ></Box>
+                        <Box m="4" fontSize="xl" className="content event-body">
+                          <Box
+                            dangerouslySetInnerHTML={{ __html: article.body }}
+                          ></Box>
+                        </Box>
                       </Box>
                     </Box>
                   </Link>

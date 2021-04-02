@@ -421,14 +421,11 @@ function Book({ getBook }) {
                         {article.title}
                       </Heading>
                       <Heading> {article.author} </Heading>
-                      <Box
-                        m="2"
-                        fontSize="lg"
-                        className="event-body"
-                        dangerouslySetInnerHTML={{
-                          __html: article.body,
-                        }}
-                      ></Box>
+                      <Box m="4" fontSize="xl" className="content event-body">
+                        <Box
+                          dangerouslySetInnerHTML={{ __html: article.body }}
+                        ></Box>
+                      </Box>
                     </Box>
                   </Box>
                 </Link>
