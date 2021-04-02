@@ -304,6 +304,7 @@ function Book({ getBook }) {
                 <Link key={book.id} to={`/book/${book.id}`}>
                   <Box w="350px" mb="4" cursor="pointer">
                     <Image
+                      loading="lazy"
                       w="225px"
                       h="350px"
                       m="0 auto"
@@ -405,6 +406,7 @@ function Book({ getBook }) {
                     h="200px"
                   ></Box> */}
                         <Image
+                          loading="lazy"
                           w="100%"
                           //   h="200px"
                           onLoad={imageLoaded}

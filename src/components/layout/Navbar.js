@@ -37,7 +37,12 @@ export default function Navbar(props) {
             letterSpacing={'-.1rem'}
           >
             <Flex>
-              <Image w="250px" className="main-logo" src={logo}></Image>
+              <Image
+                loading="lazy"
+                w="250px"
+                className="main-logo"
+                src={logo}
+              ></Image>
               {/* <Image w="30px" className="main-logo" src="/images/center-logo.png"></Image> */}
             </Flex>
           </Heading>
