@@ -95,13 +95,9 @@ function Home({ getHome }) {
                 </Skeleton>
                 <Heading m="4"> {article.title} </Heading>
                 <Text m="4">{article.author}</Text>
-
-                <Box
-                  m="4"
-                  fontSize="xl"
-                  className="content event-body"
-                  dangerouslySetInnerHTML={{ __html: article.body }}
-                ></Box>
+                <Box m="4" fontSize="xl" className="content event-body">
+                  <Box dangerouslySetInnerHTML={{ __html: article.body }}></Box>
+                </Box>
               </Box>
             </Link>
           ))}
