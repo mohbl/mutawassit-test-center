@@ -53,7 +53,7 @@ function Home({ getHome }) {
   return (
     <Box pr="10%" pl="10%" mt="100px" mb="100px">
       <Helmet>
-        <title>الرئيسية</title>
+        <title>رئيسية ميسك</title>
       </Helmet>
       {!data && (
         <Box textAlign="center">

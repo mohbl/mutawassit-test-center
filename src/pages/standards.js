@@ -1,16 +1,13 @@
 import React from 'react';
-import {
-  Box,
-  Heading,
-  Text,
-  Divider,
-  ListItem,
-  OrderedList,
-} from '@chakra-ui/core';
+import { Box, Heading, Text } from '@chakra-ui/core';
+import { Helmet } from 'react-helmet';
 
 export default function standards() {
   return (
     <Box mt="100px" mb="100px">
+      <Helmet>
+        <title>منهجية ميسك</title>
+      </Helmet>
       <Heading
         mr="4"
         pl={['5%', '5%', '20%', '20%']}

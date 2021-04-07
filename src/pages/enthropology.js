@@ -44,7 +44,7 @@ function Blog({ getArticles }) {
   return (
     <Box m="7%">
       <Helmet>
-        <title>المدونة</title>
+        <title>مختار ميسك</title>
       </Helmet>
       {!data && (
         <Box textAlign="center">
@@ -86,10 +86,18 @@ function Blog({ getArticles }) {
                       src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
                     ></Image>
                   </Skeleton>
+                  <Text
+                    m="2"
+                    mt="4"
+                    fontSize="lg"
+                    fontFamily="diodrum-med !important"
+                  >
+                    {' '}
+                    {article.author}{' '}
+                  </Text>
                   <Heading fontFamily="diodrum-med !important" m="2" size="lg">
                     {article.title}
                   </Heading>
-                  <Text m="2"> {article.author} </Text>
                   <Box
                     m="2"
                     fontSize="lg"

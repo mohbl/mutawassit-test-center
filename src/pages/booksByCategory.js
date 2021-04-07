@@ -1,6 +1,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Box, Heading } from '@chakra-ui/core';
+import { Helmet } from 'react-helmet';
+
 import SingleCatBooks from '../components/books/SingleCatBooks';
 import BooksFilter from '../components/books/BooksFilter';
 
@@ -16,8 +18,10 @@ export default function Books() {
   return (
     <Box>
       <BooksFilter></BooksFilter>
-
-      <Box mr={['0', '80px']} mt="160px" mb="100px">
+      <Helmet>
+        <title>كتب ميسك</title>
+      </Helmet>
+      <Box ml="80px" mr={['0', '80px']} mt="160px" mb="100px">
         {/* <Box m="8">
           <Heading>{category}</Heading>
         </Box> */}
