@@ -47,7 +47,7 @@ function SingleBlog({ getArticle }) {
       }
     }
     getData();
-  }, []);
+  }, [id]);
   const ar = data && data.article_body;
   //   const ar = `
   //   <p id="main">
