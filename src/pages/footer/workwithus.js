@@ -7,10 +7,14 @@ import {
   ListItem,
   OrderedList,
 } from '@chakra-ui/core';
+import { Helmet } from 'react-helmet';
 
 export default function standards() {
   return (
     <Box mt="100px" mb="100px">
+      <Helmet>
+        <title> اعمل مع المتوسط</title>
+      </Helmet>
       <Heading
         mr="4"
         pl={['5%', '5%', '20%', '20%']}

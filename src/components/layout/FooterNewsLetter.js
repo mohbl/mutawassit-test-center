@@ -72,8 +72,7 @@ function BasicUsage({ postNews }) {
           <ModalBody mt="50px">
             <Box textAlign="center">
               <Text mb="4" fontSize="2xl">
-                ابق على اطلاع دائم مع المتوسط من خلال الاشتراك في النشرة
-                الإخبارية
+                لتصلك أخبار ميسك سجل في رسالتنا الإخبارية
               </Text>
             </Box>
             <Input
