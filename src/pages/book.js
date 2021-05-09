@@ -322,7 +322,7 @@ function Book({ getBook }) {
                       >
                         {book.title}
                       </Text>
-                      <Text fontSize="md">{book.sub_title}</Text>
+                      {/* <Text fontSize="md">{book.sub_title}</Text> */}
                       <Text fontSize="sm">{book.author}</Text>
                       {/* <Text fontWeight="bold">€{book.price}</Text> */}
                     </Box>

@@ -80,7 +80,7 @@ function SingleBlog({ getArticle }) {
       {data && (
         <Box>
           <Helmet>
-            <title>{data.article_title}</title>
+            <title>{data.title}</title>
           </Helmet>
           <Box
             pr={['2%', '2%', '7%', '7%']}
@@ -92,7 +92,9 @@ function SingleBlog({ getArticle }) {
               {' '}
               {data.title}{' '}
             </Heading>
-            <Text>{data.sub_title}</Text>
+            <Text fontSize="2xl" fontFamily="diodrum-med !important">
+              {data.sub_title}
+            </Text>
 
             {/* <Link key={data.author_id} to={`/author/${data.author_id}`}>
               <Text
