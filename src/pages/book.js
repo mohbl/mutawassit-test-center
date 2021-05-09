@@ -137,7 +137,9 @@ function Book({ getBook }) {
                   {data.title}
                 </Heading>
                 <Divider></Divider>
-                <Text fontSize="xl">{data.sub_title}</Text>
+                <Text mr="4" fontSize="2xl" fontFamily="diodrum-med !important">
+                  {data.sub_title}
+                </Text>
                 <Divider></Divider>
                 <Flex>
                   {data.author.map(author => (
@@ -322,7 +324,7 @@ function Book({ getBook }) {
                       </Text>
                       <Text fontSize="md">{book.sub_title}</Text>
                       <Text fontSize="sm">{book.author}</Text>
-                      <Text fontWeight="bold">€{book.price}</Text>
+                      {/* <Text fontWeight="bold">€{book.price}</Text> */}
                     </Box>
                   </Box>
                 </Link>
