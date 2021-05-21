@@ -93,8 +93,13 @@ function Home({ getHome }) {
                     src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
                   ></Image>
                 </Skeleton>
-                <Heading m="4"> {article.title} </Heading>
-                <Text m="4">{article.author}</Text>
+                <Text fontFamily="diodrum-med !important" m="4">
+                  {article.author}
+                </Text>
+                <Heading fontFamily="diodrum-bold !important" m="4">
+                  {' '}
+                  {article.title}{' '}
+                </Heading>
                 <Box m="4" fontSize="xl" className="content event-body">
                   <Box dangerouslySetInnerHTML={{ __html: article.body }}></Box>
                 </Box>
@@ -119,8 +124,14 @@ function Home({ getHome }) {
                   w="100%"
                   src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
                 ></Image>
-                <Heading m="4"> {book.title} </Heading>
-                <Text m="4"> {book?.author[0]?.name} </Text>
+                <Text fontFamily="diodrum-med !important" m="4">
+                  {' '}
+                  {book?.author[0]?.name}{' '}
+                </Text>
+                <Heading fontFamily="diodrum-bold !important" m="4">
+                  {' '}
+                  {book.title}{' '}
+                </Heading>
 
                 <Box
                   m="4"
