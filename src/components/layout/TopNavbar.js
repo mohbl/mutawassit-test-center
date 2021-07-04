@@ -30,10 +30,12 @@ import {
   connectStateResults,
 } from 'react-instantsearch-dom';
 
-import {FaSearch, FaDollarSign, FaHome} from 'react-icons/fa';
+import { FaSearch, FaDollarSign, FaHome } from 'react-icons/fa';
 import { AiOutlineShop } from 'react-icons/ai';
 
 import Newsletter from './NewsLetter';
+import hdark from '../../images/hdark.png';
+import hlight from '../../images/hlight.png';
 
 const searchClient = algoliasearch(
   process.env.REACT_APP_algoliaAppKey,
@@ -186,12 +188,13 @@ function Navbar({ getSearch }) {
       >
         <a href={process.env.REACT_APP_HOME} target="_blank" rel="noreferrer">
           <Box
+            cursor="pointer"
             d="flex"
             rounded="5px"
-            bg={bgIcon[colorMode]}
+            // bg={bgIcon[colorMode]}
             color={color[colorMode]}
             m="3px"
-            p="10px"
+            // p="10px"
             w="50px"
             h="50px"
             fontSize="30px"
@@ -199,9 +202,11 @@ function Navbar({ getSearch }) {
             fontWeight="bold"
             justifyContent="center"
           >
-            <Box position="absolute" >
-              <FaHome></FaHome>
-            </Box>
+            {colorMode === 'light' ? (
+              <Image rounded="5px" w="50px" h="50px" src={hlight}></Image>
+            ) : (
+              <Image rounded="5px" w="50px" h="50px" src={hdark}></Image>
+            )}
           </Box>
         </a>
         <Box fontSize="18px">
