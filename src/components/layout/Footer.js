@@ -162,7 +162,7 @@ export default function Footer() {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://twitter.com/Almutawassitit"
+              href="https://mobile.twitter.com/Misc00203230"
             >
               <Text
                 color="gray.200"
@@ -177,7 +177,7 @@ export default function Footer() {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.facebook.com/almutawassit"
+              href="https://www.facebook.com/%D9%85%D9%8A%D8%B3%D9%83-MISC-109172068120589"
             >
               <Text
                 color="gray.200"
@@ -192,7 +192,7 @@ export default function Footer() {
             <a
               target="_blank"
               rel="noreferrer"
-              href="https://www.instagram.com/Almutawassit_books/"
+              href="https://www.instagram.com/misccenter/"
             >
               <Text
                 color="gray.200"
@@ -205,37 +205,37 @@ export default function Footer() {
               </Text>
             </a>
 
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w"
-            >
-              <Text
-                color="gray.200"
-                _hover={{ textDecoration: 'underline' }}
-                fontFamily="diodrum-med !important"
-                fontSize="28px"
-                m="2"
-              >
-                <FaYoutube></FaYoutube>
-              </Text>
-            </a>
+            {/*<a*/}
+            {/*  target="_blank"*/}
+            {/*  rel="noreferrer"*/}
+            {/*  href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w"*/}
+            {/*>*/}
+            {/*  <Text*/}
+            {/*    color="gray.200"*/}
+            {/*    _hover={{ textDecoration: 'underline' }}*/}
+            {/*    fontFamily="diodrum-med !important"*/}
+            {/*    fontSize="28px"*/}
+            {/*    m="2"*/}
+            {/*  >*/}
+            {/*    <FaYoutube></FaYoutube>*/}
+            {/*  </Text>*/}
+            {/*</a>*/}
 
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://www.goodreads.com/user/show/50160397"
-            >
-              <Text
-                color="gray.200"
-                _hover={{ textDecoration: 'underline' }}
-                fontFamily="diodrum-med !important"
-                fontSize="28px"
-                m="2"
-              >
-                <FaGoodreads></FaGoodreads>
-              </Text>
-            </a>
+            {/*<a*/}
+            {/*  target="_blank"*/}
+            {/*  rel="noreferrer"*/}
+            {/*  href="https://www.goodreads.com/user/show/50160397"*/}
+            {/*>*/}
+            {/*  <Text*/}
+            {/*    color="gray.200"*/}
+            {/*    _hover={{ textDecoration: 'underline' }}*/}
+            {/*    fontFamily="diodrum-med !important"*/}
+            {/*    fontSize="28px"*/}
+            {/*    m="2"*/}
+            {/*  >*/}
+            {/*    <FaGoodreads></FaGoodreads>*/}
+            {/*  </Text>*/}
+            {/*</a>*/}
           </Flex>
         </Flex>
       </SimpleGrid>

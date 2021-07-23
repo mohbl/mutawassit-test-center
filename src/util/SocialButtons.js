@@ -24,8 +24,9 @@ export default function SocialButtons() {
     >
       <Flex direction="column">
         <a
-          href="https://www.facebook.com/almutawassit"
+          href="https://www.facebook.com/%D9%85%D9%8A%D8%B3%D9%83-MISC-109172068120589"
           //   className="social-href "
+            target="_blank"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
           <Box
@@ -39,9 +40,9 @@ export default function SocialButtons() {
           </Box>
         </a>
         <a
-          href="https://twitter.com/Almutawassitit"
+          href="https://mobile.twitter.com/Misc00203230"
           //   className="social-href"
-
+          target="_blank"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
           <Box
@@ -55,9 +56,9 @@ export default function SocialButtons() {
           </Box>
         </a>
         <a
-          href="https://www.instagram.com/Almutawassit_books/"
+          href="https://www.instagram.com/misccenter/"
           //   className="social-href"
-
+          target="_blank"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
           <Box
@@ -116,36 +117,36 @@ export default function SocialButtons() {
             <FaPinterest></FaPinterest>
           </Box>
         </a> */}
-        <a
-          href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w"
-          //   className="social-href"
-          style={{ backgroundColor: bgIcon[colorMode] }}
-        >
-          <Box
-            className="whatsapp"
-            bg={bgIcon[colorMode]}
-            color={color[colorMode]}
-            p="15px"
-            fontSize="18px"
-          >
-            <FaYoutube></FaYoutube>
-          </Box>
-        </a>
-        <a
-          to="#"
-          //   className="social-href"
-          style={{ backgroundColor: bgIcon[colorMode] }}
-        >
-          <Box
-            className="whatsapp"
-            bg={bgIcon[colorMode]}
-            color={color[colorMode]}
-            p="15px"
-            fontSize="18px"
-          >
-            <FaSoundcloud></FaSoundcloud>
-          </Box>
-        </a>
+        {/*<a*/}
+        {/*  href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w"*/}
+        {/*  //   className="social-href"*/}
+        {/*  style={{ backgroundColor: bgIcon[colorMode] }}*/}
+        {/*>*/}
+        {/*  <Box*/}
+        {/*    className="whatsapp"*/}
+        {/*    bg={bgIcon[colorMode]}*/}
+        {/*    color={color[colorMode]}*/}
+        {/*    p="15px"*/}
+        {/*    fontSize="18px"*/}
+        {/*  >*/}
+        {/*    <FaYoutube></FaYoutube>*/}
+        {/*  </Box>*/}
+        {/*</a>*/}
+        {/*<a*/}
+        {/*  to="#"*/}
+        {/*  //   className="social-href"*/}
+        {/*  style={{ backgroundColor: bgIcon[colorMode] }}*/}
+        {/*>*/}
+        {/*  <Box*/}
+        {/*    className="whatsapp"*/}
+        {/*    bg={bgIcon[colorMode]}*/}
+        {/*    color={color[colorMode]}*/}
+        {/*    p="15px"*/}
+        {/*    fontSize="18px"*/}
+        {/*  >*/}
+        {/*    <FaSoundcloud></FaSoundcloud>*/}
+        {/*  </Box>*/}
+        {/*</a>*/}
       </Flex>
     </Box>
   );
