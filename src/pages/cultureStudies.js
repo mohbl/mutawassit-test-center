@@ -42,7 +42,9 @@ function Blog({ getArticles }) {
   };
 
   return (
-    <Box m="7%">
+    <Box
+        pr="10%" pl="10%" mt="100px" mb="100px"
+    >
       <Helmet>
         <title>دراسات ميسك</title>
       </Helmet>
@@ -66,7 +68,7 @@ function Blog({ getArticles }) {
                 shadow="lg"
                 // p="2"
                 pb="4"
-                m="4"
+                mt="8"
                 cursor="pointer"
               >
                 <Box>

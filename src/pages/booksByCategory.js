@@ -21,7 +21,7 @@ export default function Books() {
       <Helmet>
         <title>كتب ميسك</title>
       </Helmet>
-      <Box ml="80px" mr={['0', '80px']} mt="160px" mb="100px">
+      <Box  pr={["10%",'5%','5%',"3%"]} pl={["10%",'5%','5%',"3%"]}  mt="160px" mb="100px">
         {/* <Box m="8">
           <Heading>{category}</Heading>
         </Box> */}
