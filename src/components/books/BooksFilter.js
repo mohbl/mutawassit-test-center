@@ -29,12 +29,18 @@ export default function Navbar() {
 
   const bg = { light: '#f5f2ef', dark: '#1a202c' };
   const filter = { light: '#000000', dark: '#1a202c' };
+  const onOpened = () =>{
+    document.body.style.overflow = "hidden";
+  }
 
+  const onClosed = () =>{
+    document.body.style.overflow = "";
+  }
   return (
     <Flex
       h="70px"
       borderBottom="1px solid #ddd"
-      style={{ position: 'fixed', width: '100%', zIndex: '99', top: '70px' }}
+      className={'filterNavTop'}
       as="nav"
       align="center"
       //   justify="space-between"
@@ -71,7 +77,10 @@ export default function Navbar() {
         </Flex>
       </NavLink>
 
-      <Menu>
+      <Menu
+          onOpen={onOpened}
+          onClose={onClosed}
+      >
         <MenuButton
           display="block"
           // px={4}

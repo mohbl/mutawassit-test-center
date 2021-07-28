@@ -16,12 +16,12 @@ export default function Books() {
   let countryCode = query.get('countryCode');
   let translate = query.get('translate');
   return (
-    <Box>
+    <Box mt="160px" mb="100px">
       <BooksFilter></BooksFilter>
       <Helmet>
         <title>كتب ميسك</title>
       </Helmet>
-      <Box  pr={["10%",'5%','5%',"3%"]} pl={["10%",'5%','5%',"3%"]}  mt="160px" mb="100px">
+        <Box pr={["10%",'5%','5%',"3%"]} pl={["10%",'5%','5%',"3%"]}  mt={["0","170px","170px","170px"]} mb="100px">
         {/* <Box m="8">
           <Heading>{category}</Heading>
         </Box> */}

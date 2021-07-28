@@ -306,3 +306,21 @@ h6 {
     overflow-x: auto;
   }
 }
+@media only screen and (max-device-width: 480px){
+  .filterNavTop{
+    margin-top: -91px;
+    width: 100%;
+    z-index: 99;
+    top: 70px;
+  }
+}
+
+@media only screen and (min-device-width: 480px){
+  .filterNavTop{
+    position: fixed;
+    width: 100%;
+    /*margin-top: -91px;*/
+    z-index: 99;
+    top: 70px;
+  }
+}
