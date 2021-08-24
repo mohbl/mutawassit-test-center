@@ -186,7 +186,7 @@ app.get("/singlePost",  (req, res) => {
             .then(result => {
                 return result;
             })
-        const desc = new jsdom.JSDOM(dataR.data.description)
+        const desc = new jsdom.JSDOM(dataR.data.body)
 
         data = data
             .replace(/__TITLE__/g, dataR.data.title)
