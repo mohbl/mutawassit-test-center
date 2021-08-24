@@ -24,7 +24,7 @@ app.get("/", (req, res) => {
             .replace(/__DESCRIPTION__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__KEYWORDS__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__URL__/g, "http://misccenter.com/")
-            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gi");
+            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gif");
 
         res.send(data)
     });
@@ -43,7 +43,7 @@ app.get("/about", (req, res) => {
             .replace(/__DESCRIPTION__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__KEYWORDS__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__URL__/g, "http://misccenter.com/")
-            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gi");
+            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gif");
 
         res.send(data)
     });
@@ -62,7 +62,7 @@ app.get("/enthropology", (req, res) => {
             .replace(/__DESCRIPTION__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__KEYWORDS__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__URL__/g, "http://misccenter.com/")
-            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gi");
+            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gif");
 
         res.send(data)
     });
@@ -80,7 +80,7 @@ app.get("/cultureStudies", (req, res) => {
             .replace(/__DESCRIPTION__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__KEYWORDS__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__URL__/g, "http://misccenter.com/")
-            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gi");
+            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gif");
 
         res.send(data)
     });
@@ -99,7 +99,7 @@ app.get("/books", (req, res) => {
             .replace(/__DESCRIPTION__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__KEYWORDS__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__URL__/g, "http://misccenter.com/")
-            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gi");
+            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gif");
 
         res.send(data)
     });
@@ -118,7 +118,7 @@ app.get("/events", (req, res) => {
             .replace(/__DESCRIPTION__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__KEYWORDS__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__URL__/g, "http://misccenter.com/")
-            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gi");
+            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gif");
 
         res.send(data)
     });
@@ -136,7 +136,7 @@ app.get("/standards", (req, res) => {
             .replace(/__DESCRIPTION__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__KEYWORDS__/g, "مركز أبحاث ودراسات أُنشأ بمبادرة من منشورات المتوسط، كمساهمة في تعميق الأبحاث النظرية والتطبيقية البينثقافية - Intercultural في منطقة حوض البحر الأبيض المتوسط.")
             .replace(/__URL__/g, "http://misccenter.com/")
-            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gi");
+            .replace(/__IMAGE__/g, "http://www.misccenter.com/مركز-دراسات-المتوسط.gif");
 
         res.send(data)
     });
