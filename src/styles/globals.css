@@ -130,6 +130,9 @@ h6 {
   background-color: #464646 !important;
   /* border-bottom-left-radius: 70% 60px;
   border-bottom-right-radius: 30% 10px; */
+  width: 70% !important;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 ::selection {
@@ -312,6 +315,9 @@ h6 {
     width: 100%;
     z-index: 99;
     top: 70px;
+  }
+  .detail-image{
+    width: 100% !important;
   }
 }
 

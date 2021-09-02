@@ -114,7 +114,7 @@ function SingleBlog({ getArticle }) {
             </Link> */}
           </Box>
           <Flex justifyContent="center">
-            <Box mb="8" w="85%">
+            <Box mb="8" w={["100%","85%"]}>
               <Skeleton w="100%" isLoaded={loaded}>
                 <Image
                   loading="lazy"
@@ -136,21 +136,27 @@ function SingleBlog({ getArticle }) {
               <Box
                 position="sticky"
                 top="0"
-                display={['none', 'none', 'block', 'block']}
+                display={['block', 'block', 'block', 'block']}
+                textAlign={['center','start','start','start']}
               >
                 <Box mb="8">
                   {data.author_image && (
-                    <Box
-                      mt="2"
-                      mb="4"
-                      style={{
-                        background: `
-    url('${process.env.REACT_APP_STORAGE}/${data.author_image}')`,
-                      }}
-                      className="detail-image"
-                      w="80%"
-                      h="270px"
-                    ></Box>
+    //                 <Box
+    //                   mt="2"
+    //                   mb="4"
+    //                   style={{
+    //                     background: `
+    // url('${process.env.REACT_APP_STORAGE}/${data.author_image}')`,
+    //                   }}
+    //                   className="detail-image"
+    //                   w="80%"
+    //                   h="270px"
+    //                 ></Box>
+                      <img
+                          mt="2"
+                          className="detail-image"
+                          mb="4"
+                          w="70%" src={`${process.env.REACT_APP_STORAGE}/${data.author_image}`}/>
                   )}
                   <Heading mb="4" fontFamily="diodrum-med !important" size="md">
                     {data.author}
@@ -324,13 +330,16 @@ function SingleBlog({ getArticle }) {
                 {data.maitres.map(article => (
                   <a href={`/singlePost?id=${article.id}`}>
                     <Box
-                      bg="white"
-                      w="350px"
-                      shadow="lg"
-                      // p="2"
-                      pb="4"
-                      m="4"
-                      cursor="pointer"
+                        bg="white"
+
+                        // p="2"
+                        pb="4"
+                        m="4"
+                        w={['100',"100",'100',"100","355px"]}
+
+                        m="0 auto"
+                        shadow="lg"
+                        cursor="pointer"
                     >
                       <Box>
                         <Skeleton w="100%" isLoaded={loaded}>
