@@ -154,7 +154,7 @@ app.get("/book/:id",  (req, res) => {
         }
 
         const dataR =  await axios
-            .get(`https://elmutawassit.liverily.com/api/books/${req.params.id}`, { headers })
+            .get(`https://admin.almutawassit.it/api/books/${req.params.id}`, { headers })
             .then(result => {
                 return result;
             })
@@ -165,7 +165,7 @@ app.get("/book/:id",  (req, res) => {
             .replace(/__KEYWORDS__/g, dataR.data.tags.map(word => {
                 return  word.name.en
             }))
-            .replace(/__IMAGE__/g, "https://elmutawassit.liverily.com/storage/"+dataR.data.cover)
+            .replace(/__IMAGE__/g, "https://admin.almutawassit.it/storage/"+dataR.data.cover)
             .replace(/__URL__/g, "https://misccenter.com/book/"+ dataR.data.id);
 
         res.send(data)
@@ -182,7 +182,7 @@ app.get("/singlePost",  (req, res) => {
         }
 
         const dataR =  await axios
-            .get(`https://elmutawassit.liverily.com/api/articles/${req.query.id}`, { headers })
+            .get(`https://admin.almutawassit.it/api/articles/${req.query.id}`, { headers })
             .then(result => {
                 return result;
             })
@@ -194,7 +194,7 @@ app.get("/singlePost",  (req, res) => {
             .replace(/__KEYWORDS__/g, dataR.data.tags.map(word => {
                 return  word.name.en
             }))
-            .replace(/__IMAGE__/g, "https://elmutawassit.liverily.com/storage/"+dataR.data.image)
+            .replace(/__IMAGE__/g, "https://admin.almutawassit.it/storage/"+dataR.data.image)
             .replace(/__URL__/g, "https://misccenter.com/singlePost?id="+ dataR.data.id);
 
         res.send(data)
@@ -211,7 +211,7 @@ app.get("/author/:id", (req, res) => {
         }
 
         const dataR =  await axios
-            .get(`https://elmutawassit.liverily.com/api/authors/${req.params.id}`, { headers })
+            .get(`https://admin.almutawassit.it/api/authors/${req.params.id}`, { headers })
             .then(result => {
                 return result;
             })
@@ -219,7 +219,7 @@ app.get("/author/:id", (req, res) => {
             .replace(/__TITLE__/g, dataR.data.name)
             .replace(/__DESCRIPTION__/g, dataR.data.author_bio)
             .replace(/__KEYWORDS__/g,dataR.data.name )
-            .replace(/__IMAGE__/g, "https://elmutawassit.liverily.com/storage/"+dataR.data.image)
+            .replace(/__IMAGE__/g, "https://admin.almutawassit.it/storage/"+dataR.data.image)
             .replace(/__URL__/g, "https://misccenter.com/author/"+ dataR.data.id);
 
         res.send(data)
