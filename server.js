@@ -161,7 +161,8 @@ app.get("/book/:id",  (req, res) => {
         const desc = new jsdom.JSDOM(dataR.data.description)
         data = data
             .replace(/__TITLE__/g, dataR.data.title)
-            .replace(/__DESCRIPTION__/g, desc.window.document.querySelector("p") ? desc.window.document.querySelector("p").textContent : desc.window.document.querySelector("div").textContent)
+            .replace(/__DESCRIPTION__/g, desc.window.document.querySelector("p") ? desc.window.document.querySelector("p").textContent :
+                     (desc.window.document.querySelector("div") ? desc.window.document.querySelector("div").textContent : "" ))
             .replace(/__KEYWORDS__/g, dataR.data.tags.map(word => {
                 return  word.name.en
             }))
@@ -190,7 +191,8 @@ app.get("/singlePost",  (req, res) => {
 
         data = data
             .replace(/__TITLE__/g, dataR.data.title)
-            .replace(/__DESCRIPTION__/g, desc.window.document.querySelector("p") ? desc.window.document.querySelector("p").textContent : desc.window.document.querySelector("div").textContent)
+            .replace(/__DESCRIPTION__/g, desc.window.document.querySelector("p") ? desc.window.document.querySelector("p").textContent :
+                     (desc.window.document.querySelector("div") ? desc.window.document.querySelector("div").textContent : "" ))
             .replace(/__KEYWORDS__/g, dataR.data.tags.map(word => {
                 return  word.name.en
             }))
