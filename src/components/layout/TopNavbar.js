@@ -15,7 +15,7 @@ import {
   Image,
   SimpleGrid,
   Heading,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 // import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -154,7 +154,7 @@ function Navbar({ getSearch }) {
     <Flex
       h="70px"
       borderBottom="1px solid #ddd"
-      style={{ position: 'fixed', width: '100%', top: 0 }}
+      style={{ position: 'fixed', zIndex: 99, width: '100%', top: 0 }}
       as="nav"
       align="center"
       justify="space-between"
@@ -209,7 +209,7 @@ function Navbar({ getSearch }) {
             h="50px"
             fontSize="28px"
           >
-            <FaSearch></FaSearch>
+            <FaSearch />
           </Box>
           <Drawer
             placement="bottom"
@@ -265,7 +265,7 @@ function Navbar({ getSearch }) {
         >
           <FaShoppingCart></FaShoppingCart>
         </Box> */}
-        <Newsletter></Newsletter>
+        <Newsletter />
         <a target="_blank" rel=" noreferrer" href={process.env.REACT_APP_SHOP}>
           <Box
             rounded="5px"
@@ -277,7 +277,7 @@ function Navbar({ getSearch }) {
             h="50px"
             fontSize="28px"
           >
-            <AiOutlineShop></AiOutlineShop>
+            <AiOutlineShop />
           </Box>
         </a>
       </Box>

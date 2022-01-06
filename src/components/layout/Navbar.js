@@ -205,7 +205,7 @@ function Navbar() {
               display="block"
               fontSize="18px"
             >
-              <Link onClick={handleToggle} to="/about">
+              <Link onClick={handleToggle} to="/about" onClick={onClose}>
                 عن المركز
               </Link>
             </Text>
@@ -217,7 +217,7 @@ function Navbar() {
               display="block"
               fontSize="18px"
             >
-              <Link onClick={handleToggle} to="/enthropology">
+              <Link onClick={handleToggle} to="/enthropology" onClick={onClose}>
                 المختار الإنثربولوجي
               </Link>
             </Text>
@@ -229,7 +229,11 @@ function Navbar() {
               display="block"
               fontSize="18px"
             >
-              <Link onClick={handleToggle} to="/cultureStudies">
+              <Link
+                onClick={handleToggle}
+                to="/cultureStudies"
+                onClick={onClose}
+              >
                 دراسات ثقافية
               </Link>
             </Text>
@@ -241,7 +245,11 @@ function Navbar() {
               display="block"
               fontSize="18px"
             >
-              <Link onClick={handleToggle} to="/books?category=دراسات المركز">
+              <Link
+                onClick={handleToggle}
+                to="/books?category=دراسات المركز"
+                onClick={onClose}
+              >
                 كتب المركز
               </Link>
             </Text>
@@ -253,7 +261,7 @@ function Navbar() {
               display="block"
               fontSize="18px"
             >
-              <Link onClick={handleToggle} to="/events">
+              <Link onClick={handleToggle} to="/events" onClick={onClose}>
                 نشاطات
               </Link>
             </Text>

@@ -12,7 +12,7 @@ import {
   MenuItem,
   Heading,
   useMediaQuery,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 // import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link, NavLink } from 'react-router-dom';
 import { FaChevronDown } from 'react-icons/fa';

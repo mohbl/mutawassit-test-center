@@ -6,7 +6,7 @@ import {
   SimpleGrid,
   Text,
   useMediaQuery,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import {
   FaCcMastercard,
