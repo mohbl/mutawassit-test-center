@@ -167,7 +167,6 @@ export default function Footer() {
             fontFamily="diodrum-bold !important"
             fontSize="1.45em"
             mb=".5em"
-            mt="1em"
           >
             البلدان
           </Heading>

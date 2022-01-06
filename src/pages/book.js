@@ -308,16 +308,20 @@ function Book({ getBook }) {
                 </Tabs>
               )}
               {!breakPointMd && (
-                <Accordion defaultIndex={[0]} allowToggle allowMultiple={true}>
+                <Accordion allowToggle allowMultiple={true}>
                   {data.description && (
                     <AccordionItem>
-                      <AccordionButton>
+                      <AccordionButton
+                        bg="#000"
+                        color="white"
+                        _hover={{ bg: '#000', color: 'white' }}
+                      >
                         <Text whiteSpace="nowrap" fontSize="1.5em">
                           عن الكتاب
                         </Text>
                         <AccordionIcon mb="-5px" mr="5px" />
                       </AccordionButton>
-                      <AccordionPanel p="0" pb="1em">
+                      <AccordionPanel py="1em" pb="1em">
                         <Box
                           fontSize="2xl"
                           className="content"
@@ -331,7 +335,11 @@ function Book({ getBook }) {
                   )}
                   {data.author && (
                     <AccordionItem>
-                      <AccordionButton>
+                      <AccordionButton
+                        bg="#000"
+                        color="white"
+                        _hover={{ bg: '#000', color: 'white' }}
+                      >
                         <Text whiteSpace="nowrap" fontSize="1.5em">
                           عن المؤلف
                         </Text>
@@ -351,7 +359,11 @@ function Book({ getBook }) {
                   )}
                   {data.index && (
                     <AccordionItem>
-                      <AccordionButton>
+                      <AccordionButton
+                        bg="#000"
+                        color="white"
+                        _hover={{ bg: '#000', color: 'white' }}
+                      >
                         <Text whiteSpace="nowrap" fontSize="1.5em">
                           فهرس الكتاب
                         </Text>
@@ -368,7 +380,11 @@ function Book({ getBook }) {
                   )}
                   {data.from_book && (
                     <AccordionItem>
-                      <AccordionButton>
+                      <AccordionButton
+                        bg="#000"
+                        color="white"
+                        _hover={{ bg: '#000', color: 'white' }}
+                      >
                         <Text whiteSpace="nowrap" fontSize="1.5em">
                           من الكتاب
                         </Text>
@@ -387,7 +403,11 @@ function Book({ getBook }) {
                   )}
                   {data.press_external_link && (
                     <AccordionItem>
-                      <AccordionButton>
+                      <AccordionButton
+                        bg="#000"
+                        color="white"
+                        _hover={{ bg: '#000', color: 'white' }}
+                      >
                         <Text whiteSpace="nowrap" fontSize="1.5em">
                           في الصحافة
                         </Text>
@@ -405,7 +425,11 @@ function Book({ getBook }) {
                     </AccordionItem>
                   )}
                   <AccordionItem>
-                    <AccordionButton>
+                    <AccordionButton
+                      bg="#000"
+                      color="white"
+                      _hover={{ bg: '#000', color: 'white' }}
+                    >
                       <Text whiteSpace="nowrap" fontSize="1.5em">
                         معلومات الكتاب
                       </Text>
