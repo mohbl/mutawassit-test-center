@@ -37,14 +37,12 @@ function Blog({ getArticles }) {
   const breakpointColumnsObj = {
     default: 3,
     1300: 3,
-    1100: 2,
-    1000: 1,
+    900: 2,
+    600: 1,
   };
 
   return (
-    <Box
-        pr="10%" pl="10%" mt="100px" mb="100px"
-    >
+    <Box px="8%" mt="100px" mb="100px">
       <Helmet>
         <title>دراسات ميسك</title>
       </Helmet>
@@ -54,55 +52,59 @@ function Blog({ getArticles }) {
         </Box>
       )}
       {/* <SimpleGrid m="8" columns={[1, 1, 3, 3]} spacing="8"> */}
-      <Masonry
-        breakpointCols={breakpointColumnsObj}
-        className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
-      >
+      <Masonry breakpointCols={breakpointColumnsObj}>
         {data &&
           data.articles.map(article => (
-            <Link to={`/singlePost?id=${article.id}`}>
-              <Box
-                bg={bg[colorMode]}
-                w="100%"
-                shadow="lg"
-                // p="2"
-                pb="4"
-                mt="8"
-                cursor="pointer"
-              >
-                <Box>
-                  <Skeleton w="100%" isLoaded={loaded}>
-                    <Image
-                      loading="lazy"
-                      w="100%"
-                      onLoad={imageLoaded}
-                      src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
-                    ></Image>
-                  </Skeleton>
-                  <Text
-                    m="2"
-                    mt="4"
-                    fontSize="lg"
-                    fontFamily="diodrum-med !important"
-                  >
-                    {' '}
-                    {article.author}{' '}
-                  </Text>
-                  <Heading fontFamily="diodrum-med !important" m="2" size="lg">
-                    {article.title}
-                  </Heading>
-                  <Box
-                    m="2"
-                    fontSize="lg"
-                    className="event-body"
-                    dangerouslySetInnerHTML={{
-                      __html: article.body,
-                    }}
-                  ></Box>
+            <Box mx=".8em" mb="2em">
+              <Link to={`/singlePost?id=${article.id}`}>
+                <Box
+                  bg={bg[colorMode]}
+                  w="100%"
+                  shadow="lg"
+                  // p="2"
+                  pb="4"
+                  mt="8"
+                  cursor="pointer"
+                >
+                  <Box>
+                    <Skeleton w="100%" isLoaded={loaded}>
+                      <Image
+                        loading="lazy"
+                        w="100%"
+                        onLoad={imageLoaded}
+                        src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
+                      ></Image>
+                    </Skeleton>
+                    <Box p="1em">
+                      <Text
+                        m="2"
+                        mt="4"
+                        fontSize="lg"
+                        fontFamily="diodrum-med !important"
+                      >
+                        {' '}
+                        {article.author}{' '}
+                      </Text>
+                      <Heading
+                        fontFamily="diodrum-med !important"
+                        m="2"
+                        size="lg"
+                      >
+                        {article.title}
+                      </Heading>
+                      <Box
+                        m="2"
+                        fontSize="lg"
+                        className="event-body event-body__articles"
+                        dangerouslySetInnerHTML={{
+                          __html: article.body,
+                        }}
+                      />
+                    </Box>
+                  </Box>
                 </Box>
-              </Box>
-            </Link>
+              </Link>
+            </Box>
           ))}
       </Masonry>
       {/* </SimpleGrid> */}

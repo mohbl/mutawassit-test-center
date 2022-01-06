@@ -175,8 +175,7 @@ export default function Footer() {
             <Box w="min-content">
               {countriesBoxOne.map(([code, country]) => (
                 <Link
-                  // style={{ margin: '50px !important' }}
-                  //   onClick={handleToggle}
+                  key={code}
                   to={`/books?category=دراسات المركز&countryCode=${code}`}
                 >
                   <Box>
@@ -197,6 +196,7 @@ export default function Footer() {
             <Box>
               {countriesBoxTwo.map(([code, country]) => (
                 <Link
+                  key={code}
                   // style={{ margin: '50px !important' }}
                   //   onClick={handleToggle}
                   to={`/books?category=دراسات المركز&countryCode=${code}`}

@@ -11,6 +11,7 @@ import {
   MenuList,
   MenuItem,
   Heading,
+  useMediaQuery,
 } from '@chakra-ui/core';
 // import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link, NavLink } from 'react-router-dom';
@@ -22,36 +23,57 @@ import { countires } from './countires';
 
 export default function Navbar() {
   const [show, setShow] = React.useState(false);
+  const [isLargerThan715] = useMediaQuery('(min-width: 715px)');
+  const [isLargerThan430] = useMediaQuery('(min-width: 430px)');
   const handleToggle = () => setShow(!show);
   //   console.log(countires);
+
+  const countriesHalfIndex = parseInt(countires.length / 2);
+  const countriesQuarterIndex = parseInt(countires.length / 3) - 1;
+  console.log('countriesQuarterIndex', countriesQuarterIndex);
+
+  // Small
+  const countriesBoxOne = countires.filter(
+    (c, idx) => idx <= countriesHalfIndex
+  );
+  const countriesBoxTwo = countires.filter(
+    (c, idx) => idx > countriesHalfIndex
+  );
+
+  // Large
+  const largeCountriesBoxOne = countires.filter(
+    (c, idx) => idx <= countriesQuarterIndex
+  );
+  const largeCountriesBoxTwo = countires.filter(
+    (c, idx) =>
+      idx > countriesQuarterIndex && idx <= countriesQuarterIndex * 2 + 1
+  );
+  const largeCountriesBoxThree = countires.filter(
+    (c, idx) => idx > countriesQuarterIndex * 2 + 1
+  );
 
   const { colorMode } = useColorMode();
 
   const bg = { light: '#f5f2ef', dark: '#1a202c' };
   const filter = { light: '#000000', dark: '#1a202c' };
-  const onOpened = () =>{
-    document.body.style.overflow = "hidden";
-  }
+  const onOpened = () => {
+    document.body.style.overflow = 'hidden';
+  };
 
-  const onClosed = () =>{
-    document.body.style.overflow = "";
-  }
+  const onClosed = () => {
+    document.body.style.overflow = '';
+  };
   return (
     <Flex
-      h="70px"
       borderBottom="1px solid #ddd"
       className={'filterNavTop'}
       as="nav"
       align="center"
-      //   justify="space-between"
-
-      //   padding="0.5rem"
-      //   shadow="lg"
-      //   color={color[colorMode]}
       bg={bg[colorMode]}
       overflowX={{ base: 'auto', sm: 'auto' }}
       wrap={['nowrap', 'nowrap', 'wrap', 'wrap']}
       direction={['row', 'row', 'row', 'row']}
+      px="1.5em"
     >
       <NavLink
         activeStyle={{
@@ -69,6 +91,9 @@ export default function Navbar() {
             fontWeight="bold"
             ml="4"
             mr="4"
+            py=".5em"
+            pb="1em"
+            px="1em"
             fontSize={['lg', '2xl']}
             fontFamily="diodrum-med !important"
           >
@@ -77,19 +102,16 @@ export default function Navbar() {
         </Flex>
       </NavLink>
 
-      <Menu
-          onOpen={onOpened}
-          onClose={onClosed}
-      >
+      <Menu onOpen={onOpened} onClose={onClosed}>
         <MenuButton
           display="block"
           // px={4}
           // py={2}
           whiteSpace="nowrap"
           as={Text}
-          //   mt={{ base: 4, md: 0 }}
-          ml={8}
-          mr="8"
+          py=".5em"
+          pb=".8em"
+          px="1em"
           fontSize={['lg', '2xl']}
           fontWeight="bold"
           transition="all 0.2s"
@@ -105,41 +127,176 @@ export default function Navbar() {
               marginRight: 3,
               marginTop: 5,
             }}
-          ></FaChevronDown>{' '}
+          />
         </MenuButton>
-        <MenuList w="100vw" color="white" bg={filter[colorMode]} shadow="xl">
+        <MenuList
+          w="100vw"
+          color="white"
+          bg={filter[colorMode]}
+          shadow="xl"
+          py="1em"
+        >
           <Flex
-            pl={['5%', '5%', '20%', '20%']}
-            pr={['5%', '5%', '20%', '20%']}
-            // h="500px"
-            flexWrap="wrap"
-            // columns={5}
-            // overflow="scroll"
+            px={['5%', '5%', '20%', '20%']}
+            gap={isLargerThan430 ? '5em' : '2em'}
           >
-            {countires.map(([code, country]) => (
-              <Link
-                // style={{ margin: '50px !important' }}
-                onClick={handleToggle}
-                to={`/books?category=دراسات المركز&countryCode=${code}`}
-              >
-                <Box>
-                  <MenuItem
-                    _focus={{ bg: 'white', color: 'black' }}
-                    _hover={{ bg: 'white', color: 'black' }}
-                    fontSize="xl"
-                  >
-                    <Box>
-                      <Text
-                        fontFamily="diodrum-med !important"
-                        fontSize={['md', 'md', 'lg', 'lg']}
-                      >
-                        {country}
-                      </Text>
-                    </Box>
-                  </MenuItem>
+            {isLargerThan715 && (
+              <>
+                <Box w="min-content">
+                  {largeCountriesBoxOne.map(([code, country]) => (
+                    <Link
+                      key={code}
+                      onClick={handleToggle}
+                      to={`/books?category=دراسات المركز&countryCode=${code}`}
+                    >
+                      <Box>
+                        <MenuItem
+                          _focus={{ bg: 'white', color: 'black' }}
+                          _hover={{ bg: 'white', color: 'black' }}
+                          fontSize="xl"
+                          pb=".5em"
+                          px="1em"
+                        >
+                          <Box>
+                            <Text
+                              fontFamily="diodrum-med !important"
+                              fontSize={['md', 'md', 'lg', 'lg']}
+                              textAlign="right"
+                            >
+                              {country}
+                            </Text>
+                          </Box>
+                        </MenuItem>
+                      </Box>
+                    </Link>
+                  ))}
                 </Box>
-              </Link>
-            ))}
+                <Box w="min-content">
+                  {largeCountriesBoxTwo.map(([code, country]) => (
+                    <Link
+                      key={code}
+                      // style={{ margin: '50px !important' }}
+                      onClick={handleToggle}
+                      to={`/books?category=دراسات المركز&countryCode=${code}`}
+                    >
+                      <Box>
+                        <MenuItem
+                          _focus={{ bg: 'white', color: 'black' }}
+                          _hover={{ bg: 'white', color: 'black' }}
+                          fontSize="xl"
+                          pb=".5em"
+                          px="1em"
+                        >
+                          <Box>
+                            <Text
+                              fontFamily="diodrum-med !important"
+                              fontSize={['md', 'md', 'lg', 'lg']}
+                              textAlign="right"
+                            >
+                              {country}
+                            </Text>
+                          </Box>
+                        </MenuItem>
+                      </Box>
+                    </Link>
+                  ))}
+                </Box>
+                <Box w="min-content">
+                  {largeCountriesBoxThree.map(([code, country]) => (
+                    <Link
+                      key={code}
+                      // style={{ margin: '50px !important' }}
+                      onClick={handleToggle}
+                      to={`/books?category=دراسات المركز&countryCode=${code}`}
+                    >
+                      <Box>
+                        <MenuItem
+                          _focus={{ bg: 'white', color: 'black' }}
+                          _hover={{ bg: 'white', color: 'black' }}
+                          fontSize="xl"
+                          pb=".5em"
+                          px="1em"
+                        >
+                          <Box>
+                            <Text
+                              fontFamily="diodrum-med !important"
+                              fontSize={['md', 'md', 'lg', 'lg']}
+                              textAlign="right"
+                            >
+                              {country}
+                            </Text>
+                          </Box>
+                        </MenuItem>
+                      </Box>
+                    </Link>
+                  ))}
+                </Box>
+              </>
+            )}
+            {!isLargerThan715 && (
+              <>
+                <Box w="min-content">
+                  {countriesBoxOne.map(([code, country]) => (
+                    <Link
+                      key={code}
+                      // style={{ margin: '50px !important' }}
+                      onClick={handleToggle}
+                      to={`/books?category=دراسات المركز&countryCode=${code}`}
+                    >
+                      <Box>
+                        <MenuItem
+                          _focus={{ bg: 'white', color: 'black' }}
+                          _hover={{ bg: 'white', color: 'black' }}
+                          fontSize="xl"
+                          pb=".5em"
+                          px="1em"
+                        >
+                          <Box>
+                            <Text
+                              fontFamily="diodrum-med !important"
+                              fontSize={['md', 'md', 'lg', 'lg']}
+                              textAlign="right"
+                            >
+                              {country}
+                            </Text>
+                          </Box>
+                        </MenuItem>
+                      </Box>
+                    </Link>
+                  ))}
+                </Box>
+                <Box w="min-content">
+                  {countriesBoxTwo.map(([code, country]) => (
+                    <Link
+                      key={code}
+                      // style={{ margin: '50px !important' }}
+                      onClick={handleToggle}
+                      to={`/books?category=دراسات المركز&countryCode=${code}`}
+                    >
+                      <Box>
+                        <MenuItem
+                          _focus={{ bg: 'white', color: 'black' }}
+                          _hover={{ bg: 'white', color: 'black' }}
+                          fontSize="xl"
+                          pb=".5em"
+                          px="1em"
+                        >
+                          <Box>
+                            <Text
+                              fontFamily="diodrum-med !important"
+                              fontSize={['md', 'md', 'lg', 'lg']}
+                              textAlign="right"
+                            >
+                              {country}
+                            </Text>
+                          </Box>
+                        </MenuItem>
+                      </Box>
+                    </Link>
+                  ))}
+                </Box>
+              </>
+            )}
           </Flex>
         </MenuList>
       </Menu>

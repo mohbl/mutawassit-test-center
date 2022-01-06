@@ -209,6 +209,26 @@ h6 {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.event-body__articles p,
+.event-body__articles table,
+.event-body__articles ol,
+.event-body__articles ul,
+.event-body__articles h2,
+.event-body__articles blockquote,
+.event-body__articles div {
+  display: none;
+}
+
+.event-body__articles p:first-of-type,
+.event-body__articles > h2:first-child,
+.event-body__articles > div:first-child {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
 .book-description {
   display: -webkit-box;
   -webkit-line-clamp: 5;
