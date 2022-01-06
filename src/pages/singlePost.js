@@ -49,19 +49,6 @@ function SingleBlog({ getArticle }) {
     getData();
   }, [id]);
   const ar = data && data.article_body;
-  //   const ar = `
-  //   <p id="main">
-  //     <span class="prettify">
-  //       keep me and make me pretty!
-  //     </span>
-  //   </p>
-  // `;
-  //   data &&
-  //     parse(ar.toString(), {
-  //       replace: domNode => {
-  //         console.log(domNode);
-  //       },
-  //     });
 
   const breakPoints = [
     { width: 1, itemsToShow: 1 },
@@ -76,7 +63,7 @@ function SingleBlog({ getArticle }) {
     { width: 1150, itemsToShow: 4, itemsToScroll: 4 },
   ];
   return (
-    <Box mt="100px">
+    <Box mt="100px" p="1em">
       {data && (
         <Box>
           <Helmet>
@@ -95,26 +82,9 @@ function SingleBlog({ getArticle }) {
             <Text fontSize="2xl" fontFamily="diodrum-med !important">
               {data.sub_title}
             </Text>
-
-            {/* <Link key={data.author_id} to={`/author/${data.author_id}`}>
-              <Text
-                fontFamily="diodrum-med !important"
-                d="inline"
-                _hover={{
-                  bg: 'yellow.300',
-                  color: 'black',
-                  textDecoration: 'underline',
-                }}
-                m="2"
-                fontSize="2xl"
-                color="gray.500"
-              >
-                {data.author}
-              </Text>
-            </Link> */}
           </Box>
           <Flex justifyContent="center">
-            <Box mb="8" w={["100%","85%"]}>
+            <Box mb="8">
               <Skeleton w="100%" isLoaded={loaded}>
                 <Image
                   loading="lazy"
@@ -137,26 +107,28 @@ function SingleBlog({ getArticle }) {
                 position="sticky"
                 top="0"
                 display={['block', 'block', 'block', 'block']}
-                textAlign={['center','start','start','start']}
+                textAlign={['center', 'start', 'start', 'start']}
               >
                 <Box mb="8">
                   {data.author_image && (
-    //                 <Box
-    //                   mt="2"
-    //                   mb="4"
-    //                   style={{
-    //                     background: `
-    // url('${process.env.REACT_APP_STORAGE}/${data.author_image}')`,
-    //                   }}
-    //                   className="detail-image"
-    //                   w="80%"
-    //                   h="270px"
-    //                 ></Box>
-                      <img
-                          mt="2"
-                          className="detail-image"
-                          mb="4"
-                          w="70%" src={`${process.env.REACT_APP_STORAGE}/${data.author_image}`}/>
+                    //                 <Box
+                    //                   mt="2"
+                    //                   mb="4"
+                    //                   style={{
+                    //                     background: `
+                    // url('${process.env.REACT_APP_STORAGE}/${data.author_image}')`,
+                    //                   }}
+                    //                   className="detail-image"
+                    //                   w="80%"
+                    //                   h="270px"
+                    //                 ></Box>
+                    <img
+                      mt="2"
+                      className="detail-image"
+                      mb="4"
+                      w="70%"
+                      src={`${process.env.REACT_APP_STORAGE}/${data.author_image}`}
+                    />
                   )}
                   <Heading mb="4" fontFamily="diodrum-med !important" size="md">
                     {data.author}
@@ -268,32 +240,34 @@ function SingleBlog({ getArticle }) {
                 // itemsToShow={3}
               >
                 {data.books.map(book => (
-                  <Link key={book.id} to={`/book/${book.id}`}>
-                    <Box w="350px" mb="4" pb="4" cursor="pointer">
-                      <Image
-                        loading="lazy"
-                        w="225px"
-                        h="350px"
-                        m="0 auto"
-                        shadow="lg"
-                        src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
-                      ></Image>
-                      <Box mt="4" textAlign="center">
-                        <Text
-                          color="white"
-                          fontFamily="diodrum-med !important"
-                          fontWeight="500"
-                          fontSize="xl"
-                          mb="8"
-                        >
-                          {book.title}
-                        </Text>
-                        {/* <Text fontSize="md">{book.sub_title}</Text>
+                  <Box>
+                    <Link key={book.id} to={`/book/${book.id}`}>
+                      <Box mb="4" pb="4" cursor="pointer">
+                        <Image
+                          loading="lazy"
+                          w="225px"
+                          h="350px"
+                          m="0 auto"
+                          shadow="lg"
+                          src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
+                        ></Image>
+                        <Box mt="4" textAlign="center">
+                          <Text
+                            color="white"
+                            fontFamily="diodrum-med !important"
+                            fontWeight="500"
+                            fontSize="xl"
+                            mb="8"
+                          >
+                            {book.title}
+                          </Text>
+                          {/* <Text fontSize="md">{book.sub_title}</Text>
                         <Text fontSize="sm">{book.author}</Text>
-                        <Text fontWeight="bold">${book.price}</Text> */}
+                      <Text fontWeight="bold">${book.price}</Text> */}
+                        </Box>
                       </Box>
-                    </Box>
-                  </Link>
+                    </Link>
+                  </Box>
                 ))}
               </Carousel>
             </Box>
@@ -330,16 +304,14 @@ function SingleBlog({ getArticle }) {
                 {data.maitres.map(article => (
                   <a href={`/singlePost?id=${article.id}`}>
                     <Box
-                        bg="white"
-
-                        // p="2"
-                        pb="4"
-                        m="4"
-                        w={['100',"100",'100',"100","355px"]}
-
-                        m="0 auto"
-                        shadow="lg"
-                        cursor="pointer"
+                      bg="white"
+                      // p="2"
+                      pb="4"
+                      m="4"
+                      w={['100', '100', '100', '100', '355px']}
+                      m="0 auto"
+                      shadow="lg"
+                      cursor="pointer"
                     >
                       <Box>
                         <Skeleton w="100%" isLoaded={loaded}>

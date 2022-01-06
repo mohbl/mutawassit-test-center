@@ -17,7 +17,7 @@ import Terms from './pages/footer/terms';
 import Four from './pages/404';
 // import Books from './pages/books';
 import BooksByCategory from './pages/booksByCategory';
-import Book from './pages/bookBi';
+import Book from './pages/book';
 import Standards from './pages/standards';
 import Enthropology from './pages/enthropology';
 import CultureStudies from './pages/cultureStudies';

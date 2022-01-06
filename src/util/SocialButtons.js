@@ -5,7 +5,7 @@ import {
   useBreakpoint,
   useColorMode,
   useMediaQuery,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import {
   FaFacebook,
   FaTwitter,
@@ -16,6 +16,7 @@ import {
   FaInstagram,
 } from 'react-icons/fa';
 import { IoLogoWhatsapp } from 'react-icons/io';
+import { useBreakpointValue } from '@chakra-ui/react';
 
 export default function SocialButtons() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -27,7 +28,7 @@ export default function SocialButtons() {
   return (
     <Box
       style={{ position: 'fixed', top: '25%', right: 0 }}
-      d={isSmallerThan590 ? 'none' : 'block'}
+      d={{ base: 'none', md: 'block' }}
     >
       <Flex direction="column">
         <a

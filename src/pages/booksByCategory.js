@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Box, Heading } from '@chakra-ui/core';
+import { Box, Heading } from '@chakra-ui/react';
 import { Helmet } from 'react-helmet';
 
 import SingleCatBooks from '../components/books/SingleCatBooks';
