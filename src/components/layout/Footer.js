@@ -25,7 +25,7 @@ import News from './FooterNewsLetter';
 import { countires } from '../books/countires';
 
 export default function Footer() {
-  const [isSmallerThan770] = useMediaQuery('(max-width: 770px)');
+  const [isSmallerThan850] = useMediaQuery('(max-width: 850px)');
   const [isSmallerThan590] = useMediaQuery('(max-width: 590px)');
 
   const countriesHalfIndex = parseInt(countires.length / 2);
@@ -43,7 +43,7 @@ export default function Footer() {
         py="2em"
         px={isSmallerThan590 ? '2em' : '3.5em'}
         justifyContent="space-around"
-        direction={isSmallerThan770 ? 'column' : 'row'}
+        direction={isSmallerThan850 ? 'column' : 'row'}
       >
         <Box>
           <Heading

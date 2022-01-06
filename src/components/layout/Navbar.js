@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Drawer,
   DrawerBody,
@@ -6,57 +6,43 @@ import {
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
-  DrawerCloseButton,
   Box,
   Heading,
   Flex,
-  Badge,
   Text,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  useToast,
   useDisclosure,
   Image,
   useColorMode,
-  Input,
-  Button,
-  Stack,
-  useColorModeValue,
   useMediaQuery,
-} from '@chakra-ui/core';
-// import { ChevronDownIcon } from '@chakra-ui/icons';
-import { Link } from 'react-router-dom';
-import { FaMoon, FaSun } from 'react-icons/fa';
+} from '@chakra-ui/react';
+import { connect } from 'react-redux';
+import { Link, useRouteMatch } from 'react-router-dom';
+import { FaMoon, FaSun, FaChevronUp } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
-import { FaChevronUp } from 'react-icons/fa';
-import {
-  Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionIcon,
-  AccordionPanel,
-} from '@chakra-ui/core';
 
-// import Up from '../../util/Up';
 import logo from '../../images/center-logo.png';
 
-export default function Navbar(props) {
+function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
-  const [isSmallerThan1230] = useMediaQuery('(max-width: 1230px)');
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isSmallerThan1065] = useMediaQuery('(max-width: 1065px)');
+  let { path, url } = useRouteMatch();
+
+  const [show, setShow] = useState(false);
+  const btnRef = useRef();
 
   const bg = { light: '#000000', dark: '#1a202c' };
   const color = { light: 'white', dark: 'white' };
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [show, setShow] = React.useState(false);
   const handleToggle = () => setShow(!show);
-  const btnRef = React.useRef();
+
   return (
     <>
       <Flex
-        className="navbar"
         style={{ position: 'fixed', width: '100%', zIndex: '99', bottom: 0 }}
         as="nav"
         align="center"
@@ -64,103 +50,81 @@ export default function Navbar(props) {
         wrap="wrap"
         padding="0.5rem"
         borderTop="1px solid white"
-        //   shadow="lg"
         color={color[colorMode]}
         bg={bg[colorMode]}
-        {...props}
       >
         <Flex align="center" mr={5}>
-          <Link to="/home">
-            <Heading
-              cursor="pointer"
-              fontWeight="bold"
-              as="h1"
-              fontSize="36px"
-              letterSpacing={'-.1rem'}
-            >
-              <Image
-                loading="lazy"
-                w="220px"
-                className="main-logo"
-                src={logo}
-              ></Image>
-            </Heading>
+          <Link to="/">
+            <Image
+              mr="20%"
+              w="180px"
+              // h="40px"
+              className="main-logo"
+              src={logo}
+            />
           </Link>
         </Flex>
 
-        <Box
-          display={isSmallerThan1230 ? 'block' : 'none'}
-          onClick={() => {
-            document.body.style.overflow = 'hidden';
-            onOpen();
-          }}
-          cursor="pointer"
-        >
+        <Box display={isSmallerThan1065 ? 'block' : 'none'} onClick={onOpen}>
           <GiHamburgerMenu style={{ marginLeft: 10, fontSize: 28 }} />
         </Box>
 
         <Box
-          display={isSmallerThan1230 ? 'none' : 'flex'}
-          width={{ base: 'full', md: 'auto' }}
-          alignItems="center"
+          display={isSmallerThan1065 ? 'none' : 'flex'}
           textAlign="center"
           justifyContent="flex-end"
+          alignItems="center"
           flexGrow={1}
         >
+          {/* <MenuItems>JE SUIS COMMERÇANT</MenuItems> */}
           <Text
-            mt={{ base: 4, md: 0 }}
-            ml="1.6vw"
-            display="block"
-            fontWeight="bold"
-            fontSize="lg"
             fontFamily="diodrum-bold !important"
+            fontWeight="bold"
+            ml="1.5vw"
+            display="block"
+            fontSize="18px"
           >
             <Link onClick={handleToggle} to="/about">
               عن المركز
             </Link>
           </Text>
           <Text
-            mt={{ base: 4, md: 0 }}
-            ml="1.6vw"
-            display="block"
-            fontWeight="bold"
-            fontSize="lg"
             fontFamily="diodrum-bold !important"
+            fontWeight="bold"
+            ml="1.5vw"
+            display="block"
+            fontSize="18px"
           >
             <Link onClick={handleToggle} to="/enthropology">
               المختار الإنثربولوجي
             </Link>
           </Text>
           <Text
-            mt={{ base: 4, md: 0 }}
-            ml="1.6vw"
-            display="block"
-            fontWeight="bold"
-            fontSize="lg"
             fontFamily="diodrum-bold !important"
+            fontWeight="bold"
+            ml="1.5vw"
+            display="block"
+            fontSize="18px"
           >
             <Link onClick={handleToggle} to="/cultureStudies">
               دراسات ثقافية
             </Link>
           </Text>
           <Text
-            mt={{ base: 4, md: 0 }}
-            ml="1.6vw"
-            display="block"
-            fontWeight="bold"
-            fontSize="lg"
             fontFamily="diodrum-bold !important"
+            fontWeight="bold"
+            ml="1.5vw"
+            display="block"
+            fontSize="18px"
           >
             <Link onClick={handleToggle} to="/books?category=دراسات المركز">
               كتب المركز
             </Link>
           </Text>
-
           <Text
             fontFamily="diodrum-bold !important"
             fontWeight="bold"
-            mt={{ base: 4, md: 0 }}
-            ml="1.6vw"
+            ml="1.5vw"
             display="block"
             fontSize="18px"
           >
@@ -171,8 +135,7 @@ export default function Navbar(props) {
           <Text
             fontFamily="diodrum-bold !important"
             fontWeight="bold"
-            mt={{ base: 4, md: 0 }}
-            ml="1.6vw"
+            ml="1.5vw"
             display="block"
             fontSize="18px"
           >
@@ -181,10 +144,9 @@ export default function Navbar(props) {
             </Link>
           </Text>
 
-          {/* <ShopBadge></ShopBadge> */}
           <Box
             cursor="pointer"
-            mx="1vw"
+            mx="1.5vw"
             mt={['6', '6', '0', '0']}
             fontSize="24px"
             onClick={toggleColorMode}
@@ -197,25 +159,21 @@ export default function Navbar(props) {
       </Flex>
 
       {/*Moblile nav*/}
+
       <Drawer
+        // style={{dir:"rtl"}}
+
         isOpen={isOpen}
         placement="right"
-        onClose={() => {
-          onClose();
-          document.body.style.overflow = '';
-        }}
+        onClose={onClose}
+        finalFocusRef={btnRef}
       >
-        <DrawerOverlay style={{ background: 'rgba(0, 0, 0, .5)' }} />
-        <DrawerContent
-          color={color[colorMode]}
-          bg={bg[colorMode]}
-          style={{ maxWidth: '318px' }}
-          p="2em"
-        >
+        <DrawerOverlay />
+        <DrawerContent color={color[colorMode]} bg={bg[colorMode]}>
           {/*<DrawerCloseButton/>*/}
           <DrawerHeader>
             <Flex wrap={'nowrap'} style={{ justifyContent: 'space-between' }}>
-              <Link to="/">
+              <Link onClick={onClose} to="/">
                 <Heading
                   cursor="pointer"
                   fontWeight="bold"
@@ -238,61 +196,60 @@ export default function Navbar(props) {
             </Flex>
           </DrawerHeader>
 
-          <DrawerBody mt="2em">
+          <DrawerBody>
             <Text
-              mt={{ base: 4, md: 0 }}
-              ml="1.6vw"
-              display="block"
-              fontWeight="bold"
-              fontSize="lg"
               fontFamily="diodrum-bold !important"
+              fontWeight="bold"
+              ml="1.5vw"
+              mb=".5em"
+              display="block"
+              fontSize="18px"
             >
               <Link onClick={handleToggle} to="/about">
                 عن المركز
               </Link>
             </Text>
             <Text
-              mt={8}
-              ml="1.6vw"
-              display="block"
-              fontWeight="bold"
-              fontSize="lg"
               fontFamily="diodrum-bold !important"
+              fontWeight="bold"
+              ml="1.5vw"
+              mb=".5em"
+              display="block"
+              fontSize="18px"
             >
               <Link onClick={handleToggle} to="/enthropology">
                 المختار الإنثربولوجي
               </Link>
             </Text>
             <Text
-              mt={8}
-              ml="1.6vw"
-              display="block"
-              fontWeight="bold"
-              fontSize="lg"
               fontFamily="diodrum-bold !important"
+              fontWeight="bold"
+              ml="1.5vw"
+              mb=".5em"
+              display="block"
+              fontSize="18px"
             >
               <Link onClick={handleToggle} to="/cultureStudies">
                 دراسات ثقافية
               </Link>
             </Text>
             <Text
-              mt={8}
-              ml="1.6vw"
-              display="block"
-              fontWeight="bold"
-              fontSize="lg"
               fontFamily="diodrum-bold !important"
+              fontWeight="bold"
+              ml="1.5vw"
+              mb=".5em"
+              display="block"
+              fontSize="18px"
             >
               <Link onClick={handleToggle} to="/books?category=دراسات المركز">
                 كتب المركز
               </Link>
             </Text>
-
             <Text
               fontFamily="diodrum-bold !important"
               fontWeight="bold"
-              mt={8}
-              ml="1.6vw"
+              ml="1.5vw"
+              mb=".5em"
               display="block"
               fontSize="18px"
             >
@@ -303,8 +260,8 @@ export default function Navbar(props) {
             <Text
               fontFamily="diodrum-bold !important"
               fontWeight="bold"
-              mt={8}
-              ml="1.6vw"
+              ml="1.5vw"
+              mb=".5em"
               display="block"
               fontSize="18px"
             >
@@ -318,3 +275,5 @@ export default function Navbar(props) {
     </>
   );
 }
+
+export default Navbar;
