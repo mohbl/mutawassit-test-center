@@ -1,5 +1,11 @@
 import React from 'react';
-import { Box, Flex, useColorMode } from '@chakra-ui/core';
+import {
+  Box,
+  Flex,
+  useBreakpoint,
+  useColorMode,
+  useMediaQuery,
+} from '@chakra-ui/core';
 import {
   FaFacebook,
   FaTwitter,
@@ -13,20 +19,21 @@ import { IoLogoWhatsapp } from 'react-icons/io';
 
 export default function SocialButtons() {
   const { colorMode, toggleColorMode } = useColorMode();
+  const [isSmallerThan590] = useMediaQuery('(max-width: 590px)');
 
   const bg = { light: '#fff', dark: '#1a202c' };
   const bgIcon = { light: '#000', dark: '#fff' };
   const color = { light: 'white', dark: 'black' };
   return (
     <Box
-      display={{ base: 'none', md: 'block' }}
-      style={{ position: 'fixed', zIndex: '99', top: '25%', right: 0 }}
+      style={{ position: 'fixed', top: '25%', right: 0 }}
+      d={isSmallerThan590 ? 'none' : 'block'}
     >
       <Flex direction="column">
         <a
           href="https://www.facebook.com/%D9%85%D9%8A%D8%B3%D9%83-MISC-109172068120589"
           //   className="social-href "
-            target="_blank"
+          target="_blank"
           style={{ backgroundColor: bgIcon[colorMode] }}
         >
           <Box
