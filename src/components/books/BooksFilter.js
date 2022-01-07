@@ -102,7 +102,7 @@ export default function Navbar() {
         </Flex>
       </NavLink>
 
-      <Menu onOpen={onOpened} onClose={onClosed}>
+      <Menu>
         <MenuButton
           display="block"
           // px={4}
@@ -115,8 +115,6 @@ export default function Navbar() {
           fontSize={['lg', '2xl']}
           fontWeight="bold"
           transition="all 0.2s"
-          // _hover={{ bg: 'gray.100' }}
-          // _focus={{ outline: 0, boxShadow: 'outline' }}
           fontFamily="diodrum-med !important"
         >
           البلدان
