@@ -19,6 +19,7 @@ import {
   useColorMode,
   useMediaQuery,
 } from '@chakra-ui/react';
+import { useBreakpointValue } from '@chakra-ui/core';
 import { connect } from 'react-redux';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { FaMoon, FaSun, FaChevronUp } from 'react-icons/fa';
@@ -40,10 +41,22 @@ function Navbar() {
 
   const handleToggle = () => setShow(!show);
 
+  const isSmallScreen = useBreakpointValue({ base: true, md: false });
+
   return (
     <>
       <Flex
-        style={{ position: 'fixed', width: '100%', zIndex: '99', bottom: 0 }}
+        style={
+          !isSmallScreen
+            ? {
+                position: 'fixed',
+                width: '100%',
+                zIndex: '99',
+                bottom: 0,
+                right: 0,
+              }
+            : {}
+        }
         as="nav"
         align="center"
         justify="space-between"

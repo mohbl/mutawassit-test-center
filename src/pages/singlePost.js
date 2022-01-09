@@ -97,6 +97,7 @@ function SingleBlog({ getArticle }) {
           </Flex>
 
           <Grid
+            d={['block', 'block', 'grid', 'grid']}
             pr={['2%', '2%', '7%', '7%']}
             pl={['2%', '2%', '7%', '7%']}
             templateColumns={['1fr', '1fr', '0.5fr 2fr', '0.5fr 2fr']}

@@ -16,6 +16,7 @@ import {
   SimpleGrid,
   Heading,
 } from '@chakra-ui/react';
+import { useBreakpointValue } from '@chakra-ui/core';
 // import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -150,11 +151,13 @@ function Navbar({ getSearch }) {
   );
   const SearchBox = connectSearchBox(CustomSearchBox);
 
+  const navClassName = useBreakpointValue({ base: '', md: 'topNavbar' });
+
   return (
     <Flex
       h="70px"
+      className={navClassName}
       borderBottom="1px solid #ddd"
-      style={{ position: 'fixed', zIndex: 99, width: '100%', top: 0 }}
       as="nav"
       align="center"
       justify="space-between"

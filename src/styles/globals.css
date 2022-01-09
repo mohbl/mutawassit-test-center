@@ -304,6 +304,35 @@ h6 {
   width: auto;
 }
 
+.topNavbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
+
+.book-filter .headroom--unpinned {
+  transform: translateY(-270%) !important;
+}
+
+.book-filter .headroom--unfixed {
+  top: 0 !important;
+}
+
+.navbar .headroom--unpinned {
+  transform: translateY(100%) !important;
+}
+
+.scroll-top.headroom-wrapper,
+.navbar.headroom-wrapper {
+  height: 0px !important;
+}
+
+.scroll-top .headroom--unpinned {
+  transform: translateY(235%) !important;
+}
+
 @media only screen and (min-width: 1600px) {
   .main-logo {
     /* width: 500px !important; */

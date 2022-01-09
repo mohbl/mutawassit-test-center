@@ -7,17 +7,21 @@ import { BrowserRouter as Router } from 'react-router-dom';
 
 import store from './redux/store';
 import App from './App';
+import theme from './util/theme';
+import { ChakraProvider } from '@chakra-ui/react';
 
 const persistor = persistStore(store);
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Router>
-          <App />
-        </Router>
-      </PersistGate>
+      <ChakraProvider theme={theme}>
+        <PersistGate loading={null} persistor={persistor}>
+          <Router>
+            <App />
+          </Router>
+        </PersistGate>
+      </ChakraProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
