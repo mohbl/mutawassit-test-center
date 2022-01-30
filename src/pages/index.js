@@ -73,7 +73,11 @@ function Home({ getHome }) {
       </Box>
       <Box>
         <Box mb="2em" d="flex" justifyContent="center">
-          <Masonry breakpointCols={breakpointColumnsObj}>
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
             {data &&
               data.articles &&
               data.articles.map(article => (
@@ -118,7 +122,11 @@ function Home({ getHome }) {
           </Masonry>
         </Box>
         <Box d="flex" justifyContent="center">
-          <Masonry breakpointCols={breakpointColumns}>
+          <Masonry
+            breakpointCols={breakpointColumns}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
             {data &&
               data.books &&
               data.books.map(book => (
