@@ -80,7 +80,10 @@ function Home({ getHome }) {
           >
             {data &&
               data.articles &&
-              data.articles.map(article => (
+              data.articles.map(article => {
+                const articleBody = article.body.split('\n');
+                const body = articleBody[0] + '' + articleBody[1];
+
                 <Box mb="1.5em" mx={isSmallerThan500 ? '0' : '1em'}>
                   <Link to={`/singlePost?id=${article.id}`}>
                     <Box
@@ -110,15 +113,13 @@ function Home({ getHome }) {
                           fontSize="xl"
                           className="content books__content event-body"
                         >
-                          <Box
-                            dangerouslySetInnerHTML={{ __html: article.body }}
-                          />
+                          <Box dangerouslySetInnerHTML={{ __html: body }} />
                         </Box>
                       </Box>
                     </Box>
                   </Link>
-                </Box>
-              ))}
+                </Box>;
+              })}
           </Masonry>
         </Box>
         <Box d="flex" justifyContent="center">
