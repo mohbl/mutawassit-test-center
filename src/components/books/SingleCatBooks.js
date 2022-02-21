@@ -46,7 +46,6 @@ function CatBooks({ translate, country, category, getBooks }) {
           <Spinner size="xl" />
         </Box>
       )}
-
       <Masonry breakpointCols={breakpointColumns}>
         {data &&
           data.books &&
@@ -82,6 +81,11 @@ function CatBooks({ translate, country, category, getBooks }) {
               </Link>
             </Box>
           ))}
+        {data && data.books && data.books.length === 0 && (
+          <Text textAlign="center" fontSize="1.5rem">
+            لا يوجد كتاب حاليا
+          </Text>
+        )}
       </Masonry>
       {/* </SimpleGrid> */}
     </Box>

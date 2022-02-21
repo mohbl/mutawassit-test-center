@@ -122,8 +122,8 @@ export default function Navbar() {
               display: 'inline',
               fontSize: 15,
               marginRight: 3,
-              marginTop: 5,
             }}
+            mt={{ base: 0, md: 5 }}
           />
         </MenuButton>
         <MenuList

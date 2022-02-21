@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 
 export default function standards() {
   return (
-    <Box mt="100px" mb="100px">
+    <Box mt={['1.5em', '1.5em', '6em']} mb="100px">
       <Helmet>
         <title>منهجية ميسك</title>
       </Helmet>

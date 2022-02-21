@@ -63,7 +63,7 @@ function SingleBlog({ getArticle }) {
     { width: 1150, itemsToShow: 4, itemsToScroll: 4 },
   ];
   return (
-    <Box mt="100px" p="1em">
+    <Box mt={['1.5em', '1.5em', '6em']} p="1em">
       {data && (
         <Box>
           <Helmet>
@@ -134,6 +134,16 @@ function SingleBlog({ getArticle }) {
                   <Heading mb="4" fontFamily="diodrum-med !important" size="md">
                     {data.author}
                   </Heading>
+                  {data.author_optional && (
+                    <Heading
+                      mb="4"
+                      fontFamily="diodrum-med !important"
+                      size="md"
+                    >
+                      {data.author}
+                    </Heading>
+                  )}
+
                   {data.translator && (
                     <Heading fontFamily="diodrum-med !important" size="sm">
                       ترجمة: {data.translator}

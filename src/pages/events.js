@@ -42,7 +42,7 @@ function Blog({ getArticles }) {
   };
 
   return (
-    <Box pr="10%" pl="10%" mt="100px" mb="100px">
+    <Box pr="10%" pl="10%" mt={['1.5em', '1.5em', '6em']} mb="100px">
       <Helmet>
         <title>نشاطات ميسك</title>
       </Helmet>

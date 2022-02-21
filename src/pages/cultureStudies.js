@@ -42,7 +42,7 @@ function Blog({ getArticles }) {
   };
 
   return (
-    <Box px="8%" mt="100px" mb="100px">
+    <Box px="8%" mt={['1.5em', '1.5em', '6em']} mb="100px">
       <Helmet>
         <title>دراسات ميسك</title>
       </Helmet>

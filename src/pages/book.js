@@ -75,7 +75,7 @@ function Book({ getBook }) {
   };
 
   return (
-    <Box mt="160px">
+    <Box mt={['1.5em', '1.5em', '8em']}>
       {!data && (
         <Box textAlign="center">
           <Spinner size="xl" />
@@ -163,7 +163,7 @@ function Book({ getBook }) {
                   {data.sub_title}
                 </Text>
                 {data.author.map(author => (
-                  <Box key={author.id} d="inline-block">
+                  <Box key={author.id} d="inline-block" ml="1em">
                     <Link key={author.id} to={`/author/${author.id}`}>
                       <Text
                         _hover={{

@@ -170,8 +170,8 @@ export default function Footer() {
           >
             البلدان
           </Heading>
-          <Flex gap="2em">
-            <Box w="min-content">
+          <Flex>
+            <Box w="min-content" ml="2em">
               {countriesBoxOne.map(([code, country]) => (
                 <Link
                   key={code}
