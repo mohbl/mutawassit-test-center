@@ -23,6 +23,10 @@
     url('/src/fonts/DiodrumArabic-Semibold.ttf') format('truetype');
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   padding: 0;
@@ -195,12 +199,36 @@ h6 {
   border-radius: unset;
 }
 
+.books__content strong {
+  font-weight: 400;
+}
+
 .event-body {
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.event-body__articles p,
+.event-body__articles table,
+.event-body__articles ol,
+.event-body__articles ul,
+.event-body__articles h2,
+.event-body__articles blockquote,
+.event-body__articles div {
+  display: none;
+}
+
+.event-body__articles p:first-of-type,
+.event-body__articles > h2:first-child,
+.event-body__articles > div:first-child {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 3 !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
 .book-description {
   display: -webkit-box;
   -webkit-line-clamp: 5;
@@ -272,13 +300,37 @@ h6 {
 .my-masonry-grid {
   display: -webkit-box; /* Not needed if autoprefixing */
   display: -ms-flexbox; /* Not needed if autoprefixing */
-  display: flex;
-  margin-left: -30px; /* gutter size offset */
+  display: flex; /* gutter size offset */
   width: auto;
 }
-.my-masonry-grid_column {
-  padding-left: 30px; /* gutter size */
-  background-clip: padding-box;
+
+.topNavbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+}
+
+.book-filter .headroom--unpinned {
+  transform: translateY(-270%) !important;
+}
+
+.book-filter .headroom--unfixed {
+  top: 0 !important;
+}
+
+.navbar .headroom--unpinned {
+  transform: translateY(100%) !important;
+}
+
+.scroll-top.headroom-wrapper,
+.navbar.headroom-wrapper {
+  height: 0px !important;
+}
+
+.scroll-top .headroom--unpinned {
+  transform: translateY(235%) !important;
 }
 
 @media only screen and (min-width: 1600px) {
@@ -309,24 +361,24 @@ h6 {
     overflow-x: auto;
   }
 }
-@media only screen and (max-device-width: 480px){
-  .filterNavTop{
+/* @media only screen and (max-device-width: 480px) {
+  .filterNavTop {
     margin-top: -91px;
     width: 100%;
     z-index: 99;
     top: 70px;
   }
-  .detail-image{
+  .detail-image {
     width: 100% !important;
   }
 }
 
-@media only screen and (min-device-width: 480px){
-  .filterNavTop{
+@media only screen and (min-device-width: 480px) {
+  .filterNavTop {
     position: fixed;
     width: 100%;
     /*margin-top: -91px;*/
-    z-index: 99;
-    top: 70px;
-  }
-}
+/* z-index: 99;
+    top: 70px; */
+/*}
+} */

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ChakraProvider, CSSReset } from '@chakra-ui/core';
+import { CSSReset, useBreakpointValue } from '@chakra-ui/core';
 import { Switch, Route } from 'react-router-dom';
 
 //?pages
@@ -36,18 +36,24 @@ import Footer from './components/layout/Footer';
 import Up from './util/Up';
 import SocialButtons from './util/SocialButtons';
 import ScrollToTop from './util/ScrollToTop';
-import theme from './util/theme';
 
 import './styles/globals.css';
+import Headroom from 'react-headroom';
 
 function App(props) {
+  const isSmallScreen = useBreakpointValue({ base: true, md: false });
+  console.log('ISSMALLSCREEN', isSmallScreen);
   return (
-    <ChakraProvider theme={theme}>
+    <>
       <CSSReset />
-      <SocialButtons></SocialButtons>
-      <ScrollToTop></ScrollToTop>
-      <TopNavbar></TopNavbar>
-      <Navbar></Navbar>
+      <SocialButtons />
+      <ScrollToTop />
+      {isSmallScreen && (
+        <Headroom style={{ transition: 'all .5s ease-in-out 0s', zIndex: '2' }}>
+          <TopNavbar />
+        </Headroom>
+      )}
+      {!isSmallScreen && <TopNavbar />}
       <Switch>
         <Route title="index" exact path="/">
           <Index />
@@ -124,9 +130,27 @@ function App(props) {
           <Four />
         </Route>
       </Switch>
-      <Up></Up>
-      <Footer></Footer>
-    </ChakraProvider>
+      <Footer />
+      <Up />
+      {isSmallScreen && (
+        <Headroom
+          className="navbar"
+          style={{
+            position: 'fixed',
+            bottom: '0',
+            top: 'unset',
+            left: '0',
+            right: '0',
+            zIndex: '1',
+            transform: 'translate3d(0px, 0px, 0px)',
+            transition: 'all .5s ease-in-out 0s',
+          }}
+        >
+          <Navbar />
+        </Headroom>
+      )}
+      {!isSmallScreen && <Navbar />}
+    </>
   );
 }
 

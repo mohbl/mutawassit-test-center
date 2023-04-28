@@ -12,7 +12,7 @@ import {
   Input,
   Text,
   useToast,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { FaNewspaper } from 'react-icons/fa';
 import { connect } from 'react-redux';
 import { postNews } from '../../redux/actions/newsletterAction';
@@ -55,7 +55,7 @@ function BasicUsage({ postNews }) {
         h="50px"
         fontSize="28px"
       >
-        <FaNewspaper></FaNewspaper>
+        <FaNewspaper />
       </Box>
 
       <Modal size="xl" isOpen={isOpen} onClose={onClose}>

@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 // import aboutpic from '../images/about-min.jpg';
 export default function blog() {
   return (
-    <Box mt="100px" mb="100px">
+    <Box mt={['2em', '2em', '6em']} mb="100px">
       <Helmet>
         <title>عن ميسك</title>
       </Helmet>

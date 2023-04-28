@@ -4,16 +4,20 @@
   "private": true,
   "dependencies": {
     "@chakra-ui/core": "^1.0.0-next.6",
+    "@chakra-ui/react": "^1.6.5",
     "@chakra-ui/theme": "^1.0.0-next.6",
-    "@chakra-ui/theme-tools": "^1.1.9",
+    "@chakra-ui/theme-tools": "^1.0.0-next.6",
+    "@emotion/react": "^11.4.0",
+    "@emotion/styled": "^11.6.0",
     "algoliasearch": "4.6.0",
     "axios": "^0.21.0",
-    "framer-motion": "^2.9.4",
+    "framer-motion": "^3.10.6",
     "jsdom": "^17.0.0",
     "moment": "^2.29.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-elastic-carousel": "^0.8.1",
+    "react-headroom": "^3.2.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^3.0.0",
     "react-instantsearch-dom": "^6.8.2",
@@ -31,8 +35,8 @@
     "styled-components": "^5.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --openssl-legacy-provider start",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

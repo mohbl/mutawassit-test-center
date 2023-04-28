@@ -15,7 +15,8 @@ import {
   Image,
   SimpleGrid,
   Heading,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
+import { useBreakpointValue } from '@chakra-ui/core';
 // import { ChevronDownIcon } from '@chakra-ui/icons';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -30,9 +31,8 @@ import {
   connectStateResults,
 } from 'react-instantsearch-dom';
 
-import { FaSearch, FaDollarSign, FaHome } from 'react-icons/fa';
+import { FaHome, FaSearch } from 'react-icons/fa';
 import { AiOutlineShop } from 'react-icons/ai';
-
 import Newsletter from './NewsLetter';
 import hdark from '../../images/hdark.png';
 import hlight from '../../images/hlight.png';
@@ -51,34 +51,37 @@ function Navbar({ getSearch }) {
   const bgIcon = { light: '#000', dark: '#fff' };
   const color = { light: 'white', dark: 'black' };
 
-  const Books = ({ hits }) => (
-    <Box>
-      {hits[0] !== undefined && <Heading m="8">كتب</Heading>}
+  const Books = ({ hits }) => {
+    // console.log(hits);
+    return (
+      <Box>
+        {hits[0] !== undefined && <Heading m="8">كتب</Heading>}
 
-      <SimpleGrid spacing={8} columns={[2, 2, 3, 8]}>
-        {hits &&
-          hits.map(hit => {
-            if (hit.searchable_out_mutab === 1) {
-              return (
-                <Link
-                  onClick={onClose}
-                  key={hit.objectID}
-                  to={`/book/${hit.id}`}
-                >
-                  <Image
-                    loading="lazy"
-                    src={`${process.env.REACT_APP_STORAGE}/${hit.cover}`}
-                  ></Image>
-                  <Heading size="md" mt="2">
-                    {hit.title}
-                  </Heading>
-                </Link>
-              );
-            }
-          })}
-      </SimpleGrid>
-    </Box>
-  );
+        <SimpleGrid spacing={8} columns={[2, 2, 3, 8]}>
+          {hits &&
+            hits.map(hit => {
+              if (hit.searchable_out_mutab === 1) {
+                return (
+                  <Link
+                    onClick={onClose}
+                    key={hit.objectID}
+                    to={`/book/${hit.id}`}
+                  >
+                    <Image
+                      loading="lazy"
+                      src={`${process.env.REACT_APP_STORAGE}/${hit.cover}`}
+                    ></Image>
+                    <Heading size="md" mt="2">
+                      {hit.title}
+                    </Heading>
+                  </Link>
+                );
+              }
+            })}
+        </SimpleGrid>
+      </Box>
+    );
+  };
   const Authors = ({ hits }) => (
     <Box>
       {hits[0] !== undefined && <Heading m="8">كتاب</Heading>}
@@ -99,30 +102,29 @@ function Navbar({ getSearch }) {
       </SimpleGrid>
     </Box>
   );
-  const Articles = ({ hits }) => (
-    <Box>
-      {hits[0] !== undefined && <Heading m="8">مقالات</Heading>}
+  const Articles = ({ hits }) => {
+    console.log(hits);
+    return (
+      <Box>
+        {hits[0] !== undefined && <Heading m="8">مقالات</Heading>}
 
-      <SimpleGrid spacing={8} columns={[2, 2, 3, 8]}>
-        {hits &&
-          hits.map(hit => (
-            <Link
-              onClick={onClose}
-              key={hit.objectID}
-              to={`/singlePost?id=${hit.id}`}
-            >
-              <Image
-                loading="lazy"
-                src={`${process.env.REACT_APP_STORAGE}/${hit.image}`}
-              ></Image>
-              <Heading size="md" mt="2">
-                {hit.title}
-              </Heading>
-            </Link>
-          ))}
-      </SimpleGrid>
-    </Box>
-  );
+        <SimpleGrid spacing={8} columns={[2, 2, 3, 8]}>
+          {hits &&
+            hits.map(hit => (
+              <Link onClick={onClose} key={hit.objectID} to={`/book/${hit.id}`}>
+                <Image
+                  loading="lazy"
+                  src={`${process.env.REACT_APP_STORAGE}/${hit.image}`}
+                ></Image>
+                <Heading size="md" mt="2">
+                  {hit.title}
+                </Heading>
+              </Link>
+            ))}
+        </SimpleGrid>
+      </Box>
+    );
+  };
   const CustomSearchBox = ({ currentRefinement, refine }) => (
     <Input
       className="search-box"
@@ -149,11 +151,13 @@ function Navbar({ getSearch }) {
   );
   const SearchBox = connectSearchBox(CustomSearchBox);
 
+  const navClassName = useBreakpointValue({ base: '', md: 'topNavbar' });
+
   return (
     <Flex
       h="70px"
+      className={navClassName}
       borderBottom="1px solid #ddd"
-      style={{ position: 'fixed', width: '100%', zIndex: '99', top: 0 }}
       as="nav"
       align="center"
       justify="space-between"
@@ -163,7 +167,6 @@ function Navbar({ getSearch }) {
       color={color[colorMode]}
       bg={bg[colorMode]}
     >
- 
       <Box
         ml="8%"
         // display={{ base: show ? 'block' : 'none', md: 'flex' }}
@@ -209,7 +212,7 @@ function Navbar({ getSearch }) {
             h="50px"
             fontSize="28px"
           >
-            <FaSearch></FaSearch>
+            <FaSearch />
           </Box>
           <Drawer
             placement="bottom"
@@ -229,6 +232,13 @@ function Navbar({ getSearch }) {
 
                 <DrawerHeader fontSize="36px">بحث</DrawerHeader>
                 <DrawerBody>
+                  {/* <Input
+                    color="black"
+                    placeholder=" ابحث عن الكتب,المقالات,الكتاب ..."
+                  ></Input>
+                  <Box h="400px">
+                    <Text>هنا ستكون نتيجة البحث</Text>
+                  </Box> */}
                   <InstantSearch indexName="books" searchClient={searchClient}>
                     <SearchBox />
                     <Index indexName="books">
@@ -258,12 +268,8 @@ function Navbar({ getSearch }) {
         >
           <FaShoppingCart></FaShoppingCart>
         </Box> */}
-        <Newsletter></Newsletter>
-        <a
-          rel="noreferrer"
-          target="_blank"
-          href={`${process.env.REACT_APP_SHOP}`}
-        >
+        <Newsletter />
+        <a target="_blank" rel=" noreferrer" href={process.env.REACT_APP_SHOP}>
           <Box
             rounded="5px"
             bg={bgIcon[colorMode]}
@@ -274,7 +280,7 @@ function Navbar({ getSearch }) {
             h="50px"
             fontSize="28px"
           >
-            <AiOutlineShop></AiOutlineShop>
+            <AiOutlineShop />
           </Box>
         </a>
       </Box>

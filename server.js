@@ -162,7 +162,7 @@ app.get("/book/:id",  (req, res) => {
         data = data
             .replace(/__TITLE__/g, dataR.data.title)
             .replace(/__DESCRIPTION__/g, desc.window.document.querySelector("p") ? desc.window.document.querySelector("p").textContent :
-                     (desc.window.document.querySelector("div") ? desc.window.document.querySelector("div").textContent : "" ))
+                (desc.window.document.querySelector("div") ? desc.window.document.querySelector("div").textContent : "" ))
             .replace(/__KEYWORDS__/g, dataR.data.tags.map(word => {
                 return  word.name.en
             }))
@@ -192,7 +192,7 @@ app.get("/singlePost",  (req, res) => {
         data = data
             .replace(/__TITLE__/g, dataR.data.title)
             .replace(/__DESCRIPTION__/g, desc.window.document.querySelector("p") ? desc.window.document.querySelector("p").textContent :
-                     (desc.window.document.querySelector("div") ? desc.window.document.querySelector("div").textContent : "" ))
+                (desc.window.document.querySelector("div") ? desc.window.document.querySelector("div").textContent : "" ))
             .replace(/__KEYWORDS__/g, dataR.data.tags.map(word => {
                 return  word.name.en
             }))
@@ -217,9 +217,12 @@ app.get("/author/:id", (req, res) => {
             .then(result => {
                 return result;
             })
+        const desc = new jsdom.JSDOM(dataR.data.author_bio)
+
         data = data
             .replace(/__TITLE__/g, dataR.data.name)
-            .replace(/__DESCRIPTION__/g, dataR.data.author_bio)
+            .replace(/__DESCRIPTION__/g, desc.window.document.querySelector("p") ? desc.window.document.querySelector("p").textContent :
+                (desc.window.document.querySelector("div") ? desc.window.document.querySelector("div").textContent : "" ))
             .replace(/__KEYWORDS__/g,dataR.data.name )
             .replace(/__IMAGE__/g, "https://admin.almutawassit.it/storage/"+dataR.data.image)
             .replace(/__URL__/g, "https://misccenter.com/author/"+ dataR.data.id);

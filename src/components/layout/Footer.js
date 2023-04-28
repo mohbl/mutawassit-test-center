@@ -1,5 +1,12 @@
 import React from 'react';
-import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/core';
+import {
+  Box,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Text,
+  useMediaQuery,
+} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 import {
   FaCcMastercard,
@@ -18,11 +25,32 @@ import News from './FooterNewsLetter';
 import { countires } from '../books/countires';
 
 export default function Footer() {
+  const [isSmallerThan850] = useMediaQuery('(max-width: 850px)');
+  const [isSmallerThan590] = useMediaQuery('(max-width: 590px)');
+
+  const countriesHalfIndex = parseInt(countires.length / 2);
+  const countriesBoxOne = countires.filter(
+    (country, index) => index <= countriesHalfIndex
+  );
+  const countriesBoxTwo = countires.filter(
+    (country, index) => index > countriesHalfIndex
+  );
+
   return (
-    <Box pb="60px" pl="10%" pr="10%" color="white" bg="black">
-      <SimpleGrid mb="100px" p="30px" columns={[1, 1, 3, 3]} spacing="8">
-        <Flex direction="column">
-          <Heading fontFamily="diodrum-bold !important" size="md">
+    <Box pb="60px" color="white" bg="black">
+      <Flex
+        mb="3em"
+        py="2em"
+        px={isSmallerThan590 ? '2em' : '3.5em'}
+        justifyContent="space-around"
+        direction={isSmallerThan850 ? 'column' : 'row'}
+      >
+        <Box>
+          <Heading
+            fontFamily="diodrum-bold !important"
+            fontSize="1.45em"
+            mb=".5em"
+          >
             ميسك – MISC
           </Heading>
           <Link to="/about">
@@ -84,7 +112,12 @@ export default function Footer() {
           >
             <News></News>
           </Text>
-          <Heading mt="12" fontFamily="diodrum-bold !important" size="md">
+          <Heading
+            mt="12"
+            fontFamily="diodrum-bold !important"
+            fontSize="1.45em"
+            mb=".5em"
+          >
             التوزيع والحقوق
           </Heading>
           <Link to="/buyrights">
@@ -127,38 +160,72 @@ export default function Footer() {
               وكلاء وموزعون
             </Text>
           </Link>
-        </Flex>
+        </Box>
 
-        <Flex direction="column">
-          <Heading fontFamily="diodrum-bold !important" size="md">
+        <Box>
+          <Heading
+            fontFamily="diodrum-bold !important"
+            fontSize="1.45em"
+            mb=".5em"
+          >
             البلدان
           </Heading>
-          {countires.map(([code, country]) => (
-            <Link
-              // style={{ margin: '50px !important' }}
-              //   onClick={handleToggle}
-              to={`/books?category=دراسات المركز&countryCode=${code}`}
-            >
-              <Box>
-                <Box>
-                  <Text
-                    color="gray.200"
-                    _hover={{ textDecoration: 'underline' }}
-                    fontFamily="diodrum-med !important"
-                    fontSize="md"
-                  >
-                    {country}
-                  </Text>
-                </Box>
-              </Box>
-            </Link>
-          ))}
-        </Flex>
-        <Flex direction="column">
-          <Heading fontFamily="diodrum-bold !important" size="md">
+          <Flex>
+            <Box w="min-content" ml="2em">
+              {countriesBoxOne.map(([code, country]) => (
+                <Link
+                  key={code}
+                  to={`/books?category=دراسات المركز&countryCode=${code}`}
+                >
+                  <Box>
+                    <Box>
+                      <Text
+                        color="gray.200"
+                        _hover={{ textDecoration: 'underline' }}
+                        fontFamily="diodrum-med !important"
+                        fontSize="md"
+                      >
+                        {country}
+                      </Text>
+                    </Box>
+                  </Box>
+                </Link>
+              ))}
+            </Box>
+            <Box>
+              {countriesBoxTwo.map(([code, country]) => (
+                <Link
+                  key={code}
+                  // style={{ margin: '50px !important' }}
+                  //   onClick={handleToggle}
+                  to={`/books?category=دراسات المركز&countryCode=${code}`}
+                >
+                  <Box>
+                    <Box>
+                      <Text
+                        color="gray.200"
+                        _hover={{ textDecoration: 'underline' }}
+                        fontFamily="diodrum-med !important"
+                        fontSize="md"
+                      >
+                        {country}
+                      </Text>
+                    </Box>
+                  </Box>
+                </Link>
+              ))}
+            </Box>
+          </Flex>
+        </Box>
+        <Box>
+          <Heading
+            fontFamily="diodrum-bold !important"
+            fontSize="1.45em"
+            mb=".55em"
+          >
             وسائل التواصل الاجتماعي
           </Heading>
-          <Flex mt="4">
+          <Flex mt="6">
             <a
               target="_blank"
               rel="noreferrer"
@@ -169,9 +236,9 @@ export default function Footer() {
                 _hover={{ textDecoration: 'underline' }}
                 fontFamily="diodrum-med !important"
                 fontSize="28px"
-                m="2"
+                ml="10"
               >
-                <FaTwitter></FaTwitter>
+                <FaTwitter />
               </Text>
             </a>
             <a
@@ -184,9 +251,9 @@ export default function Footer() {
                 _hover={{ textDecoration: 'underline' }}
                 fontFamily="diodrum-med !important"
                 fontSize="28px"
-                m="2"
+                ml="10"
               >
-                <FaFacebook></FaFacebook>
+                <FaFacebook />
               </Text>
             </a>
             <a
@@ -199,47 +266,14 @@ export default function Footer() {
                 _hover={{ textDecoration: 'underline' }}
                 fontFamily="diodrum-med !important"
                 fontSize="28px"
-                m="2"
               >
-                <FaInstagramSquare></FaInstagramSquare>
+                <FaInstagramSquare />
               </Text>
             </a>
-
-            {/*<a*/}
-            {/*  target="_blank"*/}
-            {/*  rel="noreferrer"*/}
-            {/*  href="https://www.youtube.com/channel/UCSBUh4FMxnG9Wmjio_tJk1w"*/}
-            {/*>*/}
-            {/*  <Text*/}
-            {/*    color="gray.200"*/}
-            {/*    _hover={{ textDecoration: 'underline' }}*/}
-            {/*    fontFamily="diodrum-med !important"*/}
-            {/*    fontSize="28px"*/}
-            {/*    m="2"*/}
-            {/*  >*/}
-            {/*    <FaYoutube></FaYoutube>*/}
-            {/*  </Text>*/}
-            {/*</a>*/}
-
-            {/*<a*/}
-            {/*  target="_blank"*/}
-            {/*  rel="noreferrer"*/}
-            {/*  href="https://www.goodreads.com/user/show/50160397"*/}
-            {/*>*/}
-            {/*  <Text*/}
-            {/*    color="gray.200"*/}
-            {/*    _hover={{ textDecoration: 'underline' }}*/}
-            {/*    fontFamily="diodrum-med !important"*/}
-            {/*    fontSize="28px"*/}
-            {/*    m="2"*/}
-            {/*  >*/}
-            {/*    <FaGoodreads></FaGoodreads>*/}
-            {/*  </Text>*/}
-            {/*</a>*/}
           </Flex>
-        </Flex>
-      </SimpleGrid>
-      <Flex mb="50px" justifyContent="center">
+        </Box>
+      </Flex>
+      <Flex mb="2em" justifyContent="center">
         <Box dir="ltr">©️ 2021 Almutawassit Books</Box>
       </Flex>
     </Box>
