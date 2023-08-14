@@ -56,7 +56,7 @@ function Author({ getAuthor }) {
                 borderColor={color[colorMode]}
               ></Divider>
               <Text fontSize="2xl" m="4">
-                {data.author_bio}
+                <Box dangerouslySetInnerHTML={{ __html: data.author_bio}} />
               </Text>
               <Heading m="4">صدر له في المتوسط</Heading>
               <Divider
