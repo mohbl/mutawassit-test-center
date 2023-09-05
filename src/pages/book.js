@@ -246,9 +246,14 @@ function Book({ getBook }) {
                         {data.author.map(author => (
                           <Box key={author.id}>
                             <Heading size="lg">{author.name}</Heading>
-                            <Text m="2" fontSize="2xl">
-                              {author.author_bio}
-                            </Text>
+                            <Box
+                                m={2}
+                                fontSize="2xl"
+                                className="content"
+                                dangerouslySetInnerHTML={{
+                                  __html: author.author_bio,
+                                }}
+                            />
                           </Box>
                         ))}
                       </TabPanel>
@@ -351,9 +356,14 @@ function Book({ getBook }) {
                         {data.author.map(author => (
                           <Box key={author.id}>
                             <Heading size="lg">{author.name}</Heading>
-                            <Text m="2" fontSize="2xl">
-                              {author.author_bio}
-                            </Text>
+                            <Box
+                                m={2}
+                                fontSize="2xl"
+                                className="content"
+                                dangerouslySetInnerHTML={{
+                                  __html: author.author_bio,
+                                }}
+                            />
                           </Box>
                         ))}
                       </AccordionPanel>
