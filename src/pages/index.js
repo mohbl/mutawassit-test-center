@@ -46,6 +46,7 @@ function Home({ getHome }) {
       if (res) {
         setData(res.data);
       }
+      console.log(res.data)
     }
     getData();
   }, []);
@@ -78,48 +79,53 @@ function Home({ getHome }) {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {data &&
-              data.articles &&
-              data.articles.map(article => {
-                const articleBody = article.body.split('\n');
-                const body = articleBody[0] + '' + articleBody[1];
+           {data &&
+  data.articles &&
+  data.articles.map(article => {
+    const articleBody = article.body?.split('\n');
+    const body =
+      articleBody && articleBody.length > 1
+        ? articleBody[0] + '' + articleBody[1]
+        : articleBody?.[0] || '';
 
-                <Box mb="1.5em" mx={isSmallerThan500 ? '0' : '1em'}>
-                  <Link to={`/singlePost?id=${article.id}`}>
-                    <Box
-                      bg={bg[colorMode]}
-                      w="100%"
-                      shadow="lg"
-                      pb="4"
-                      mt="8"
-                      cursor="pointer"
-                    >
-                      <Skeleton w="100%" isLoaded={loaded}>
-                        <Image
-                          loading="lazy"
-                          w="100%"
-                          onLoad={imageLoaded}
-                          src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
-                        />
-                      </Skeleton>
-                      <Box p="1em">
-                        <Text fontFamily="diodrum-med !important" mb="4">
-                          {article.author}
-                        </Text>
-                        <Heading fontFamily="diodrum-bold !important" mb="4">
-                          {article.title}
-                        </Heading>
-                        <Box
-                          fontSize="xl"
-                          className="content books__content event-body"
-                        >
-                          <Box dangerouslySetInnerHTML={{ __html: body }} />
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Link>
-                </Box>;
-              })}
+    return (
+      <Box mb="1.5em" mx={isSmallerThan500 ? '0' : '1em'} key={article.id}>
+        <Link to={`/singlePost?id=${article.id}`}>
+          <Box
+            bg={bg[colorMode]}
+            w="100%"
+            shadow="lg"
+            pb="4"
+            mt="8"
+            cursor="pointer"
+          >
+            <Skeleton w="100%" isLoaded={loaded}>
+              <Image
+                loading="lazy"
+                w="100%"
+                onLoad={imageLoaded}
+                src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
+              />
+            </Skeleton>
+            <Box p="1em">
+              <Text fontFamily="diodrum-med !important" mb="4">
+                {article.author || article.author_optional}
+              </Text>
+              <Heading fontFamily="diodrum-bold !important" mb="4">
+                {article.title}
+              </Heading>
+              <Box
+                fontSize="xl"
+                className="content books__content event-body"
+              >
+                <Box dangerouslySetInnerHTML={{ __html: body }} />
+              </Box>
+            </Box>
+          </Box>
+        </Link>
+      </Box>
+    );
+  })}
           </Masonry>
         </Box>
         <Box d="flex" justifyContent="center">
@@ -128,38 +134,35 @@ function Home({ getHome }) {
             className="my-masonry-grid"
             columnClassName="my-masonry-grid_column"
           >
-            {data &&
-              data.books &&
-              data.books.map(book => (
-                <Box mb="1.5em" mx="1em">
-                  <Link to={`/book/${book.id}`}>
-                    <Box my="8" pb="4" shadow="lg" bg={bg[colorMode]}>
-                      <Image
-                        loading="lazy"
-                        mt="2"
-                        w="100%"
-                        src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
-                      />
-                      <Box p="1em">
-                        <Text fontFamily="diodrum-med !important" mb="4">
-                          {' '}
-                          {book?.author[0]?.name}{' '}
-                        </Text>
-                        <Heading fontFamily="diodrum-bold !important" mb="4">
-                          {' '}
-                          {book.title}{' '}
-                        </Heading>
-
-                        <Box
-                          fontSize="xl"
-                          className="content books__content"
-                          dangerouslySetInnerHTML={{ __html: book.overview }}
-                        />
-                      </Box>
-                    </Box>
-                  </Link>
-                </Box>
-              ))}
+           {data &&
+  data.books &&
+  data.books.map(book => (
+    <Box mb="1.5em" mx="1em" key={book.id}>
+      <Link to={`/book/${book.id}`}>
+        <Box my="8" pb="4" shadow="lg" bg={bg[colorMode]}>
+          <Image
+            loading="lazy"
+            mt="2"
+            w="100%"
+            src={`${process.env.REACT_APP_STORAGE}/${book.cover}`}
+          />
+          <Box p="1em">
+            <Text fontFamily="diodrum-med !important" mb="4">
+              {book?.author?.[0]?.name || book?.author?.[0]?.author_optional}
+            </Text>
+            <Heading fontFamily="diodrum-bold !important" mb="4">
+              {book.title}
+            </Heading>
+            <Box
+              fontSize="xl"
+              className="content books__content"
+              dangerouslySetInnerHTML={{ __html: book.overview }}
+            />
+          </Box>
+        </Box>
+      </Link>
+    </Box>
+  ))}
           </Masonry>
         </Box>
       </Box>

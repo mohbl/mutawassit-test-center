@@ -1,3 +1,5 @@
 
 export const GET_LOCATION = 'GET_LOCATION';
 
+export const SEARCH_SUCCESS = 'SEARCH_SUCCESS';
+export const SEARCH_FAILURE = 'SEARCH_FAILURE';
