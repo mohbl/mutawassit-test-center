@@ -41,7 +41,7 @@ function SingleBlog({ getArticle }) {
   React.useEffect(() => {
     async function getData() {
       const res = await getArticle(id);
-      console.log(res);
+      console.log('API response:', res.data);
       if (res) {
         setData(res.data);
       }
@@ -224,7 +224,7 @@ function SingleBlog({ getArticle }) {
           </Grid>
 
           <GlobalShare></GlobalShare>
-          {data.books[0] && (
+          {data && data.books && data.books.length > 0 &&(
             <Box
               pr="5%"
               pl="3%"
@@ -291,7 +291,7 @@ function SingleBlog({ getArticle }) {
               </Carousel>
             </Box>
           )}
-          {data.maitres[0] && (
+          {data && data.maitres && data.maitres.length (
             <Box
               pr="5%"
               pl="3%"
