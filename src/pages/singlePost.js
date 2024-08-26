@@ -291,91 +291,85 @@ function SingleBlog({ getArticle }) {
               </Carousel>
             </Box>
           )}
-          {data && data.maitres && data.maitres.length (
+        {data && data.maitres && data.maitres.length > 0 && (
+  <Box
+    pr="5%"
+    pl="3%"
+    bg={bg[colorMode]}
+    color="black"
+    borderBottom="1px solid white"
+  >
+    <Box mb="4" color={color[colorMode]}>
+      <Heading
+        fontFamily="diodrum-med !important"
+        mr="5%"
+        p="4"
+        size="lg"
+      >
+        مقالات ذات صلة
+      </Heading>
+    </Box>
+    <Carousel
+      breakPoints={breakPoints}
+      isRTL={true}
+      style={{
+        paddingBottom: 10,
+      }}
+    >
+      {data.maitres.map(article => (
+        <Box mx=".5em">
+          <a href={`/singlePost?id=${article.id}`}>
             <Box
-              pr="5%"
-              pl="3%"
-              bg={bg[colorMode]}
-              color="black"
-              borderBottom="1px solid white"
+              bg="white"
+              pb="4"
+              m="0 auto"
+              shadow="lg"
+              cursor="pointer"
             >
-              <Box mb="4" color={color[colorMode]}>
+              <Box>
+                <Skeleton w="100%" isLoaded={loaded}>
+                  <Image
+                    loading="lazy"
+                    w="100%"
+                    onLoad={imageLoaded}
+                    src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
+                  />
+                </Skeleton>
+                <Text
+                  m="2"
+                  mt="4"
+                  fontSize="lg"
+                  fontFamily="diodrum-med !important"
+                >
+                  {article.author}
+                </Text>
                 <Heading
                   fontFamily="diodrum-med !important"
-                  mr="5%"
-                  p="4"
+                  m="2"
                   size="lg"
                 >
-                  مقالات ذات صلة
+                  {article.title}
                 </Heading>
+                <Box
+                  m="4"
+                  fontSize="xl"
+                  className="content event-body"
+                >
+                  <Box
+                    dangerouslySetInnerHTML={{ __html: article.body }}
+                  />
+                </Box>
               </Box>
-              <Carousel
-                breakPoints={breakPoints}
-                isRTL={true}
-                style={{
-                  //   marginTop: 100,
-
-                  paddingBottom: 10,
-                }}
-                // itemsToScroll={3}
-                // itemsToShow={3}
-              >
-                {data.maitres.map(article => (
-                  <Box mx=".5em">
-                    <a href={`/singlePost?id=${article.id}`}>
-                      <Box
-                        bg="white"
-                        // p="2"
-                        pb="4"
-                        m="4"
-                        m="0 auto"
-                        shadow="lg"
-                        cursor="pointer"
-                      >
-                        <Box>
-                          <Skeleton w="100%" isLoaded={loaded}>
-                            <Image
-                              loading="lazy"
-                              w="100%"
-                              onLoad={imageLoaded}
-                              src={`${process.env.REACT_APP_STORAGE}/${article.image}`}
-                            />
-                          </Skeleton>
-                          <Text
-                            m="2"
-                            mt="4"
-                            fontSize="lg"
-                            fontFamily="diodrum-med !important"
-                          >
-                            {' '}
-                            {article.author}{' '}
-                          </Text>
-                          <Heading
-                            fontFamily="diodrum-med !important"
-                            m="2"
-                            size="lg"
-                          >
-                            {article.title}
-                          </Heading>
-                          <Box
-                            m="4"
-                            fontSize="xl"
-                            className="content event-body"
-                          >
-                            <Box
-                              dangerouslySetInnerHTML={{ __html: article.body }}
-                            />
-                          </Box>
-                        </Box>
-                      </Box>
-                    </a>
-                  </Box>
-                ))}
-              </Carousel>
             </Box>
-          )}
+          </a>
         </Box>
-      )}
+      ))}
+    </Carousel>
+  </Box>
+)}
+
+        </Box>
+      )})
     </Box>
   );
 }
